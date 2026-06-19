@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>たしざん にんじゃ</title>
+<title>ひきざん コレクター</title>
 <link rel="preload" as="audio" href="./sound/kiru.mp3">
 
 <style>
@@ -196,7 +196,7 @@ body.booting #app {
 <div id="startup-overlay" aria-hidden="true">
   <div class="startup-backdrop"></div>
   <button type="button" id="startup-stage" class="startup-stage" aria-label="タップしてはじめる">
-    <img src="./img/title.png" alt="たしざん にんじゃ" class="startup-title-img" onerror="this.style.display='none'">
+    <img src="./img/title.png" alt="ひきざん コレクター" class="startup-title-img" onerror="this.style.display='none'">
     <div class="startup-tip">タップして はじめる</div>
   </button>
 </div>
@@ -210,8 +210,8 @@ body.booting #app {
 ══════════════════════════════════════════ -->
 <div id="home" class="sc on">
   <div class="hdr">
-    <div class="hdr-t">たしざん にんじゃ 🥷</div>
-    <div class="hdr-s">まいにち れんしゅうして にんじゃマスターに なろう！</div>
+    <div class="hdr-t">ひきざん コレクター 🐉</div>
+    <div class="hdr-s">まいにち れんしゅうして げんじゅうコレクターに なろう！</div>
   </div>
 
 
@@ -228,7 +228,7 @@ body.booting #app {
     <span class="top-btn-ico">🌱</span>
     <span class="top-btn-main">
       <div class="top-btn-title">かんたん</div>
-      <div class="top-btn-sub">たして 2〜10（くりあがりなし）</div>
+      <div class="top-btn-sub">ひいて 0〜9（くりさがりなし）</div>
     </span>
     <span class="top-btn-arr">›</span>
   </button>
@@ -237,7 +237,7 @@ body.booting #app {
     <span class="top-btn-ico">⭐</span>
     <span class="top-btn-main">
       <div class="top-btn-title">むずかしい</div>
-      <div class="top-btn-sub">たして 11〜18（くりあがりあり）</div>
+      <div class="top-btn-sub">10をこえて ひく（くりさがりあり）</div>
     </span>
     <span class="top-btn-arr">›</span>
   </button>
@@ -319,7 +319,7 @@ body.booting #app {
     <span class="course-btn-ico">❎</span>
     <span class="course-btn-main">
       <div class="course-btn-title">Xをつくろう</div>
-      <div class="course-btn-sub">たして X になる くみあわせ</div>
+      <div class="course-btn-sub">ひいて X になる くみあわせ</div>
     </span>
     <span class="course-btn-arr">›</span>
   </button>
@@ -347,7 +347,7 @@ body.booting #app {
     <span class="course-btn-ico">💡</span>
     <span class="course-btn-main">
       <div class="course-btn-title">こまかくわけて</div>
-      <div class="course-btn-sub">たすかずごとに れんしゅう</div>
+      <div class="course-btn-sub">ひくかずごとに れんしゅう</div>
     </span>
     <span class="course-btn-arr">›</span>
   </button>
@@ -419,7 +419,7 @@ body.booting #app {
     </div>
   </div>
   <div class="pcard" id="pcard">
-    <div class="peq" id="peq">? ＋ ? ＝ ？</div>
+    <div class="peq" id="peq">? － ? ＝ ？</div>
     <div class="ptimer" id="ptimer">⏱ 0.0 びょう</div>
   </div>
   <div class="fbl" id="fbl"></div>
@@ -508,7 +508,7 @@ body.booting #app {
     <button class="diff-tab" id="rtab-weak" data-action="selRecCourse" data-value="weak">💪 にがて</button>
   </div>
   <div class="leg" style="margin-top:10px;">
-    <span><span class="ldot" style="background:#3A90E0"></span>マスター</span>
+    <span><span class="ldot" style="background:#3A90E0"></span>げんじゅう</span>
     <span><span class="ldot" style="background:#5AAA30"></span>がんばろう</span>
     <span><span class="ldot" style="background:#D4407E"></span>にがて</span>
     <span><span class="ldot" style="background:#C0B090"></span>まだ</span>
@@ -534,13 +534,13 @@ body.booting #app {
     <button class="diff-tab" id="stab-mix"  data-stat-tab="mix">🎲 ばらばら</button>
   </div>
   <div class="ssgrid" style="margin-top:10px;">
-    <div class="ssb"><div class="ssbl">マスター</div><div class="ssbv" id="ss-m">0</div></div>
+    <div class="ssb"><div class="ssbl">げんじゅう</div><div class="ssbv" id="ss-m">0</div></div>
     <div class="ssb"><div class="ssbl">がんばろう</div><div class="ssbv" id="ss-ok">0</div></div>
     <div class="ssb"><div class="ssbl">にがて</div><div class="ssbv" id="ss-w">0</div></div>
   </div>
   <div class="gsect"><div id="st-gtitle" class="gtitle"></div><div class="hgrid" id="st-hgrid"></div></div>
   <div class="hleg">
-    <span><span class="hsq" style="background:#3A90E0"></span>マスター</span>
+    <span><span class="hsq" style="background:#3A90E0"></span>げんじゅう</span>
     <span><span class="hsq" style="background:#7DC95E"></span>がんばろう</span>
     <span><span class="hsq" style="background:#F0A0BF"></span>にがて</span>
     <span><span class="hsq" style="background:#E0D0B8;border:1px solid #C0B090"></span>まだ</span>
@@ -655,7 +655,7 @@ body.booting #app {
     </button>
   </div>
   <div style="font-size:13px;font-weight:800;color:#3A2A00;margin-bottom:8px;">🖼 ひょうじする がぞう</div>
-  <div style="font-size:11px;color:#8A7050;margin-bottom:10px;font-weight:600;">「せいかい」「ふせいかい」「マスター」の がぞうを かえられるよ</div>
+  <div style="font-size:11px;color:#8A7050;margin-bottom:10px;font-weight:600;">「せいかい」「ふせいかい」「げんじゅう」の がぞうを かえられるよ</div>
   <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
     <div id="img-set-seikai" class="img-set-row"></div>
     <div id="img-set-fuseikai" class="img-set-row"></div>
@@ -684,7 +684,7 @@ body.booting #app {
   <div id="kotsu-home-desc" style="font-size:12px;color:#6060A0;font-weight:600;margin-bottom:14px;"></div>
   <div class="num-grid" id="num-grid"></div>
   <div class="leg" style="justify-content:center;margin-top:4px;">
-    <span><span class="ldot" style="background:#3A90E0"></span>マスター</span>
+    <span><span class="ldot" style="background:#3A90E0"></span>げんじゅう</span>
     <span><span class="ldot" style="background:#5AAA30"></span>がんばろう</span>
     <span><span class="ldot" style="background:#D4407E"></span>にがて</span>
     <span><span class="ldot" style="background:#C0B090"></span>まだ</span>
@@ -695,7 +695,7 @@ body.booting #app {
 <div id="kotsu-sub" class="sc">
   <div class="page-head">
     <button class="bkbtn" data-action="showKotsuHome">← もどる</button>
-    <span class="page-title page-title-p" id="ksub-title">２をたすもんだい</span>
+    <span class="page-title page-title-p" id="ksub-title">２をひくもんだい</span>
   </div>
   <div class="kotsu-sub-desc" id="ksub-desc"></div>
   <div class="frow">
@@ -717,7 +717,7 @@ body.booting #app {
     <span class="page-title page-title-p" id="kr-title">きろく</span>
   </div>
   <div class="leg">
-    <span><span class="ldot" style="background:#3A90E0"></span>マスター</span>
+    <span><span class="ldot" style="background:#3A90E0"></span>げんじゅう</span>
     <span><span class="ldot" style="background:#5AAA30"></span>がんばろう</span>
     <span><span class="ldot" style="background:#D4407E"></span>にがて</span>
     <span><span class="ldot" style="background:#C0B090"></span>まだ</span>
@@ -732,7 +732,7 @@ body.booting #app {
     <span class="page-title page-title-p" id="ks-title">とうけい</span>
   </div>
   <div class="ssgrid">
-    <div class="ssb"><div class="ssbl">マスター</div><div class="ssbv" id="ks-m">0</div></div>
+    <div class="ssb"><div class="ssbl">げんじゅう</div><div class="ssbv" id="ks-m">0</div></div>
     <div class="ssb"><div class="ssbl">がんばろう</div><div class="ssbv" id="ks-ok">0</div></div>
     <div class="ssb"><div class="ssbl">にがて</div><div class="ssbv" id="ks-w">0</div></div>
   </div>
@@ -741,7 +741,7 @@ body.booting #app {
     <div id="ks-grid" style="display:grid;grid-template-columns:repeat(8,1fr);gap:4px;"></div>
   </div>
   <div class="hleg">
-    <span><span class="hsq" style="background:#3A90E0"></span>マスター</span>
+    <span><span class="hsq" style="background:#3A90E0"></span>げんじゅう</span>
     <span><span class="hsq" style="background:#7DC95E"></span>がんばろう</span>
     <span><span class="hsq" style="background:#F0A0BF"></span>にがて</span>
     <span><span class="hsq" style="background:#E0D0B8;border:1px solid #C0B090"></span>まだ</span>
@@ -763,9 +763,9 @@ body.booting #app {
            onerror="this.style.display='none';document.getElementById('ach-avatar-css').textContent='🥷'">
       <div class="ach-avatar-css" id="ach-avatar-css"></div>
     </div>
-    <div class="ach-rank-badge" id="ach-rank-badge">Lv.1 みならい忍者</div>
-    <div class="ach-rank-name"  id="ach-rank-name">みならい忍者</div>
-    <div class="ach-rank-desc"  id="ach-rank-desc">まずは「1をたす」をきわめるところから。</div>
+    <div class="ach-rank-badge" id="ach-rank-badge">Lv.1 みならい幻獣使い</div>
+    <div class="ach-rank-name"  id="ach-rank-name">みならい幻獣使い</div>
+    <div class="ach-rank-desc"  id="ach-rank-desc">まずは「1をひく」から はじめよう。</div>
     <div class="ach-progress-wrap">
       <div class="ach-progress-label">
         <span id="ach-progress-text">つぎのランクまで</span>
@@ -787,7 +787,7 @@ body.booting #app {
         <div class="ach-count" id="ach-count">解除 0 / 0</div>
       </div>
       <div class="ach-tabs" id="ach-tabs">
-        <button class="ach-tab active" data-tab="gem">💎 たすかず</button>
+        <button class="ach-tab active" data-tab="gem">💎 ひくかず</button>
         <button class="ach-tab" data-tab="badge">🏅 せいはバッジ</button>
         <button class="ach-tab" data-tab="ougi">⚔️ おうぎバッジ</button>
       </div>
@@ -822,9 +822,9 @@ body.booting #app {
     <div style="background:#fff;border-radius:14px;padding:14px 16px;border:1.5px solid #F0E0C0;">
       <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
         <span style="background:#8A7050;color:#fff;font-size:11px;font-weight:800;padding:2px 9px;border-radius:20px;">v1.x</span>
-        <span style="font-size:13px;font-weight:800;color:#3A2A00;">じゅうじ手裏剣・全問正解エフェクト など</span>
+        <span style="font-size:13px;font-weight:800;color:#3A2A00;">幻獣メダル・全問正解エフェクト など</span>
       </div>
-      <div style="font-size:12px;color:#8A7050;">手裏剣エフェクト追加。ページ遷移ワイプ。暗転・稲妻・全問正解エフェクト。連続正解手裏剣。</div>
+      <div style="font-size:12px;color:#8A7050;">幻獣エフェクト追加。ページ遷移ワイプ。暗転・稲光・全問正解エフェクト。連続正解バースト。</div>
     </div>
   </div>
 </div>
@@ -865,11 +865,11 @@ body.booting #app {
   </div>
 </div>
 
-<!-- 全マスターポップアップ -->
+<!-- 全げんじゅうポップアップ -->
 <div id="all-master-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:8000;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
   <div style="background:linear-gradient(135deg,#FFF9E0,#FFF0C8);border-radius:28px;padding:28px 20px 24px;max-width:340px;width:90%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.25);border:4px solid #F5A623;">
-    <img id="master-popup-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="マスター！" style="max-width:140px;max-height:140px;object-fit:contain;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto;" onerror="this.style.display=&#39;none&#39;">
-    <div style="font-size:20px;font-weight:900;color:#C07800;letter-spacing:2px;margin-bottom:6px;">🏆 ぜんぶ マスター！！</div>
+    <img id="master-popup-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="げんじゅう！" style="max-width:140px;max-height:140px;object-fit:contain;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto;" onerror="this.style.display=&#39;none&#39;">
+    <div style="font-size:20px;font-weight:900;color:#C07800;letter-spacing:2px;margin-bottom:6px;">🏆 ぜんぶ げんじゅう！！</div>
     <div style="font-size:13px;color:#8A7050;font-weight:600;margin-bottom:18px;">このコースの もんだいを<br>ぜんぶ かんぺきに おぼえたよ！</div>
     <button data-action="closeAllMasterPopup" style="border-radius:18px;padding:12px 28px;font-size:14px;font-weight:800;background:#F5A623;color:#3A2A00;border:none;cursor:pointer;font-family:inherit;box-shadow:0 4px 0 #C07800;">とじる</button>
   </div>
@@ -892,7 +892,7 @@ body.booting #app {
     <div class="cd-badge">レース開始</div>
     <div id="countdown-num" class="cd-num">3</div>
     <div id="countdown-sub" class="cd-sub">よーい</div>
-    <div class="cd-tip">3・2・1・忍！！</div>
+    <div class="cd-tip">3・2・1・幻！！</div>
   </div>
 </div>
 
@@ -1002,7 +1002,7 @@ window.addEventListener('DOMContentLoaded', function () {
       showSfx: false,
       showVoice: false,
       showStar: false,
-      starKeys: ['ninja-stars', 'ninja-stars-total', 'dot-stars', 'finger-stars', 'make-x-stars'],
+      starKeys: ['genju-meda1', 'genju-meda2', 'genju-meda3', 'genju-meda4', 'genju-meda5'],
       starLabelPrefix: '★×',
       starTitle: 'みんなの★の合計'
     });
