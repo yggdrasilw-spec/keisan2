@@ -42,11 +42,8 @@ function applyScreenTransition(n, next, body) {
   if (typeof syncVisibleScreenDom === 'function') syncVisibleScreenDom(n);
   else {
     var ss = document.querySelectorAll('.sc');
-    for (var i = 0; i < ss.length; i++) {
-      var s = ss[i];
-      if (s && s.classList) s.classList.remove('on');
-    }
-    if (next && next.classList) if (next && next.classList) next.classList.add('on');
+    for (var i = 0; i < ss.length; i++) ss[i].classList.remove('on');
+    next.classList.add('on');
     setCurrentScreen(n);
     syncFullBleedScreenClass(n);
   }
@@ -60,7 +57,7 @@ function scheduleScreenTransition(n, next, body, useWipe) {
   if (useWipe && typeof playFileSound === 'function') {
     playFileSound('./sound/idou.mp3');
   }
-  if (wipe && wipe.classList) { if (wipe && wipe.classList) { wipe.classList.remove('active'); void wipe.offsetWidth; wipe.classList.add('active'); } }
+  if (wipe) { wipe.classList.remove('active'); void wipe.offsetWidth; wipe.classList.add('active'); }
   _showTimer = setTimeout(function(){
     applyScreenTransition(n, next, body);
   }, useWipe ? 280 : 0);
