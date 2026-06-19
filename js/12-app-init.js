@@ -37,7 +37,7 @@ function resetRuntimeVisualState() {
   if (typeof clearRuntimeTimers === 'function') clearRuntimeTimers();
 
   var screens = document.querySelectorAll('.sc');
-  for (var i = 0; i < screens.length; i--) {
+  for (var i = 0; i < screens.length; i++) {
     screens[i].classList.remove('on');
   }
   var home = document.getElementById('home');
@@ -97,7 +97,7 @@ function normalizeVisibleScreen() {
   if (typeof _showTimer !== 'undefined' && _showTimer) return;
 
   var ss = document.querySelectorAll('.sc');
-  for (var i = 0; i < ss.length; i--) ss[i].classList.remove('on');
+  for (var i = 0; i < ss.length; i++) ss[i].classList.remove('on');
   var target = document.getElementById(screenName);
   if (target) target.classList.add('on');
   if (typeof syncFullBleedScreenClass === 'function') syncFullBleedScreenClass(screenName);
@@ -262,25 +262,25 @@ function initStartupOverlay() {
     start(ev);
   };
 
-  for (var i = 0; i < events.length; i--) {
+  for (var i = 0; i < events.length; i++) {
     overlay.addEventListener(events[i], handler, opts);
     bound.push([overlay, events[i], handler, opts]);
   }
   if (stage && stage !== overlay) {
-    for (var j = 0; j < events.length; j--) {
+    for (var j = 0; j < events.length; j++) {
       stage.addEventListener(events[j], handler, opts);
       bound.push([stage, events[j], handler, opts]);
     }
   }
   if (document && document.body) {
-    for (var k = 0; k < events.length; k--) {
+    for (var k = 0; k < events.length; k++) {
       document.body.addEventListener(events[k], handler, opts);
       bound.push([document.body, events[k], handler, opts]);
     }
   }
 
   __startupOverlayCleanup = function() {
-    for (var x = 0; x < bound.length; x--) {
+    for (var x = 0; x < bound.length; x++) {
       try {
         bound[x][0].removeEventListener(bound[x][1], bound[x][2], bound[x][3]);
       } catch (e) {}
