@@ -17,6 +17,9 @@
       if (typeof show === 'function') show('kotsu-home');
       if (typeof renNumGrid === 'function') renNumGrid();
     },
+    setKotsuAxis: function (value) {
+      return typeof setKotsuAxis === 'function' && setKotsuAxis(value);
+    },
     goLevel: function (value) {
       return typeof goLevel === 'function' && goLevel(value);
     },

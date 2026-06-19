@@ -8,6 +8,7 @@ function kStart() {
     : null;
   console.log('[DBG] kStart', {
     mode: kSt.mode,
+    axis: kSt.axis,
     num: kSt.num,
     startAchievementCount: startAchievementCount
   });
@@ -22,8 +23,10 @@ function kStart() {
   }
   setSessionFields({ sess:{queue:sh(weak).concat(sh(rest)).slice(0,Math.min(ps.length,20)),idx:0,results:[],streak:0,startTime:0,sessStartTime:Date.now(), startAchievementCount: startAchievementCount, _sessionEnding:false, _specialOver:false, _specialAnswerLocked:false}, sessMode:'kotsu' });
   var bdg = document.getElementById('pbdg');
-  bdg.textContent = kModeLabel(kSt.mode) + ' ' + kSt.num + 'をひくもんだい';
-  bdg.className = 'pbdg bkotsu';
+  if (bdg) {
+    bdg.textContent = kModeLabel(kSt.mode) + ' ' + kSt.num + (kSt.axis === 'top' ? 'からひかれるもんだい' : 'をひくもんだい');
+    bdg.className = 'pbdg bkotsu';
+  }
   document.getElementById('pcard').className = 'pcard pcard-p';
   document.getElementById('peq').className = 'peq peq-p';
   document.getElementById('ptimer').className = 'ptimer ptimer-p';

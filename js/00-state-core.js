@@ -26,7 +26,7 @@ var appState = {
     sessMode: 'normal',
     curLevel: 'easy',
     curCourse: '20',
-    kSt: { mode:'carry', num:2, filt:'all' },
+    kSt: { mode:'carry', num:2, filt:'all', axis:'bottom' },
     answerMode: storageLoadText(APP_KEYS.ANSWER_MODE, 'random'),
     calcInput: '',
     voiceOn: voiceOn
@@ -144,7 +144,7 @@ function applySessionSnapshot(snapshot) {
   sessMode = src.sessMode || 'normal';
   curLevel = src.curLevel || 'easy';
   curCourse = src.curCourse || '20';
-  kSt = src.kSt || { mode:'carry', num:2, filt:'all' };
+  kSt = src.kSt || { mode:'carry', num:2, filt:'all', axis:'bottom' };
   answerMode = src.answerMode || 'random';
   calcInput = src.calcInput || '';
   voiceOn = (src.voiceOn === undefined) ? true : !!src.voiceOn;

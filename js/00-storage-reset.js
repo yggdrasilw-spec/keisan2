@@ -51,7 +51,7 @@ function resetPersistedRuntimeState() {
       sessMode: 'normal',
       curLevel: 'easy',
       curCourse: '20',
-      kSt: { mode:'carry', num:2, filt:'all' },
+      kSt: { mode:'carry', num:2, filt:'all', axis:'bottom' },
       answerMode: 'random',
       calcInput: '',
       voiceOn: true
@@ -63,7 +63,7 @@ function resetPersistedRuntimeState() {
       sessMode: 'normal',
       curLevel: 'easy',
       curCourse: '20',
-      kSt: { mode:'carry', num:2, filt:'all' },
+      kSt: { mode:'carry', num:2, filt:'all', axis:'bottom' },
       answerMode: 'random',
       calcInput: '',
       voiceOn: true
@@ -74,7 +74,7 @@ function resetPersistedRuntimeState() {
     sessMode = 'normal';
     curLevel = 'easy';
     curCourse = '20';
-    kSt = { mode:'carry', num:2, filt:'all' };
+    kSt = { mode:'carry', num:2, filt:'all', axis:'bottom' };
     answerMode = 'random';
     calcInput = '';
     voiceOn = true;

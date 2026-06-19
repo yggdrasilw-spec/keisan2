@@ -86,18 +86,18 @@ function applyAppSnapshot(snapshot) {
   if (typeof applySessionSnapshot === 'function') {
     applySessionSnapshot({
       answerMode: s.answerMode || 'random',
-      kSt: s.kSt || { mode:'carry', num:2, filt:'all' },
+      kSt: s.kSt || { mode:'carry', num:2, filt:'all', axis:'bottom' },
       voiceOn: voiceOn
     });
   } else if (typeof setSessionFields === 'function') {
     setSessionFields({
       answerMode: s.answerMode || 'random',
-      kSt: s.kSt || { mode:'carry', num:2, filt:'all' },
+      kSt: s.kSt || { mode:'carry', num:2, filt:'all', axis:'bottom' },
       voiceOn: voiceOn
     });
   } else {
     appState.session.answerMode = s.answerMode || 'random';
-    appState.session.kSt = s.kSt || { mode:'carry', num:2, filt:'all' };
+    appState.session.kSt = s.kSt || { mode:'carry', num:2, filt:'all', axis:'bottom' };
     appState.session.voiceOn = voiceOn;
   }
 
