@@ -42,9 +42,12 @@ function show(n) {
   hideCountdownOverlay();
   if (isSameScreen) {
     var ss = document.querySelectorAll('.sc');
-    for (var i = 0; i < ss.length; i++) ss[i].classList.remove('on');
+    for (var i = 0; i < ss.length; i++) {
+      var s = ss[i];
+      if (s && s.classList) s.classList.remove('on');
+    }
     var same = document.getElementById(n);
-    if (same) same.classList.add('on');
+    if (same && same.classList) if (same && same.classList) same.classList.add('on');
     if (typeof setQuitBarVisible === 'function') setQuitBarVisible(n === 'practice');
     syncFullBleedScreenClass(n);
     renderScreenEnterHooks(n);
@@ -53,7 +56,7 @@ function show(n) {
   var useWipe = getFx('fx_wipe');
   var wipe = useWipe ? document.getElementById('scene-wipe') : null;
   var next = document.getElementById(n);
-  if (!next) return;
+  if (!next || !next.classList) return;
   var body = document.body;
   scheduleScreenTransition(n, next, body, useWipe);
 }
