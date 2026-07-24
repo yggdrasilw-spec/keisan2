@@ -130,6 +130,812 @@
   .hleg { display: flex; gap: 8px; flex-wrap: wrap; font-size: 11px; color: #5A6070; margin-top: 6px; font-weight: 600; }
   .hsq { width: 10px; height: 10px; border-radius: 2px; display: inline-block; margin-right: 2px; vertical-align: middle; }
 
+  .kotsu-collection-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .kotsu-ach-card {
+    border-radius: 18px;
+    padding: 10px;
+    border: 2px solid #C8D8E8;
+    background: #fff;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #B0C0D0;
+    transition: transform .12s, opacity .12s;
+    text-align: center;
+  }
+  .kotsu-ach-card:hover { transform: translateY(-2px); }
+  .kotsu-ach-card.unlocked { border-color: #4A90D0; background: #EEF6FF; }
+  .kotsu-ach-card.locked { opacity: 0.62; filter: saturate(0.72); }
+  .kotsu-ach-thumb-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #F8FBFF;
+    border: 1px solid #D8E4F2;
+  }
+  .kotsu-ach-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+  .kotsu-ach-fallback {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    background: #F8FBFF;
+  }
+  .kotsu-ach-title {
+    font-size: 12px;
+    font-weight: 800;
+    color: #1A2A40;
+    line-height: 1.35;
+    margin-top: 8px;
+  }
+  .kotsu-ach-meta {
+    font-size: 10px;
+    color: #5A6070;
+    font-weight: 700;
+    margin-top: 3px;
+  }
+
+
+  /* 実績ページ（16:9 横長を前提にした2カラムUI。#appの480px制約から独立させる） */
+  #achievements.sc.on {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(8px, 2.2vh, 22px);
+    background: radial-gradient(circle at 28% 18%, rgba(30,41,59,.94), rgba(4,7,14,.98));
+    min-height: 100%;
+  }
+  #achievements {
+    padding: 0;
+  }
+  .ach-shell {
+    display: grid;
+    grid-template-columns: minmax(220px, 25%) minmax(0, 1fr);
+    width: min(96vw, 1180px);
+    height: min(94vh, 660px);
+    background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 12px 56px rgba(0, 0, 0, 0.5);
+  }
+  .ach-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    min-width: 0;
+    min-height: 0;
+    border-right: 1px solid rgba(148, 163, 184, 0.12);
+    background: linear-gradient(180deg, rgba(15,23,42,.98), rgba(17,24,39,.95));
+    overflow: hidden;
+  }
+  .ach-back {
+    align-self: flex-start;
+    border-radius: 14px;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    border: 1.5px solid rgba(245,200,76,.28);
+    background: rgba(255,255,255,.05);
+    color: #ffe7a0;
+  }
+  .ach-avatar-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(245,200,76,.24);
+    background:
+      radial-gradient(circle at 30% 25%, rgba(245,200,76,.20), transparent 40%),
+      radial-gradient(circle at 70% 70%, rgba(93,211,140,.15), transparent 38%),
+      linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.03), 0 0 22px rgba(245,200,76,.10);
+  }
+  .ach-avatar-halo {
+    position: absolute;
+    inset: 14%;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,200,76,.28), transparent 68%);
+    filter: blur(4px);
+  }
+  .ach-avatar-img {
+    position: absolute;
+    inset: 10%;
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    z-index: 2;
+    filter: drop-shadow(0 0 12px rgba(245,200,76,.18));
+  }
+  .ach-avatar-css {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 78px;
+    z-index: 1;
+  }
+  .ach-rank-badge {
+    align-self: flex-start;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 900;
+    color: #2B1600;
+    background: linear-gradient(135deg, #FFE07A 0%, #F5A623 100%);
+    box-shadow: 0 4px 0 #9B5F00, 0 10px 22px rgba(0, 0, 0, 0.32);
+    letter-spacing: .02em;
+  }
+  .ach-rank-name {
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff4c7;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, .88), 0 0 12px rgba(245, 166, 35, .22);
+    line-height: 1.25;
+  }
+  .ach-rank-desc {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.7;
+    color: #ffd78a;
+    opacity: .96;
+  }
+  .ach-progress-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ach-progress-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #ffe7a0;
+    letter-spacing: .04em;
+  }
+  .ach-progress-bg {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(255,255,255,.08);
+  }
+  .ach-progress-bar {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #5A5ADF, #F5A623);
+    transition: width .35s ease;
+  }
+  .ach-gem-title {
+    margin-top: 2px;
+    font-size: 13px;
+    font-weight: 900;
+    color: #ffe7a0;
+    letter-spacing: .06em;
+  }
+  .ach-gems {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-content: flex-start;
+    gap: 6px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 2px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.12) transparent;
+  }
+  .ach-gem-card {
+    min-width: 0;
+    border-radius: 12px;
+    padding: 6px 5px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.03);
+    text-align: center;
+    transition: transform .12s, background .12s, border-color .12s;
+    min-height: 64px;
+  }
+  .ach-gem-card.unlocked {
+    background: linear-gradient(135deg, rgba(245,200,76,.10), rgba(93,211,140,.08));
+    border-color: rgba(245,200,76,.30);
+    box-shadow: 0 0 16px rgba(245,200,76,.12);
+  }
+  .ach-gem-card.locked {
+    opacity: .68;
+  }
+  .ach-gem-card-ico {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+    line-height: 1;
+  }
+  .ach-gem-card-ico img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 4px rgba(245,200,76,.35));
+  }
+  .ach-gem-card-name {
+    font-size: 11px;
+    line-height: 1.15;
+    font-weight: 800;
+    color: #e2e8f0;
+    min-height: 0;
+  }
+  .ach-gem-card.locked .ach-gem-card-name {
+    color: #64748b;
+  }
+  .ach-gem-card-pill {
+    border-radius: 999px;
+    padding: 2px 7px;
+    font-size: 9px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+  .ach-gem-card-pill.unlocked {
+    background: rgba(93,211,140,.18);
+    color: #5dd38c;
+    border: 1px solid rgba(93,211,140,.30);
+  }
+  .ach-gem-card-pill.locked {
+    background: rgba(255,255,255,.05);
+    color: #94a3b8;
+    border: 1px solid rgba(255,255,255,.08);
+  }
+
+  .ach-right {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(17,24,39,.98), rgba(15,23,42,.96));
+  }
+  .ach-topbar {
+    padding: 10px 14px 8px;
+    border-bottom: 1px solid rgba(148,163,184,.10);
+    background: linear-gradient(180deg, rgba(15,23,42,.98), rgba(15,23,42,.60));
+    flex-shrink: 0;
+  }
+  .ach-title-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+  .ach-eyebrow {
+    font-size: 14px;
+    font-weight: 900;
+    color: #f5c84c;
+    letter-spacing: .08em;
+  }
+  .ach-count {
+    font-size: 13px;
+    color: #cbd5e1;
+    font-weight: 700;
+  }
+  .ach-tabs {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .ach-tab {
+    border-radius: 12px;
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.04);
+    color: #94a3b8;
+    transition: all .12s;
+    white-space: nowrap;
+  }
+  .ach-tab:hover { transform: translateY(-1px); }
+  .ach-tab.active {
+    background: rgba(245,200,76,.14);
+    border-color: rgba(245,200,76,.30);
+    color: #ffe58d;
+  }
+  .ach-list-wrap {
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    overflow-y: auto;
+    padding: 8px 10px 10px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.12) transparent;
+  }
+  .ach-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ach-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.06);
+    background: rgba(255,255,255,.03);
+    transition: all .15s;
+  }
+  .ach-item.unlocked {
+    background: rgba(93,211,140,.07);
+    border-color: rgba(93,211,140,.20);
+  }
+  .ach-item.unlocked:hover {
+    background: rgba(93,211,140,.11);
+  }
+  .ach-ico {
+    width: 34px;
+    text-align: center;
+    flex-shrink: 0;
+    font-size: 22px;
+    line-height: 1;
+    filter: drop-shadow(0 0 4px rgba(245,200,76,.35));
+  }
+  .ach-ico img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+  .ach-ico.locked-gem img {
+    opacity: .25;
+    filter: grayscale(1);
+  }
+  .ach-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .ach-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: #e2e8f0;
+    margin-bottom: 2px;
+    line-height: 1.35;
+  }
+  .ach-item.locked .ach-name {
+    color: #64748b;
+  }
+  .ach-meta {
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .ach-pill {
+    border-radius: 999px;
+    padding: 4px 9px;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .ach-pill.unlocked {
+    background: rgba(93,211,140,.18);
+    color: #5dd38c;
+    border: 1px solid rgba(93,211,140,.30);
+  }
+  .ach-pill.locked {
+    background: rgba(255,255,255,.05);
+    color: #94a3b8;
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  .ach-footer {
+    padding: 6px 14px 10px;
+    border-top: 1px solid rgba(148,163,184,.10);
+    flex-shrink: 0;
+  }
+  .ach-footer-text {
+    font-size: 13px;
+    color: #cbd5e1;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  /* 実績メダル・コツメダル：カードグリッド表示 */
+  .ach-badge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+    gap: 9px;
+    padding: 2px 0;
+    align-content: flex-start;
+  }
+  .ach-badge-item {
+    min-width: 0;
+    border-radius: 16px;
+    padding: 10px 6px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.03);
+    text-align: center;
+    transition: transform .12s, background .12s, border-color .12s;
+  }
+  .ach-badge-item.unlocked {
+    background: linear-gradient(135deg, rgba(245,200,76,.12), rgba(93,211,140,.09));
+    border-color: rgba(245,200,76,.32);
+    box-shadow: 0 0 16px rgba(245,200,76,.14);
+    animation: achBadgeGlow 3s ease-in-out infinite;
+  }
+  .ach-badge-item.unlocked:hover { transform: translateY(-2px); }
+  .ach-badge-item.locked { opacity: .78; }
+  @keyframes achBadgeGlow {
+    0%,100% { box-shadow: 0 0 10px rgba(245,200,76,.10); }
+    50%      { box-shadow: 0 0 22px rgba(245,200,76,.26); }
+  }
+  .ach-badge-ico {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 26px;
+    line-height: 1;
+  }
+  .ach-badge-item.locked .ach-badge-ico { filter: grayscale(1); }
+  .ach-badge-name {
+    font-size: 11.5px;
+    line-height: 1.25;
+    font-weight: 800;
+    color: #e2e8f0;
+    white-space: pre-line;
+  }
+  .ach-badge-item.locked .ach-badge-name { color: #64748b; }
+  .ach-badge-cond {
+    font-size: 10px;
+    color: #94a3b8;
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: pre-line;
+  }
+  .ach-badge-item.unlocked .ach-badge-cond { color: #a7f3d0; font-weight: 800; }
+
+  /* タップ演出（かいほう済みカードをタップした時の演出） */
+  @keyframes achPreviewBurst {
+    0%   { transform: scale(0.2) rotate(-16deg); opacity: 0; }
+    45%  { transform: scale(1.16) rotate(6deg);  opacity: 1; }
+    72%  { transform: scale(0.96) rotate(-3deg); }
+    100% { transform: scale(1.0) rotate(0deg);  opacity: 1; }
+  }
+  @keyframes achPreviewFade {
+    0%   { background: rgba(0,0,0,0); }
+    12%  { background: rgba(0,0,0,.55); }
+    86%  { background: rgba(0,0,0,.55); }
+    100% { background: rgba(0,0,0,0); }
+  }
+  .gem-burst-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 9800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    background: rgba(0,0,0,0);
+    animation: achPreviewFade 1.8s ease forwards;
+  }
+  .gem-burst-card {
+    background: linear-gradient(135deg, #1a2540, #0f172a);
+    border: 2px solid rgba(245,200,76,.42);
+    border-radius: 24px;
+    padding: 26px 30px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 0 40px rgba(245,200,76,.26);
+    animation: achPreviewBurst .5s cubic-bezier(.2,.8,.2,1.3) .1s both;
+    width: min(84vw, 380px);
+    max-width: min(84vw, 380px);
+    cursor: pointer;
+  }
+  .gem-burst-img {
+    width: min(46vw, 180px);
+    height: auto;
+    max-height: 42vh;
+    object-fit: contain;
+    filter: drop-shadow(0 0 16px rgba(245,200,76,.6));
+  }
+  .gem-burst-title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    text-align: center;
+  }
+  .gem-burst-title-main {
+    font-size: clamp(16px, 4.4vw, 20px);
+    font-weight: 900;
+    color: #ffd45c;
+    letter-spacing: .04em;
+    line-height: 1.15;
+  }
+  .gem-burst-title-sub {
+    font-size: clamp(15px, 4vw, 19px);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: .02em;
+    line-height: 1.2;
+    white-space: pre-line;
+  }
+  .gem-burst-sub {
+    font-size: 12.5px;
+    color: #a7f3d0;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  /* 幻獣ハンター レベルアップ演出 */
+  @keyframes ninjaLevelIn {
+    0%   { transform: scale(.74); opacity: 0; }
+    60%  { transform: scale(1.03); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes ninjaLevelPulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+  @keyframes ninjaLevelFlash {
+    0% { opacity: 0; }
+    24% { opacity: .95; }
+    72% { opacity: .88; }
+    100% { opacity: 0; }
+  }
+  @keyframes ninjaOrbitSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes ninjaOrbPulse {
+    0%,100% { transform: scale(1); opacity: .85; }
+    50% { transform: scale(1.42); opacity: 1; }
+  }
+  .ninja-levelup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    background: rgba(0,0,0,0);
+    opacity: 0;
+    transition: opacity .22s ease;
+  }
+  .ninja-levelup-overlay.is-open { opacity: 1; }
+  .ninja-levelup-backdrop {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,.0) 0%, rgba(255,255,255,.12) 30%, rgba(0,0,0,.50) 72%, rgba(0,0,0,.68) 100%);
+    backdrop-filter: blur(4px);
+  }
+  .ninja-levelup-card {
+    position: relative;
+    width: min(92vw, 420px);
+    min-height: min(80vh, 560px);
+    padding: 22px 18px 16px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(17,24,39,.94), rgba(15,23,42,.98));
+    border: 2px solid rgba(255,255,255,.18);
+    box-shadow: 0 0 48px rgba(103,183,255,.22), 0 0 96px rgba(255,255,255,.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transform: scale(.82);
+    opacity: 0;
+    animation: ninjaLevelIn .55s cubic-bezier(.2,.85,.18,1.2) .02s forwards;
+    cursor: pointer;
+  }
+  .ninja-levelup-overlay.is-flash .ninja-levelup-card {
+    animation: ninjaLevelIn .55s cubic-bezier(.2,.85,.18,1.2) .02s forwards, ninjaLevelPulse 1.2s ease-in-out .45s infinite;
+  }
+  .ninja-levelup-flash {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, rgba(255,255,255,.98) 0%, rgba(255,255,255,.75) 16%, rgba(255,255,255,.08) 45%, rgba(255,255,255,0) 72%);
+    mix-blend-mode: screen;
+    opacity: 0;
+  }
+  .ninja-levelup-overlay.is-flash .ninja-levelup-flash {
+    animation: ninjaLevelFlash 1.35s ease-in-out .02s both;
+  }
+  .ninja-levelup-toptext {
+    margin-top: 2px;
+    width: 100%;
+    text-align: center;
+    white-space: pre-line;
+    font-size: clamp(18px, 4.6vw, 26px);
+    font-weight: 900;
+    color: #fef3c7;
+    letter-spacing: .04em;
+    line-height: 1.2;
+    text-shadow: 0 2px 0 rgba(0,0,0,.72), 0 0 14px rgba(255,255,255,.22);
+  }
+  .ninja-levelup-visual {
+    position: relative;
+    width: min(80vw, 300px);
+    flex: 1;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ninja-levelup-imgwrap {
+    position: relative;
+    z-index: 2;
+    width: min(52vw, 220px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ninja-levelup-img {
+    width: 100%;
+    height: auto;
+    max-height: 38vh;
+    object-fit: contain;
+    transform-origin: center center;
+    filter: brightness(1.18) saturate(1.08) drop-shadow(0 0 18px rgba(255,255,255,.28));
+    transition: transform .45s ease, filter .45s ease, opacity .45s ease;
+  }
+  .ninja-levelup-overlay.is-flash .ninja-levelup-img {
+    filter: brightness(1.55) saturate(1.18) drop-shadow(0 0 28px rgba(255,255,255,.42));
+    transform: scale(.93);
+  }
+  .ninja-levelup-overlay.is-absorb .ninja-levelup-img {
+    transform: scale(.84);
+    filter: brightness(1.72) saturate(1.22) contrast(1.05) drop-shadow(0 0 34px rgba(255,255,255,.52));
+  }
+  .ninja-levelup-overlay.is-restored .ninja-levelup-img {
+    transform: scale(1);
+    filter: brightness(1.05) saturate(1.0) drop-shadow(0 0 16px rgba(255,255,255,.20));
+  }
+  .ninja-levelup-sparks {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    transform-origin: center;
+  }
+  .ninja-levelup-orbit {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: ninjaOrbitSpin 1.8s linear infinite;
+  }
+  .ninja-levelup-orbit-b { animation-duration: 1.36s; animation-direction: reverse; }
+  .ninja-levelup-orbit-c { animation-duration: .98s; }
+  .ninja-levelup-orb {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: ninjaOrbPulse .72s ease-in-out infinite;
+  }
+  .ninja-levelup-ring {
+    opacity: .55;
+    animation: ninjaLevelPulse 1.4s ease-in-out infinite;
+  }
+  .ninja-levelup-copy {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+    margin-top: auto;
+  }
+  .ninja-levelup-level {
+    font-size: clamp(18px, 4.4vw, 26px);
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: .05em;
+    text-shadow: 0 2px 0 rgba(0,0,0,.85), 0 0 16px rgba(120,238,255,.18);
+  }
+  .ninja-levelup-desc {
+    font-size: clamp(13px, 3.4vw, 16px);
+    font-weight: 700;
+    color: #dbeafe;
+    line-height: 1.45;
+    max-width: 100%;
+    text-shadow: 0 1px 0 rgba(0,0,0,.65);
+  }
+  .ninja-levelup-footer {
+    font-size: 12px;
+    color: #f8fafc;
+    opacity: .8;
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+
+  @media (orientation: portrait), (max-width: 600px) {
+    #achievements.sc.on { padding: 0; }
+    .ach-shell {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 0;
+    }
+    .ach-left {
+      flex-direction: row;
+      align-items: center;
+      padding: 8px 10px;
+      gap: 10px;
+      border-right: none;
+      border-bottom: 1px solid rgba(148,163,184,.12);
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+    .ach-avatar-stage {
+      width: 70px;
+      height: 70px;
+      flex-shrink: 0;
+      border-radius: 14px;
+    }
+    .ach-avatar-css {
+      font-size: 38px;
+    }
+    .ach-rank-badge {
+      display: none;
+    }
+    .ach-rank-name {
+      font-size: 13px;
+      white-space: nowrap;
+      min-width: max-content;
+    }
+    .ach-rank-desc,
+    .ach-gem-title,
+    .ach-gems {
+      display: none;
+    }
+    .ach-progress-wrap {
+      display: none;
+    }
+    .ach-back {
+      display: none;
+    }
+  }
+
   #sound-bar {
     position: fixed; top: 10px; right: 10px; z-index: 9000;
     display: flex; gap: 6px; align-items: center;
@@ -472,6 +1278,7 @@
     <button class="sml" onclick="show('settings')">せってい</button>
     <button class="sml" onclick="resetData()">リセット</button>
     <button class="sml" onclick="show('changelog')" style="color:#555;border-color:#bbb;">へんこうりれき</button>
+     <button class="sml" onclick="show('achievements')" style="color:#3A3A9A;border-color:#AAAAE8;">実績</button>
   </div>
 </div>
 
@@ -772,6 +1579,11 @@
     <div class="ssb"><div class="ssbl">がんばろう</div><div class="ssbv" id="ks-ok">0</div></div>
     <div class="ssb"><div class="ssbl">にがて</div><div class="ssbv" id="ks-w">0</div></div>
   </div>
+  <div style="font-size:12px;font-weight:700;color:#5A6070;margin:4px 0 10px;text-align:center;" id="ks-collection-summary">0/35 かいしゅうずみ</div>
+  <div class="gsect">
+    <div class="gtitle">🖼 コレクション</div>
+    <div id="ks-collection" class="kotsu-collection-grid"></div>
+  </div>
   <div class="gsect">
     <div class="gtitle" id="ks-gtitle">もんだい いちらん</div>
     <div id="ks-grid" style="display:grid;grid-template-columns:repeat(8,1fr);gap:4px;"></div>
@@ -783,6 +1595,59 @@
     <span><span class="hsq" style="background:#E0D0B8;border:1px solid #C0B090"></span>まだ</span>
   </div>
 </div>
+
+
+<!-- 実績 -->
+<div id="achievements" class="sc">
+  <div class="ach-shell">
+    <div class="ach-left">
+      <button class="ach-back" onclick="show('home')">← もどる</button>
+      <div class="ach-avatar-stage" id="ach-avatar-stage" onclick="openAchLevelPreview()" style="cursor:pointer;" title="タップで ひょうじ">
+        <div class="ach-avatar-halo"></div>
+        <img id="ach-avatar-img" class="ach-avatar-img" src="img/genju_hunter_lv1.png" alt="げんじゅうハンター"
+             onerror="this.style.display='none';document.getElementById('ach-avatar-css').textContent='🧭'">
+        <div class="ach-avatar-css" id="ach-avatar-css"></div>
+      </div>
+      <div class="ach-rank-badge" id="ach-rank-badge">Lv.1 見習い幻獣ハンター</div>
+      <div class="ach-rank-name" id="ach-rank-name">見習い幻獣ハンター</div>
+      <div class="ach-rank-desc" id="ach-rank-desc">まずは実績メダルとコツメダルを あつめていこう。</div>
+      <div class="ach-progress-wrap">
+        <div class="ach-progress-label">
+          <span id="ach-progress-text">つぎのランクまで</span>
+          <span id="ach-progress-pct">0%</span>
+        </div>
+        <div class="ach-progress-bg">
+          <div class="ach-progress-bar" id="ach-progress-bar" style="width:0%"></div>
+        </div>
+      </div>
+      <div class="ach-gem-title">🏅 コツメダル コレクション</div>
+      <div class="ach-gems" id="ach-gems"></div>
+    </div>
+
+    <div class="ach-right">
+      <div class="ach-topbar">
+        <div class="ach-title-wrap">
+          <div class="ach-eyebrow">🧭 幻獣ハンターの しゅぎょうろく</div>
+          <div class="ach-count" id="ach-count">解除 0 / 0</div>
+        </div>
+        <div class="ach-tabs" id="ach-tabs">
+          <button class="ach-tab active" data-tab="badge">🏅 実績メダル</button>
+          <button class="ach-tab" data-tab="kotsu">🏆 コツメダル</button>
+        </div>
+      </div>
+
+      <div class="ach-list-wrap">
+        <div class="ach-group" id="ach-group-badge" data-tab="badge"></div>
+        <div class="ach-group" id="ach-group-kotsu" data-tab="kotsu" style="display:none;"></div>
+      </div>
+
+      <div class="ach-footer">
+        <div class="ach-footer-text" id="ach-footer-next"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div id="changelog" class="sc">
   <div class="page-head">
@@ -865,14 +1730,57 @@
   </div>
 </div>
 
-<!-- 全部マスターポップアップ -->
+<!-- 実績ポップアップ -->
 <div id="all-master-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:8000;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
   <div style="background:linear-gradient(135deg,#EEF4FF,#E0EEFF);border-radius:28px;padding:32px 24px 28px;max-width:340px;width:90%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.25);border:4px solid #4A90D0; animation: dialogPop .18s ease-out;">
-    <img id="master-popup-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="マスター！" style="max-width:160px;max-height:160px;object-fit:contain;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" onerror="this.style.display='none'">
-    <div style="font-size:22px;font-weight:900;color:#2A6090;letter-spacing:2px;margin-bottom:8px;">🏆 ぜんぶ マスター！！</div>
-    <div style="font-size:18px;font-weight:800;color:#1A2A40;margin-bottom:6px;">すばらしい！！</div>
+    <img id="master-popup-img" src="" alt="" style="max-width:160px;max-height:160px;object-fit:contain;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" onerror="this.style.display='none'">
+    <div id="master-popup-title" style="font-size:22px;font-weight:900;color:#2A6090;letter-spacing:2px;margin-bottom:8px;">🏆 ぜんぶ マスター！！</div>
+    <div id="master-popup-msg" style="font-size:18px;font-weight:800;color:#1A2A40;margin-bottom:6px;">すばらしい！！</div>
     <div style="font-size:13px;color:#5A6070;font-weight:600;margin-bottom:22px;">このモードの もんだいを<br>ぜんぶ かんぺきに おぼえたよ！</div>
     <button onclick="closeAllMasterPopup()" style="border-radius:18px;padding:12px 32px;font-size:15px;font-weight:800;background:#4A90D0;color:#fff;border:none;cursor:pointer;font-family:inherit;box-shadow:0 4px 0 #2A6090;">とじる</button>
+  </div>
+</div>
+
+<!-- じっせき画面：カードタップ演出（実績メダル / コツメダル 共通） -->
+<div id="ach-preview-overlay" class="gem-burst-overlay" style="display:none;" onclick="closeAchPreview()">
+  <div class="gem-burst-card" onclick="event.stopPropagation()">
+    <img id="ach-preview-img" class="gem-burst-img" src="" alt="" onerror="this.style.display='none'">
+    <div class="gem-burst-title">
+      <div class="gem-burst-title-main" id="ach-preview-title-main"></div>
+      <div class="gem-burst-title-sub" id="ach-preview-title-sub"></div>
+    </div>
+    <div class="gem-burst-sub" id="ach-preview-sub"></div>
+  </div>
+</div>
+
+<!-- じっせき画面：幻獣ハンター レベルアップ演出 -->
+<div id="ninja-levelup-overlay" class="ninja-levelup-overlay" style="display:none;" onclick="closeAchLevelPreview()">
+  <div class="ninja-levelup-backdrop"></div>
+  <div class="ninja-levelup-card" onclick="event.stopPropagation()">
+    <div class="ninja-levelup-flash"></div>
+    <div class="ninja-levelup-toptext" id="ninja-levelup-toptext">れべるあっぷ！</div>
+    <div class="ninja-levelup-visual">
+      <svg class="ninja-levelup-sparks" viewBox="0 0 300 300" style="position:absolute;inset:0;width:100%;height:100%;">
+        <circle class="ninja-levelup-ring" cx="150" cy="150" r="118" fill="none" stroke="rgba(245,200,76,.35)" stroke-width="2"></circle>
+        <g class="ninja-levelup-orbit ninja-levelup-orbit-a" style="transform-origin:150px 150px;">
+          <circle class="ninja-levelup-orb" cx="150" cy="34" r="5" fill="#ffe58d"></circle>
+        </g>
+        <g class="ninja-levelup-orbit ninja-levelup-orbit-b" style="transform-origin:150px 150px;">
+          <circle class="ninja-levelup-orb" cx="150" cy="46" r="4" fill="#7ae8ff"></circle>
+        </g>
+        <g class="ninja-levelup-orbit ninja-levelup-orbit-c" style="transform-origin:150px 150px;">
+          <circle class="ninja-levelup-orb" cx="150" cy="58" r="3.5" fill="#a7f3d0"></circle>
+        </g>
+      </svg>
+      <div class="ninja-levelup-imgwrap">
+        <img id="ninja-levelup-img" class="ninja-levelup-img" src="" alt="" onerror="this.style.display='none'">
+      </div>
+    </div>
+    <div class="ninja-levelup-copy">
+      <div class="ninja-levelup-level" id="ninja-levelup-level"></div>
+      <div class="ninja-levelup-desc" id="ninja-levelup-desc"></div>
+      <div class="ninja-levelup-footer">タップで とじる</div>
+    </div>
   </div>
 </div>
 
@@ -1244,7 +2152,10 @@ function buildKNo(n) {
 }
 
 function gk(m,p)  { return m+':'+p.a+'-'+p.b; }
-function kk(n,p)  { return 'k'+n+':'+p.a+'-'+p.b; }
+// コツメダルの記録キー: kind（no/borrow）と axis（bottom=ひく数 / top=ひかれる数）を
+// 必ず含めることで、同じ a-b の組み合わせでも練習モードごとに完全に独立して記録する。
+// 例: 「1をひく」(bottom, n=1) の 1-1 と「1からひかれる」(top, n=1) の 1-1 は別記録になる。
+function kk(kind,axis,n,p)  { return 'k'+kind+'_'+axis+'_'+n+':'+p.a+'-'+p.b; }
 
 function sh(a) {
   for (var i=a.length-1;i>0;i--) { var j=0|Math.random()*(i+1),t=a[i];a[i]=a[j];a[j]=t; }
@@ -1384,7 +2295,7 @@ function renNumGrid() {
       : (kSt.kind === 'no' ? buildKNo(n) : buildKP(n));
     var col = getKotsuCol(n), dh = '';
     for (var i = 0; i < ps.length; i++) {
-      st = getSt(kD[kk(n, ps[i])]);
+      st = getSt(kD[kk(kSt.kind, kSt.axis, n, ps[i])]);
       dotCol = ST_DOT[st] || ST_DOT['unseen'];
       dh += '<div class="ndot" style="background:'+dotCol+'"></div>';
     }
@@ -1405,13 +2316,14 @@ function showKotsuSub(n) {
   var ps = kBuildP();
   var m = 0, ok = 0, w = 0, u = 0;
   for (var i = 0; i < ps.length; i++) {
-    var st = getSt(kD[kk(kSt.num, ps[i])]);
+    var st = getSt(kD[kk(kSt.kind, kSt.axis, kSt.num, ps[i])]);
     if (st === 'master') m++; else if (st === 'ok') ok++; else if (st === 'weak') w++; else u++;
   }
   document.getElementById('ksub-desc').textContent = (kSt.axis === 'top'
     ? (kSt.kind === 'no' ? 'ひかれる数ごとの れんしゅう。' : 'ひかれる数ごとの れんしゅう。')
     : 'ひく数ごとの れんしゅう。') + ' ' + ps.length + 'もん。きろくは つけません。';
   kUpdQI();
+  renKotsuSt();
   document.getElementById('kfa').classList.add('on');
   document.getElementById('kfw').classList.remove('on');
   show('kotsu-sub');
@@ -1434,10 +2346,34 @@ function goKotsuR() {
   alert('このれんしゅうは きろくに のこしません。');
 }
 function goKotsuSt() {
-  alert('このれんしゅうは とうけいに はいれません。');
+  renKotsuSt();
+  show('kotsu-stats');
 }
 function renKotsuR() { document.getElementById('kr-list').innerHTML = ''; }
-function renKotsuSt() { document.getElementById('ks-grid').innerHTML = ''; }
+function renKotsuSt() {
+  var ps = kBuildP();
+  var m = 0, ok = 0, w = 0, u = 0;
+  var h = '';
+  for (var i = 0; i < ps.length; i++) {
+    var p = ps[i];
+    var st = getSt(kD[kk(kSt.kind, kSt.axis, kSt.num, p)]);
+    if (st === 'master') m++; else if (st === 'ok') ok++; else if (st === 'weak') w++; else u++;
+    h += '<div class="hcell" style="background:'+ST_HG[st]+';color:'+ST_HTC[st]+'" title="'+p.a+'−'+p.b+'='+p.ans+'">'+p.a+'−'+p.b+'</div>';
+  }
+  var ksGrid = document.getElementById('ks-grid');
+  if (ksGrid) ksGrid.innerHTML = h;
+  var km = document.getElementById('ks-m');
+  var ko = document.getElementById('ks-ok');
+  var kw = document.getElementById('ks-w');
+  if (km) km.textContent = m;
+  if (ko) ko.textContent = ok;
+  if (kw) kw.textContent = w;
+  var kt = document.getElementById('ks-title');
+  if (kt) kt.textContent = kSt.num + (kSt.axis === 'top' ? 'からひかれるもんだい' : 'をひくもんだい');
+  var kg = document.getElementById('ks-gtitle');
+  if (kg) kg.textContent = (kSt.axis === 'top' ? 'ひかれる数ごとの' : 'ひく数ごとの') + ' もんだい いちらん';
+  renderKotsuCollection();
+}
 // ======================================================
 // セッション（通常）
 // ======================================================
@@ -1493,7 +2429,7 @@ function showAllMasterPopup() {
 function startSession(ps) {
   var weak=[],rest=[];
   for (var i=0;i<ps.length;i++){var st=getSt(gD[gk(gSt.mode,ps[i])]);if(st==='weak')weak.push(ps[i]);else rest.push(ps[i]);}
-  sess={queue:sh(sh(weak).concat(sh(rest))).slice(0,Math.min(ps.length,20)),idx:0,results:[],streak:0,startTime:0};
+  sess={queue:sh(sh(weak).concat(sh(rest))).slice(0,Math.min(ps.length,20)),idx:0,results:[],streak:0,startTime:0,_kotsuMasterShown:false};
   sessMode='normal';
   var bdg=document.getElementById('pbdg');
   bdg.textContent=gSt.mode==='no'?'くりさがりなし':(gSt.mode==='ten'?'10からひく！':'くりさがりあり');
@@ -1518,13 +2454,13 @@ function kStart() {
   if (!ps.length){alert('がいとうするもんだいがありません。');return;}
   var weak=[],rest=[];
   for (var i=0;i<ps.length;i++){
-    var st = (kSt.kind === 'no') ? 'unseen' : getSt(kD[kk(kSt.num,ps[i])]);
+    var st = (kSt.kind === 'no') ? 'unseen' : getSt(kD[kk(kSt.kind, kSt.axis, kSt.num,ps[i])]);
     if(st==='weak')weak.push(ps[i]);else rest.push(ps[i]);
   }
-  sess={queue:sh(sh(weak).concat(sh(rest))).slice(0,Math.min(ps.length,20)),idx:0,results:[],streak:0,startTime:0};
+  sess={queue:sh(sh(weak).concat(sh(rest))).slice(0,Math.min(ps.length,20)),idx:0,results:[],streak:0,startTime:0,_kotsuMasterShown:false};
   sessMode=(kSt.kind === 'no') ? 'kotsu-no' : 'kotsu';
   var bdg=document.getElementById('pbdg');
-  bdg.textContent=kSt.num+'をひくもんだい';
+  bdg.textContent=kSt.num+(kSt.axis==='top'?'からひかれるもんだい':'をひくもんだい');
   bdg.className='pbdg bkotsu';
   document.getElementById('pcard').className='pcard pcard-r';
   document.getElementById('peq').className='peq peq-r';
@@ -1626,6 +2562,11 @@ function chk(v,btn,p) {
     if (!gD[k]) gD[k]={att:0,cor:0,t:0};
     gD[k].att++; if(ok)gD[k].cor++; gD[k].t+=el; gD[k].last={ok:ok,el:el};
     lsSave(LS_GD, gD);
+  } else if (sessMode.indexOf('kotsu') === 0) {
+    var k2 = kk(kSt.kind, kSt.axis, kSt.num, p);
+    if (!kD[k2]) kD[k2] = {att:0,cor:0,t:0};
+    kD[k2].att++; if(ok)kD[k2].cor++; kD[k2].t+=el; kD[k2].last={ok:ok,el:el};
+    lsSave(LS_KD, kD);
   }
   sess.results.push({p:p,el:el,ok:ok});
   var fbl=document.getElementById('fbl');
@@ -1700,7 +2641,15 @@ function finish() {
   if (acc===100) {
     showPerfectEffect(function(){
       show('result');
-      setTimeout(function() { showAllMasterPopup(); }, 120);
+      if (sessMode==='normal') {
+        setTimeout(function() { showAllMasterPopup(); }, 120);
+      } else if (sessMode.indexOf('kotsu') === 0) {
+        var def = getCurrentKotsuDef();
+        var pr = def ? getKotsuProgress(def) : null;
+        if (pr && pr.allMaster) {
+          setTimeout(function() { showKotsuMasterPopup(def); }, 120);
+        }
+      }
     });
     return;
   }
@@ -1710,6 +2659,14 @@ function finish() {
 // ======================================================
 // きろく・とうけい（通常）
 // ======================================================
+function riHtml(dotColor, mainText, infoText, bgColor, textColor, pillText) {
+  return '<div class="ri" style="background:' + bgColor + '">'
+    + '<span class="ldot" style="background:' + dotColor + '"></span>'
+    + '<span class="req" style="color:' + textColor + '">' + mainText + '</span>'
+    + '<span class="rinfo">' + infoText + '</span>'
+    + '<span class="rpill" style="background:' + dotColor + ';color:#fff">' + pillText + '</span>'
+    + '</div>';
+}
 function goR(){rTab=gSt.mode;swR(rTab);show('records');}
 function goSt(){renSt();show('stats');}
 
@@ -1766,7 +2723,9 @@ function show(n){
   var el=document.getElementById(n);
   if (el) el.classList.add('on');
   if (n==='home'){updDots();updQI();updKotsuBanner();}
-  if (n==='settings'){setAnswerMode(answerMode);renderVoiceSettings();renderPraiseEdit();syncImageSettingsUI();}
+  if (n==='settings'){setAnswerMode(answerMode);
+renderAchievements();renderVoiceSettings();renderPraiseEdit();syncImageSettingsUI();}
+  if (n==='achievements'){renderAchievements();}
   var qb=document.getElementById('quit-bar');
   if (qb){if(n==='practice')qb.classList.add('show');else qb.classList.remove('show');}
 }
@@ -2030,6 +2989,149 @@ function syncImageSettingsUI() {
   renderImgSetRows();
   var mImg = document.getElementById('master-popup-img');
   if (mImg) mImg.src = imgSrc('master');
+}
+
+// ======================================================
+// コツコレクション画像（35個）
+// ======================================================
+var KOTSU_IMG_DEFS = (function() {
+  var defs = [];
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function pushDefs(kind, axis, nums) {
+    for (var i = 0; i < nums.length; i++) {
+      var num = nums[i];
+      defs.push({
+        key: kind + '_' + axis + '_' + pad2(num),
+        kind: kind,
+        axis: axis,
+        num: num,
+        file: 'medal_kotsu_' + kind + '_' + axis + '_' + pad2(num) + '.png',
+        title: (kind === 'no'
+          ? (axis === 'top' ? (num + 'からひかれる かんたん メダル') : (num + 'をひく かんたん メダル'))
+          : (axis === 'top' ? (num + 'からひかれる くりさがりあり メダル') : (num + 'をひく くりさがりあり メダル'))),
+        progressLabel: (axis === 'top' ? 'ひかれる数' : 'ひく数')
+      });
+    }
+  }
+  var nums1 = [1,2,3,4,5,6,7,8,9];
+  var nums2 = [11,12,13,14,15,16,17,18];
+  pushDefs('no', 'bottom', nums1);
+  pushDefs('no', 'top', nums1);
+  pushDefs('borrow', 'bottom', nums1);
+  pushDefs('borrow', 'top', nums2);
+  return defs;
+})();
+var KOTSU_IMG_MAP = {};
+for (var i = 0; i < KOTSU_IMG_DEFS.length; i++) {
+  KOTSU_IMG_MAP[KOTSU_IMG_DEFS[i].key] = KOTSU_IMG_DEFS[i];
+}
+function kotsuImgKey(kind, axis, num) {
+  return kind + '_' + axis + '_' + (num < 10 ? '0' : '') + num;
+}
+function getKotsuImgDef(kind, axis, num) {
+  return KOTSU_IMG_MAP[kotsuImgKey(kind, axis, num)] || null;
+}
+function kotsuImgSrc(def) {
+  return def ? ('img/' + def.file) : '';
+}
+function getCurrentKotsuDef() {
+  return getKotsuImgDef(kSt.kind, kSt.axis, kSt.num);
+}
+function buildKotsuPFor(kind, axis, num) {
+  if (axis === 'top') {
+    return kind === 'no' ? buildKTopNo(num) : buildKTopBorrow(num);
+  }
+  return kind === 'no' ? buildKNo(num) : buildKP(num);
+}
+function getKotsuProgress(def) {
+  var ps = buildKotsuPFor(def.kind, def.axis, def.num);
+  var total = ps.length, master = 0, ok = 0, weak = 0, unseen = 0;
+  for (var i = 0; i < ps.length; i++) {
+    var st = getSt(kD[kk(def.kind, def.axis, def.num, ps[i])]);
+    if (st === 'master') master++;
+    else if (st === 'ok') ok++;
+    else if (st === 'weak') weak++;
+    else unseen++;
+  }
+  return { total: total, master: master, ok: ok, weak: weak, unseen: unseen, allMaster: total > 0 && master === total };
+}
+function renderKotsuCollection() {
+  var wrap = document.getElementById('ks-collection');
+  var sum = document.getElementById('ks-collection-summary');
+  if (!wrap) return;
+  var h = '';
+  var done = 0;
+  for (var i = 0; i < KOTSU_IMG_DEFS.length; i++) {
+    (function(def){
+      var pr = getKotsuProgress(def);
+      if (pr.allMaster) done++;
+      var unlocked = pr.allMaster;
+      h += '<div class="kotsu-ach-card ' + (unlocked ? 'unlocked' : 'locked') + '" onclick="showKotsuCollectionPopup(\'' + def.key + '\')" title="' + escHtml(def.title) + '">'
+        + '<div class="kotsu-ach-thumb-wrap">'
+        + '<img class="kotsu-ach-thumb" src="' + escHtml(kotsuImgSrc(def)) + '" alt="" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';">'
+        + '<div class="kotsu-ach-fallback">' + (unlocked ? '🖼' : '🔒') + '</div>'
+        + '</div>'
+        + '<div class="kotsu-ach-title">' + escHtml(def.title) + '</div>'
+        + '<div class="kotsu-ach-meta">' + pr.master + '/' + pr.total + ' クリア</div>'
+        + '</div>';
+    })(KOTSU_IMG_DEFS[i]);
+  }
+  wrap.innerHTML = h;
+  if (sum) sum.textContent = done + '/' + KOTSU_IMG_DEFS.length + ' かいしゅうずみ';
+}
+function showKotsuCollectionPopup(key) {
+  var def = KOTSU_IMG_MAP[key];
+  if (!def) return;
+  var pr = getKotsuProgress(def);
+  showAchievementPopup({
+    src: kotsuImgSrc(def),
+    title: def.title,
+    msg: pr.allMaster ? 'コレクションに 追加！' : ('まだ ロック中<br>' + pr.master + '/' + pr.total + ' クリア'),
+    sound: false
+  });
+}
+
+// ======================================================
+// 実績ポップアップ
+// ======================================================
+function closeAllMasterPopup() {
+  document.getElementById('all-master-popup').style.display = 'none';
+}
+function showAchievementPopup(cfg) {
+  cfg = cfg || {};
+  var ov = document.getElementById('all-master-popup');
+  var mImg = document.getElementById('master-popup-img');
+  var title = document.getElementById('master-popup-title');
+  var msg = document.getElementById('master-popup-msg');
+  if (mImg) {
+    mImg.style.display = '';
+    mImg.src = cfg.src || imgSrc('master');
+  }
+  if (title) title.innerHTML = cfg.title || '🏆 ぜんぶ マスター！！';
+  if (msg) msg.innerHTML = cfg.msg || 'すばらしい！！';
+  if (!cfg || cfg.sound !== false) {
+    if (typeof sndPerfect === 'function') {
+      try { sndPerfect(); } catch(e) {}
+    }
+  }
+  if (ov) ov.style.display = 'flex';
+}
+function showAllMasterPopup() {
+  showAchievementPopup({
+    src: imgSrc('master'),
+    title: '🏆 ぜんぶ マスター！！',
+    msg: 'すばらしい！！',
+    sound: true
+  });
+}
+function showKotsuMasterPopup(def) {
+  if (!def) return;
+  showAchievementPopup({
+    src: kotsuImgSrc(def),
+    title: def.title,
+    msg: 'このコツの もんだいを<br>ぜんぶ かんぺきに おぼえたよ！',
+    sound: true
+  });
 }
 function initImageFileInputBinding() {
   var inp = document.getElementById('img-file-input');
@@ -3147,6 +4249,403 @@ function hwOnShowP() {
 }
 
 
+
+// ======================================================
+// 実績画面
+// ======================================================
+var ACH_TAB = 'badge';
+
+// ── アバター（幻獣ハンター）段階定義 ──
+// 判定は「実績メダル + コツメダル」の合計数で行う。
+var ACH_STAGES = [
+  { min: 0,  img: 'img/genju_hunter_lv1.png', lv: 'Lv.1', title: '見習い幻獣ハンター',    desc: 'まずは実績メダルとコツメダルを あつめていこう。' },
+  { min: 8,  img: 'img/genju_hunter_lv2.png', lv: 'Lv.2', title: 'しゅぎょう幻獣ハンター', desc: 'じっせきが たまってきた。だんだん つよく なってきた！' },
+  { min: 18, img: 'img/genju_hunter_lv3.png', lv: 'Lv.3', title: 'かげわざ幻獣ハンター',   desc: 'かなり じっせきが たまっている！ 高度な修行に入る段階。' },
+  { min: 28, img: 'img/genju_hunter_lv4.png', lv: 'Lv.4', title: 'でんせつの幻獣ハンター', desc: '実績とコツメダルを 極めた、最上位の幻獣ハンター。' }
+];
+
+var ACH_BADGE_DEFS = [
+  { key: 'easy_20',  ico: '🟢', title: 'かんたん\n20問メダル',   img: 'img/medal_easy20.png',   mode: 'no',     limit: 20,  desc: 'かんたんモードの\n20問を ぜんぶ マスター' },
+  { key: 'easy_all', ico: '🌿', title: 'かんたん\n全問メダル',   img: 'img/medal_easy_all.png', mode: 'no',     limit: 'all', desc: 'かんたんモードの\n全問を マスター' },
+  { key: 'hard_20',  ico: '💜', title: 'むずかしい\n20問メダル', img: 'img/medal_hard20.png',   mode: 'borrow', limit: 20,  desc: 'むずかしいモードの\n20問を ぜんぶ マスター' },
+  { key: 'hard_all', ico: '⭐', title: 'むずかしい\n全問メダル', img: 'img/medal_hard_all.png', mode: 'borrow', limit: 'all', desc: 'むずかしいモードの\n全問を マスター' }
+];
+
+function getAchBadgeUnlocked(def) {
+  var ps = buildP(def.mode);
+  if (!ps || !ps.length) return false;
+  var target = (def.limit === 'all') ? ps : ps.slice(0, def.limit);
+  for (var i = 0; i < target.length; i++) {
+    if (getSt(gD[gk(def.mode, target[i])]) !== 'master') return false;
+  }
+  return true;
+}
+
+function getAchTabCounts() {
+  var badgeOn = 0, kotsuOn = 0;
+  for (var j = 0; j < ACH_BADGE_DEFS.length; j++) {
+    if (getAchBadgeUnlocked(ACH_BADGE_DEFS[j])) badgeOn++;
+  }
+  for (var k = 0; k < KOTSU_IMG_DEFS.length; k++) {
+    if (getKotsuProgress(KOTSU_IMG_DEFS[k]).allMaster) kotsuOn++;
+  }
+  return { badgeOn: badgeOn, kotsuOn: kotsuOn };
+}
+
+function getAchStageIndex(total) {
+  var idx = 0;
+  for (var i = 0; i < ACH_STAGES.length; i++) {
+    if (total >= ACH_STAGES[i].min) idx = i;
+  }
+  return idx;
+}
+
+// ── 実績メダル・コツメダル 共通カードビルダー ──
+function buildAchCardIconEl(imgSrc, fallbackIco, on, size) {
+  var wrap = document.createElement('div');
+  wrap.className = 'ach-badge-ico';
+  var img = document.createElement('img');
+  img.style.cssText = 'width:' + size + 'px;height:' + size + 'px;object-fit:contain;display:block;';
+  img.src = imgSrc || '';
+  img.alt = '';
+  img.onerror = function () {
+    this.style.display = 'none';
+    this.parentNode.textContent = on ? fallbackIco : '🔒';
+  };
+  if (!on) { img.style.opacity = '.28'; img.style.filter = 'grayscale(1)'; }
+  wrap.appendChild(img);
+  return wrap;
+}
+
+function buildAchCardEl(cfg) {
+  var item = document.createElement('div');
+  item.className = 'ach-badge-item ' + (cfg.on ? 'unlocked' : 'locked');
+  if (cfg.on && cfg.onClick) {
+    item.style.cursor = 'pointer';
+    item.title = 'タップで ひょうじ';
+    item.addEventListener('click', cfg.onClick);
+  }
+  item.appendChild(buildAchCardIconEl(cfg.img, cfg.ico || '🏅', cfg.on, cfg.iconSize || 42));
+
+  var name = document.createElement('div');
+  name.className = 'ach-badge-name';
+  name.textContent = cfg.name;
+  item.appendChild(name);
+
+  var cond = document.createElement('div');
+  cond.className = 'ach-badge-cond';
+  cond.textContent = cfg.cond;
+  item.appendChild(cond);
+
+  return item;
+}
+
+// ── 実績メダル タブ ──
+function renderAchBadgeGroup() {
+  var el = document.getElementById('ach-group-badge');
+  if (!el) return;
+  el.innerHTML = '';
+  var grid = document.createElement('div');
+  grid.className = 'ach-badge-grid';
+  for (var i = 0; i < ACH_BADGE_DEFS.length; i++) {
+    (function (def) {
+      var on = getAchBadgeUnlocked(def);
+      grid.appendChild(buildAchCardEl({
+        on: on,
+        img: def.img,
+        ico: def.ico,
+        name: def.title,
+        cond: on ? '✅ かいほうずみ' : def.desc,
+        onClick: function () { openAchBadgePreview(def); }
+      }));
+    })(ACH_BADGE_DEFS[i]);
+  }
+  el.appendChild(grid);
+}
+
+// ── コツメダル タブ ──
+function renderAchKotsuGroup() {
+  var el = document.getElementById('ach-group-kotsu');
+  if (!el) return;
+  el.innerHTML = '';
+  var grid = document.createElement('div');
+  grid.className = 'ach-badge-grid';
+  for (var i = 0; i < KOTSU_IMG_DEFS.length; i++) {
+    (function (def) {
+      var pr = getKotsuProgress(def);
+      var on = !!pr.allMaster;
+      grid.appendChild(buildAchCardEl({
+        on: on,
+        img: kotsuImgSrc(def),
+        ico: '🏅',
+        name: def.title,
+        cond: on ? '✅ マスター' : (pr.master + '/' + pr.total + ' クリア'),
+        iconSize: 38,
+        onClick: function () { openAchKotsuPreview(def); }
+      }));
+    })(KOTSU_IMG_DEFS[i]);
+  }
+  el.appendChild(grid);
+}
+
+// ── 左サイドバー：コツメダル ミニコレクション ──
+function renderAchGemsSidebar() {
+  var gems = document.getElementById('ach-gems');
+  if (!gems) return;
+  gems.innerHTML = '';
+  for (var i = 0; i < KOTSU_IMG_DEFS.length; i++) {
+    (function (def) {
+      var pr = getKotsuProgress(def);
+      var on = !!pr.allMaster;
+      var card = document.createElement('div');
+      card.className = 'ach-gem-card ' + (on ? 'unlocked' : 'locked');
+      card.title = def.title;
+      if (on) {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function () { openAchKotsuPreview(def); });
+      }
+      var ico = document.createElement('div');
+      ico.className = 'ach-gem-card-ico';
+      var img = document.createElement('img');
+      img.src = kotsuImgSrc(def);
+      img.alt = '';
+      img.onerror = function () {
+        this.style.display = 'none';
+        this.parentNode.textContent = on ? '🏅' : '🔒';
+      };
+      if (!on) { img.style.opacity = '.3'; img.style.filter = 'grayscale(1)'; }
+      ico.appendChild(img);
+      card.appendChild(ico);
+      var name = document.createElement('div');
+      name.className = 'ach-gem-card-name';
+      name.textContent = on ? 'GET' : (pr.master + '/' + pr.total);
+      card.appendChild(name);
+      gems.appendChild(card);
+    })(KOTSU_IMG_DEFS[i]);
+  }
+}
+
+function setAchTab(tab) {
+  ACH_TAB = tab || 'badge';
+  renderAchievements();
+}
+
+var _achTabsBound = false;
+function bindAchTabs() {
+  if (_achTabsBound) return;
+  var wrap = document.getElementById('ach-tabs');
+  if (!wrap) return;
+  _achTabsBound = true;
+  wrap.addEventListener('click', function (evt) {
+    var tab = evt.target && evt.target.closest ? evt.target.closest('.ach-tab') : null;
+    if (!tab || !tab.dataset) return;
+    setAchTab(tab.dataset.tab);
+  });
+}
+
+function getAchFooterText(tab) {
+  if (tab === 'badge') {
+    for (var j = 0; j < ACH_BADGE_DEFS.length; j++) {
+      var bd = ACH_BADGE_DEFS[j];
+      if (!getAchBadgeUnlocked(bd)) return bd.title.replace(/\n/g, ' ') + ' は まだ かいほうできていないよ';
+    }
+    return '実績メダル は ぜんぶ かいほうずみ！';
+  }
+  for (var k = 0; k < KOTSU_IMG_DEFS.length; k++) {
+    var kd = KOTSU_IMG_DEFS[k];
+    if (!getKotsuProgress(kd).allMaster) return kd.title + ' を もっと すすめよう';
+  }
+  return 'コツメダル は ぜんぶ かいしゅうずみ！';
+}
+
+// ── 実績オーバービュー（アバター段階表示） ──
+function renderAchievementOverview(total) {
+  var stageIdx = getAchStageIndex(total);
+  var stageDef = ACH_STAGES[stageIdx];
+
+  var img = document.getElementById('ach-avatar-img');
+  var css = document.getElementById('ach-avatar-css');
+  var rb = document.getElementById('ach-rank-badge');
+  var rn = document.getElementById('ach-rank-name');
+  var rd = document.getElementById('ach-rank-desc');
+  var pt = document.getElementById('ach-progress-text');
+  var pp = document.getElementById('ach-progress-pct');
+  var pb = document.getElementById('ach-progress-bar');
+  if (img) { img.style.display = ''; img.src = stageDef.img; }
+  if (css) css.textContent = '';
+  if (rb) rb.textContent = stageDef.lv + ' ' + stageDef.title;
+  if (rn) rn.textContent = stageDef.title;
+  if (rd) rd.textContent = stageDef.desc;
+  var isMax = stageIdx >= ACH_STAGES.length - 1;
+  if (pt) pt.textContent = isMax ? 'さいこうランク' : 'つぎのランクまで';
+  var pct = 100;
+  if (!isMax) {
+    var curMin = ACH_STAGES[stageIdx].min, nextMin = ACH_STAGES[stageIdx + 1].min;
+    pct = Math.max(0, Math.min(100, Math.round((total - curMin) / (nextMin - curMin) * 100)));
+  }
+  if (pp) pp.textContent = pct + '%';
+  if (pb) pb.style.width = pct + '%';
+
+  return stageIdx;
+}
+
+function renderAchievements() {
+  bindAchTabs();
+  var counts = getAchTabCounts();
+  var total = counts.badgeOn + counts.kotsuOn;
+  var totalAll = ACH_BADGE_DEFS.length + KOTSU_IMG_DEFS.length;
+
+  var achCount = document.getElementById('ach-count');
+  if (achCount) achCount.textContent = '解除 ' + total + ' / ' + totalAll;
+
+  var stageIdx = renderAchievementOverview(total);
+
+  var tabs = document.querySelectorAll('#ach-tabs .ach-tab');
+  for (var t = 0; t < tabs.length; t++) {
+    var tb = tabs[t];
+    if (tb && tb.dataset) tb.classList.toggle('active', tb.dataset.tab === ACH_TAB);
+  }
+
+  var groups = {
+    badge: document.getElementById('ach-group-badge'),
+    kotsu: document.getElementById('ach-group-kotsu')
+  };
+  for (var key in groups) {
+    if (!groups.hasOwnProperty(key) || !groups[key]) continue;
+    groups[key].style.display = (key === ACH_TAB) ? 'flex' : 'none';
+  }
+
+  renderAchBadgeGroup();
+  renderAchKotsuGroup();
+  renderAchGemsSidebar();
+
+  var footer = document.getElementById('ach-footer-next');
+  if (footer) footer.textContent = getAchFooterText(ACH_TAB);
+
+  checkAchLevelUp(stageIdx);
+}
+
+// ── かいほう済みカードのタップ演出（宝石バースト） ──
+var _achPreviewTimer = null;
+function showAchPreviewEffect(cfg) {
+  var ov = document.getElementById('ach-preview-overlay');
+  if (!ov) return;
+  var img = document.getElementById('ach-preview-img');
+  var main = document.getElementById('ach-preview-title-main');
+  var sub = document.getElementById('ach-preview-title-sub');
+  var subtext = document.getElementById('ach-preview-sub');
+  if (img) {
+    img.style.display = cfg.img ? '' : 'none';
+    img.src = cfg.img || '';
+  }
+  if (main) main.textContent = cfg.titleMain || '';
+  if (sub) sub.textContent = cfg.titleSub || '';
+  if (subtext) subtext.textContent = cfg.sub || '';
+
+  ov.style.display = 'none';
+  void ov.offsetWidth; // アニメーションを最初から再生させるためのリフロー
+  ov.style.display = 'flex';
+
+  if (typeof sndPerfect === 'function') { try { sndPerfect(); } catch (e) {} }
+
+  if (_achPreviewTimer) clearTimeout(_achPreviewTimer);
+  _achPreviewTimer = setTimeout(function () { ov.style.display = 'none'; }, 1800);
+}
+function closeAchPreview() {
+  var ov = document.getElementById('ach-preview-overlay');
+  if (ov) ov.style.display = 'none';
+  if (_achPreviewTimer) { clearTimeout(_achPreviewTimer); _achPreviewTimer = null; }
+}
+function openAchBadgePreview(def) {
+  showAchPreviewEffect({
+    img: def.img,
+    titleMain: '🏅 実績メダル',
+    titleSub: def.title.replace(/\n/g, ' '),
+    sub: def.desc.replace(/\n/g, ' ')
+  });
+}
+function openAchKotsuPreview(def) {
+  showAchPreviewEffect({
+    img: kotsuImgSrc(def),
+    titleMain: '🏆 コツメダル',
+    titleSub: def.title,
+    sub: 'ぜんぶ マスターしたよ！'
+  });
+}
+
+// ── 幻獣ハンター レベルアップ演出 ──
+var LS_ACH_STAGE = 'hikizan_ach_stage_seen';
+function getSeenAchStage() {
+  var v = parseInt(localStorage.getItem(LS_ACH_STAGE), 10);
+  return isNaN(v) ? 0 : v;
+}
+function setSeenAchStage(idx) {
+  try { localStorage.setItem(LS_ACH_STAGE, String(idx)); } catch (e) {}
+}
+
+function checkAchLevelUp(stageIdx) {
+  var seen = getSeenAchStage();
+  if (stageIdx > seen) {
+    setSeenAchStage(stageIdx);
+    // 初回訪問時（seen=0 かつ stageIdx=0）はレベルアップ演出を出さない
+    if (!(seen === 0 && stageIdx === 0 && !localStorage.getItem(LS_ACH_STAGE + '_init'))) {
+      playAchLevelUp(ACH_STAGES[stageIdx]);
+    }
+    try { localStorage.setItem(LS_ACH_STAGE + '_init', '1'); } catch (e) {}
+  }
+}
+
+var _ninjaLevelTimers = [];
+function clearNinjaLevelTimers() {
+  _ninjaLevelTimers.forEach(function (t) { clearTimeout(t); });
+  _ninjaLevelTimers = [];
+}
+
+function playAchLevelUp(stageDef) {
+  var ov = document.getElementById('ninja-levelup-overlay');
+  if (!ov || !stageDef) return;
+  var topText = document.getElementById('ninja-levelup-toptext');
+  var img = document.getElementById('ninja-levelup-img');
+  var level = document.getElementById('ninja-levelup-level');
+  var desc = document.getElementById('ninja-levelup-desc');
+
+  if (topText) topText.textContent = 'れべるあっぷ！';
+  if (img) img.src = stageDef.img;
+  if (level) level.textContent = stageDef.lv + ' ' + stageDef.title;
+  if (desc) desc.textContent = stageDef.desc;
+
+  clearNinjaLevelTimers();
+  ov.className = 'ninja-levelup-overlay';
+  ov.style.display = 'flex';
+  void ov.offsetWidth;
+  ov.classList.add('is-open');
+  if (typeof sndPerfect === 'function') { try { sndPerfect(); } catch (e) {} }
+
+  _ninjaLevelTimers.push(setTimeout(function () { ov.classList.add('is-flash'); }, 120));
+  _ninjaLevelTimers.push(setTimeout(function () { ov.classList.add('is-absorb'); }, 520));
+  _ninjaLevelTimers.push(setTimeout(function () {
+    ov.classList.remove('is-absorb');
+    ov.classList.add('is-restored');
+  }, 900));
+}
+function openAchLevelPreview() {
+  var counts = getAchTabCounts();
+  var total = counts.badgeOn + counts.kotsuOn;
+  var stageIdx = getAchStageIndex(total);
+  playAchLevelUp(ACH_STAGES[stageIdx]);
+}
+function closeAchLevelPreview() {
+  var ov = document.getElementById('ninja-levelup-overlay');
+  if (!ov) return;
+  clearNinjaLevelTimers();
+  ov.classList.remove('is-open');
+  setTimeout(function () { ov.style.display = 'none'; }, 220);
+}
+
+function updAchievementsIfNeeded() {
+  if (typeof renderAchievements === 'function') renderAchievements();
+}
+
 // ======================================================
 // 初期化
 // ======================================================
@@ -3154,6 +4653,7 @@ updDots();
 updQI();
 updKotsuBanner();
 setAnswerMode(answerMode);
+renderAchievements();
 
 // 数字をひらがなに変換（音声APIが英語読みするのを防ぐ）
 var HIRA_NUM = ['ぜろ','いち','に','さん','よん','ご','ろく','しち','はち','きゅう'];
