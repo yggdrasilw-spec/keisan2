@@ -32,12 +32,13 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    opacity: 0;
+    animation: startImgFadeIn 1.8s ease forwards;
+    animation-delay: .2s;
   }
-  #start-screen-dark {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 40%, rgba(0,0,0,.25), rgba(0,0,0,.65) 100%);
-    pointer-events: none;
+  @keyframes startImgFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
   }
   #start-screen-tap {
     position: absolute;
@@ -54,10 +55,17 @@
     border-radius: 30px;
     background: rgba(0,0,0,.45);
     border: 2px solid rgba(255,255,255,.75);
-    animation: startTapPulse 1.4s ease-in-out infinite;
     white-space: nowrap;
+    opacity: 0;
+    animation: startTapFadeIn .8s ease forwards;
+    animation-delay: 1.9s;
+  }
+  #start-screen-tap-inner {
+    display: inline-block;
+    animation: startTapPulse 1.4s ease-in-out infinite;
   }
   @keyframes startTapPulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+  @keyframes startTapFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
   .hdr { text-align: center; padding: 20px 0 8px; }
   .hdr-t { font-size: 26px; font-weight: 800; color: #1A2A40; letter-spacing: 3px; }
@@ -1302,8 +1310,7 @@
 <body>
 <div id="start-screen" onclick="hikizanStartTap()">
   <img id="start-screen-img" src="img/title.png" alt="タイトル" onerror="this.style.display='none'">
-  <div id="start-screen-dark"></div>
-  <div id="start-screen-tap">タップで スタート</div>
+  <div id="start-screen-tap"><span id="start-screen-tap-inner">タップで スタート</span></div>
 </div>
 <div id="app">
 
