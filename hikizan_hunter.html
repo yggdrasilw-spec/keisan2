@@ -11,6 +11,54 @@
   #app { width: 100%; max-width: 480px; }
   .sc { display: none; } .sc.on { display: block; }
 
+  /* スタート画面（起動時のタイトル演出） */
+  #start-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: opacity .45s ease;
+  }
+  #start-screen.hide { opacity: 0; pointer-events: none; }
+  #start-screen-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #start-screen-dark {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 40%, rgba(0,0,0,.25), rgba(0,0,0,.65) 100%);
+    pointer-events: none;
+  }
+  #start-screen-tap {
+    position: absolute;
+    left: 50%;
+    bottom: 8%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: clamp(14px, 4vw, 18px);
+    letter-spacing: .12em;
+    padding: 11px 30px;
+    border-radius: 30px;
+    background: rgba(0,0,0,.45);
+    border: 2px solid rgba(255,255,255,.75);
+    animation: startTapPulse 1.4s ease-in-out infinite;
+    white-space: nowrap;
+  }
+  @keyframes startTapPulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+
   .hdr { text-align: center; padding: 20px 0 8px; }
   .hdr-t { font-size: 26px; font-weight: 800; color: #1A2A40; letter-spacing: 3px; }
   .hdr-s { font-size: 12px; color: #5A6070; margin-top: 4px; }
@@ -154,9 +202,14 @@
     border: 1px solid #D8E4F2;
   }
   .kotsu-ach-thumb {
-    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     height: 100%;
-    object-fit: contain;
+    width: auto;
+    max-width: none;
+    object-fit: cover;
     display: block;
   }
   .kotsu-ach-fallback {
@@ -598,14 +651,14 @@
     50%      { box-shadow: 0 0 22px rgba(245,200,76,.26); }
   }
   .ach-badge-ico {
-    width: 44px;
-    height: 44px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     font-size: 26px;
     line-height: 1;
+    overflow: hidden;
   }
   .ach-badge-item.locked .ach-badge-ico { filter: grayscale(1); }
   .ach-badge-name {
@@ -653,22 +706,33 @@
     background: linear-gradient(135deg, #1a2540, #0f172a);
     border: 2px solid rgba(245,200,76,.42);
     border-radius: 24px;
-    padding: 26px 30px 22px;
+    padding: 24px 22px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     box-shadow: 0 0 40px rgba(245,200,76,.26);
     animation: achPreviewBurst .5s cubic-bezier(.2,.8,.2,1.3) .1s both;
-    width: min(84vw, 380px);
-    max-width: min(84vw, 380px);
+    width: min(94vw, 640px);
+    max-width: min(94vw, 640px);
+    height: min(92vh, 900px);
+    max-height: 92vh;
     cursor: pointer;
   }
+  .gem-burst-img-wrap {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
   .gem-burst-img {
-    width: min(46vw, 180px);
-    height: auto;
-    max-height: 42vh;
-    object-fit: contain;
+    height: 100%;
+    width: auto;
+    max-width: none;
+    display: block;
     filter: drop-shadow(0 0 16px rgba(245,200,76,.6));
   }
   .gem-burst-title {
@@ -1236,6 +1300,11 @@
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 </head>
 <body>
+<div id="start-screen" onclick="hikizanStartTap()">
+  <img id="start-screen-img" src="img/title.png" alt="タイトル" onerror="this.style.display='none'">
+  <div id="start-screen-dark"></div>
+  <div id="start-screen-tap">タップで スタート</div>
+</div>
 <div id="app">
 
 <!-- ホーム -->
@@ -1732,19 +1801,23 @@
 
 <!-- 実績ポップアップ -->
 <div id="all-master-popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;z-index:8000;background:rgba(0,0,0,0.5);justify-content:center;align-items:center;">
-  <div style="background:linear-gradient(135deg,#EEF4FF,#E0EEFF);border-radius:28px;padding:32px 24px 28px;max-width:340px;width:90%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.25);border:4px solid #4A90D0; animation: dialogPop .18s ease-out;">
-    <img id="master-popup-img" src="" alt="" style="max-width:160px;max-height:160px;object-fit:contain;margin-bottom:16px;display:block;margin-left:auto;margin-right:auto;" onerror="this.style.display='none'">
-    <div id="master-popup-title" style="font-size:22px;font-weight:900;color:#2A6090;letter-spacing:2px;margin-bottom:8px;">🏆 ぜんぶ マスター！！</div>
-    <div id="master-popup-msg" style="font-size:18px;font-weight:800;color:#1A2A40;margin-bottom:6px;">すばらしい！！</div>
-    <div style="font-size:13px;color:#5A6070;font-weight:600;margin-bottom:22px;">このモードの もんだいを<br>ぜんぶ かんぺきに おぼえたよ！</div>
-    <button onclick="closeAllMasterPopup()" style="border-radius:18px;padding:12px 32px;font-size:15px;font-weight:800;background:#4A90D0;color:#fff;border:none;cursor:pointer;font-family:inherit;box-shadow:0 4px 0 #2A6090;">とじる</button>
+  <div style="background:linear-gradient(135deg,#EEF4FF,#E0EEFF);border-radius:28px;padding:22px 20px 20px;width:min(94vw,640px);max-width:min(94vw,640px);height:min(92vh,900px);max-height:92vh;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,0.25);border:4px solid #4A90D0; animation: dialogPop .18s ease-out;">
+    <div style="flex:1 1 auto;min-height:0;width:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:12px;">
+      <img id="master-popup-img" src="" alt="" style="height:100%;width:auto;max-width:none;display:block;" onerror="this.style.display='none'">
+    </div>
+    <div id="master-popup-title" style="font-size:22px;font-weight:900;color:#2A6090;letter-spacing:2px;margin-bottom:8px;flex-shrink:0;">🏆 ぜんぶ マスター！！</div>
+    <div id="master-popup-msg" style="font-size:18px;font-weight:800;color:#1A2A40;margin-bottom:6px;flex-shrink:0;">すばらしい！！</div>
+    <div style="font-size:13px;color:#5A6070;font-weight:600;margin-bottom:16px;flex-shrink:0;">このモードの もんだいを<br>ぜんぶ かんぺきに おぼえたよ！</div>
+    <button onclick="closeAllMasterPopup()" style="border-radius:18px;padding:12px 32px;font-size:15px;font-weight:800;background:#4A90D0;color:#fff;border:none;cursor:pointer;font-family:inherit;box-shadow:0 4px 0 #2A6090;flex-shrink:0;">とじる</button>
   </div>
 </div>
 
 <!-- じっせき画面：カードタップ演出（実績メダル / コツメダル 共通） -->
 <div id="ach-preview-overlay" class="gem-burst-overlay" style="display:none;" onclick="closeAchPreview()">
   <div class="gem-burst-card" onclick="event.stopPropagation()">
-    <img id="ach-preview-img" class="gem-burst-img" src="" alt="" onerror="this.style.display='none'">
+    <div class="gem-burst-img-wrap">
+      <img id="ach-preview-img" class="gem-burst-img" src="" alt="" onerror="this.style.display='none'">
+    </div>
     <div class="gem-burst-title">
       <div class="gem-burst-title-main" id="ach-preview-title-main"></div>
       <div class="gem-burst-title-sub" id="ach-preview-title-sub"></div>
@@ -4304,8 +4377,9 @@ function getAchStageIndex(total) {
 function buildAchCardIconEl(imgSrc, fallbackIco, on, size) {
   var wrap = document.createElement('div');
   wrap.className = 'ach-badge-ico';
+  wrap.style.height = size + 'px';
   var img = document.createElement('img');
-  img.style.cssText = 'width:' + size + 'px;height:' + size + 'px;object-fit:contain;display:block;';
+  img.style.cssText = 'height:100%;width:auto;max-width:none;object-fit:cover;display:block;';
   img.src = imgSrc || '';
   img.alt = '';
   img.onerror = function () {
@@ -4325,7 +4399,7 @@ function buildAchCardEl(cfg) {
     item.title = 'タップで ひょうじ';
     item.addEventListener('click', cfg.onClick);
   }
-  item.appendChild(buildAchCardIconEl(cfg.img, cfg.ico || '🏅', cfg.on, cfg.iconSize || 42));
+  item.appendChild(buildAchCardIconEl(cfg.img, cfg.ico || '🏅', cfg.on, cfg.iconSize || 72));
 
   var name = document.createElement('div');
   name.className = 'ach-badge-name';
@@ -4380,7 +4454,7 @@ function renderAchKotsuGroup() {
         ico: '🏅',
         name: def.title,
         cond: on ? '✅ マスター' : (pr.master + '/' + pr.total + ' クリア'),
-        iconSize: 38,
+        iconSize: 64,
         onClick: function () { openAchKotsuPreview(def); }
       }));
     })(KOTSU_IMG_DEFS[i]);
@@ -4654,6 +4728,42 @@ updQI();
 updKotsuBanner();
 setAnswerMode(answerMode);
 renderAchievements();
+
+// ── スタート画面：画像・音声の事前読み込み＆タップでスタート ──
+var _hikizanAssetsPreloaded = false;
+function hikizanPreloadAssets() {
+  if (_hikizanAssetsPreloaded) return;
+  _hikizanAssetsPreloaded = true;
+  var urls = ['img/title.png'];
+  for (var i = 0; i < ACH_STAGES.length; i++) { if (ACH_STAGES[i].img) urls.push(ACH_STAGES[i].img); }
+  for (var i = 0; i < ACH_BADGE_DEFS.length; i++) { if (ACH_BADGE_DEFS[i].img) urls.push(ACH_BADGE_DEFS[i].img); }
+  for (var i = 0; i < KOTSU_IMG_DEFS.length; i++) {
+    var u = kotsuImgSrc(KOTSU_IMG_DEFS[i]);
+    if (u) urls.push(u);
+  }
+  for (var i = 0; i < urls.length; i++) {
+    (function (src) { var im = new Image(); im.src = src; })(urls[i]);
+  }
+}
+function hikizanStartTap() {
+  var ss = document.getElementById('start-screen');
+  if (!ss || ss.classList.contains('hide')) return;
+  // 音声のロック解除（AudioContext / 音声合成）はユーザー操作の中で行う
+  try {
+    var ac = getAC();
+    if (ac && ac.state === 'suspended') ac.resume();
+  } catch (e) {}
+  try {
+    if (window.speechSynthesis) {
+      var u = new SpeechSynthesisUtterance(' ');
+      u.volume = 0;
+      window.speechSynthesis.speak(u);
+    }
+  } catch (e) {}
+  ss.classList.add('hide');
+  setTimeout(function () { ss.style.display = 'none'; }, 460);
+}
+hikizanPreloadAssets();
 
 // 数字をひらがなに変換（音声APIが英語読みするのを防ぐ）
 var HIRA_NUM = ['ぜろ','いち','に','さん','よん','ご','ろく','しち','はち','きゅう'];
