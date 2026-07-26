@@ -100,6 +100,11 @@
   .qi { text-align: center; font-size: 12px; color: #5A6070; margin-bottom: 10px; min-height: 16px; }
   .go-btn { display: block; width: 100%; padding: 16px; border-radius: 22px; font-size: 18px; font-weight: 800; background: #4A90D0; color: #fff; border: none; cursor: pointer; font-family: 'Nunito',sans-serif; letter-spacing: 2px; transition: transform .1s; box-shadow: 0 4px 0 #2A6090; }
   .go-btn:hover { transform: translateY(-2px); } .go-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #2A6090; }
+  .start-btn-row { display: flex; gap: 10px; }
+  .start-btn-row .go-btn { flex: 1; padding: 14px 6px; font-size: 15px; letter-spacing: 1px; }
+  .go-btn-20 { background: #5AAA30; box-shadow: 0 4px 0 #3A8020; }
+  .go-btn-all { background: #D4407E; box-shadow: 0 4px 0 #902050; }
+  .start-btn-row.only-all .go-btn-20 { display: none; }
   .sm-row { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
   .sml { background: #fff; border: 2px solid #C8D8E8; border-radius: 18px; padding: 5px 13px; font-size: 12px; color: #5A6070; cursor: pointer; font-family: 'Nunito',sans-serif; font-weight: 600; }
   .sml:hover { background: #E8F0FF; }
@@ -1337,7 +1342,10 @@
     <button class="fb fb-w" id="fw" onclick="selFilt('weak')">にがて だけ</button>
   </div>
   <div class="qi" id="qi"></div>
-  <button class="go-btn" onclick="start()">はじめる ▶</button>
+  <div class="start-btn-row" id="start-btn-row">
+    <button class="go-btn go-btn-20" id="go-btn-20" onclick="start(20)">２０もん ▶</button>
+    <button class="go-btn go-btn-all" id="go-btn-all" onclick="start('all')">ぜんもん ▶</button>
+  </div>
   <div id="kotsu-banner-area" style="margin-top:12px;display:none;">
     <div class="kotsu-banner" onclick="showKotsuHome(gSt.mode==='borrow'?'borrow':'no')">
       <div class="kotsu-ico">💡</div>
@@ -2279,12 +2287,19 @@ function updQI() {
   document.getElementById('qi').textContent = n?n+'もん あります':'がいとうするもんだいがありません';
 }
 
+function updStartBtnRow() {
+  var row = document.getElementById('start-btn-row');
+  if (!row) return;
+  var total = buildP(gSt.mode).length;
+  row.classList.toggle('only-all', total <= 20);
+}
+
 function selMode(m) {
   gSt.mode = m;
   document.getElementById('cn').classList.toggle('msel', m==='no');
   document.getElementById('ct').classList.toggle('msel', m==='ten');
   document.getElementById('cc').classList.toggle('msel', m==='borrow');
-  updQI(); updKotsuBanner();
+  updQI(); updKotsuBanner(); updStartBtnRow();
 }
 
 function selFilt(f) {
@@ -2457,7 +2472,10 @@ function renKotsuSt() {
 // ======================================================
 // セッション（通常）
 // ======================================================
-function start() {
+var _lastStartLimit = 20;
+function start(limit) {
+  if (limit === 20 || limit === 'all') { _lastStartLimit = limit; }
+  var lim = _lastStartLimit;
   var ps = filtP(gSt.mode, gSt.filt);
   if (!ps.length && gSt.filt === 'weak') {
     var allPs = buildP(gSt.mode);
@@ -2475,13 +2493,13 @@ function start() {
     return;
   }
   if (!ps.length) { alert('がいとうするもんだいがありません。'); return; }
-  startSession(ps);
+  startSession(ps, lim);
 }
 
 function closeAskGanbare(doIt) {
   document.getElementById('ask-ganbare-dialog').style.display = 'none';
   if (doIt && window._ganbarePs && window._ganbarePs.length) {
-    startSession(window._ganbarePs);
+    startSession(window._ganbarePs, _lastStartLimit);
   }
   window._ganbarePs = null;
 }
@@ -2506,10 +2524,12 @@ function showAllMasterPopup() {
   document.getElementById('all-master-popup').style.display = 'flex';
 }
 
-function startSession(ps) {
+function startSession(ps, limit) {
+  var cap = (limit === 'all') ? ps.length : (typeof limit === 'number' ? limit : 20);
   var weak=[],rest=[];
   for (var i=0;i<ps.length;i++){var st=getSt(gD[gk(gSt.mode,ps[i])]);if(st==='weak')weak.push(ps[i]);else rest.push(ps[i]);}
-  sess={queue:sh(sh(weak).concat(sh(rest))).slice(0,Math.min(ps.length,20)),idx:0,results:[],streak:0,startTime:0,_kotsuMasterShown:false};
+  sess={queue:sh(sh(weak).concat(sh(rest))).slice(0,Math.min(ps.length,cap)),idx:0,results:[],streak:0,startTime:0,_kotsuMasterShown:false};
+  sess.scope = (limit === 'all') ? 'all' : 20;
   sessMode='normal';
   var bdg=document.getElementById('pbdg');
   bdg.textContent=gSt.mode==='no'?'くりさがりなし':(gSt.mode==='ten'?'10からひく！':'くりさがりあり');
@@ -2722,7 +2742,16 @@ function finish() {
     showPerfectEffect(function(){
       show('result');
       if (sessMode==='normal') {
-        setTimeout(function() { showAllMasterPopup(); }, 120);
+        var earnedDef = null;
+        for (var bi = 0; bi < ACH_BADGE_DEFS.length; bi++) {
+          var bd = ACH_BADGE_DEFS[bi];
+          if (bd.mode === gSt.mode && getAchBadgeUnlocked(bd)) {
+            if (!earnedDef || bd.limit === 'all') earnedDef = bd;
+          }
+        }
+        if (earnedDef) {
+          setTimeout(function() { showAchBadgeMasterPopup(earnedDef); }, 120);
+        }
       } else if (sessMode.indexOf('kotsu') === 0) {
         var def = getCurrentKotsuDef();
         var pr = def ? getKotsuProgress(def) : null;
@@ -3210,6 +3239,15 @@ function showKotsuMasterPopup(def) {
     src: kotsuImgSrc(def),
     title: def.title,
     msg: 'このコツの もんだいを<br>ぜんぶ かんぺきに おぼえたよ！',
+    sound: true
+  });
+}
+function showAchBadgeMasterPopup(def) {
+  if (!def) return;
+  showAchievementPopup({
+    src: def.img,
+    title: '🏅 じっせきメダル ゲット！',
+    msg: def.title.replace(/\n/g, ' ') + '<br>' + def.desc.replace(/\n/g, ' '),
     sound: true
   });
 }
@@ -4347,6 +4385,7 @@ var ACH_STAGES = [
 var ACH_BADGE_DEFS = [
   { key: 'easy_20',  ico: '🟢', title: 'かんたん\n20問メダル',   img: 'img/medal_easy20.png',   mode: 'no',     limit: 20,  desc: 'かんたんモードの\n20問を ぜんぶ マスター' },
   { key: 'easy_all', ico: '🌿', title: 'かんたん\n全問メダル',   img: 'img/medal_easy_all.png', mode: 'no',     limit: 'all', desc: 'かんたんモードの\n全問を マスター' },
+  { key: 'ten_all',  ico: '🔥', title: '10からひく\n全問メダル', img: 'img/medal_ten_all.png',  mode: 'ten',    limit: 'all', desc: '10からひくモードの\n全問を マスター' },
   { key: 'hard_20',  ico: '💜', title: 'むずかしい\n20問メダル', img: 'img/medal_hard20.png',   mode: 'borrow', limit: 20,  desc: 'むずかしいモードの\n20問を ぜんぶ マスター' },
   { key: 'hard_all', ico: '⭐', title: 'むずかしい\n全問メダル', img: 'img/medal_hard_all.png', mode: 'borrow', limit: 'all', desc: 'むずかしいモードの\n全問を マスター' }
 ];
@@ -4733,6 +4772,7 @@ function updAchievementsIfNeeded() {
 updDots();
 updQI();
 updKotsuBanner();
+updStartBtnRow();
 setAnswerMode(answerMode);
 renderAchievements();
 
