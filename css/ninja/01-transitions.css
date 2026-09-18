@@ -1,0 +1,77 @@
+/* 画面切り替えの忍者ワイプ演出 */
+#scene-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 8500;
+  pointer-events: none;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 120ms linear;
+}
+#scene-wipe.active { opacity: 1; }
+.wipe-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255,255,255,0.18), transparent 30%),
+    linear-gradient(135deg, rgba(9,18,45,0.22), rgba(9,18,45,0.72));
+  backdrop-filter: blur(2px);
+}
+.wipe-swipe {
+  position: absolute;
+  inset: -20% -45%;
+  transform: translateX(-120%) skewX(-18deg);
+  background:
+    linear-gradient(120deg,
+      transparent 35%,
+      rgba(255,255,255,0.0) 40%,
+      rgba(255,255,255,0.92) 48%,
+      rgba(245,166,35,0.70) 50%,
+      rgba(255,255,255,0.92) 52%,
+      rgba(255,255,255,0.0) 60%,
+      transparent 65%);
+  filter: drop-shadow(0 0 18px rgba(245,166,35,0.55));
+}
+.wipe-star {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 200px;
+  height: 200px;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.7) rotate(0deg);
+  background: url('../../img/genju_hunter_lv1.png') center/contain no-repeat;
+  filter: drop-shadow(0 0 16px rgba(245,166,35,0.95)) drop-shadow(0 0 36px rgba(255,255,255,0.6));
+}
+.wipe-burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.2);
+  background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(245,166,35,0.65) 28%, rgba(245,166,35,0.0) 68%);
+  filter: blur(2px);
+}
+#scene-wipe.active .wipe-swipe { animation: swipeAcross 600ms cubic-bezier(.16,.84,.22,1) both; }
+#scene-wipe.active .wipe-star  { animation: starSpin 600ms cubic-bezier(.2,.8,.2,1) both; }
+#scene-wipe.active .wipe-burst { animation: burstPulse 600ms ease-out both; }
+@keyframes swipeAcross {
+  0%   { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
+  10%  { opacity: 1; }
+  45%  { opacity: 1; }
+  100% { transform: translateX(120%) skewX(-18deg); opacity: 0; }
+}
+@keyframes starSpin {
+  0%   { transform: translate(-50%, -50%) scale(0.1) rotate(-30deg); opacity: 0; }
+  18%  { transform: translate(-50%, -50%) scale(1.15) rotate(60deg);  opacity: 1; }
+  60%  { transform: translate(-50%, -50%) scale(1.0)  rotate(150deg); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.2)  rotate(270deg); opacity: 0; }
+}
+@keyframes burstPulse {
+  0%   { transform: translate(-50%, -50%) scale(0.15); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2.6); opacity: 0; }
+}

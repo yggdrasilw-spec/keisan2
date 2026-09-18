@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ひきざん れんしゅう</title>
+<title>ひきざん 幻獣ハンター</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1310,7 +1310,14 @@
   .img-set-reset { border-radius:12px; padding:7px 10px; font-size:11px; font-weight:700; cursor:pointer; font-family:'Nunito',sans-serif; border:2px solid #C8D8E8; background:#fff; color:#C04040; }
   .img-set-reset:hover { background:#FFEEF4; }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<link rel="stylesheet" href="./css/06-learning-layout.css">
+<link rel="stylesheet" href="./css/07-hunter-learning.css">
+<link rel="stylesheet" href="./css/08-ninja-imports.css">
+<link rel="stylesheet" href="./css/ninja/01-transitions.css">
+<script src="./js/hunter-learning-runtime.js"></script>
+<script src="./js/hunter-legacy-migrate.js"></script>
+<script src="./js/00-learning-settings.js"></script>
+<script src="./vendor/tf.min.js"></script>
 </head>
 <body>
 <div id="start-screen" onclick="hikizanStartTap()">
@@ -1387,7 +1394,7 @@
     <div id="set-btn-hw" onclick="setAnswerMode('hw')"
       style="border-radius:18px;padding:16px;border:3px solid;cursor:pointer;background:#fff;border-color:#C8D8E8;transition:all .15s;">
       <div style="font-size:15px;font-weight:800;color:#1A2A40;margin-bottom:3px;">&#x270F;&#xFE0F; てがきで こたえる</div>
-      <div style="font-size:11px;color:#5A6070;">この段階では 切り替えだけ 追加</div>
+      <div style="font-size:11px;color:#5A6070;">数字をかくと、自動でこたえを判定するよ</div>
     </div>
   </div>
   <div onclick="show('advanced-settings')"
@@ -1511,6 +1518,7 @@
     <span class="pbdg" id="pbdg">-</span>
   </div>
   <div class="pgwrap"><div class="pgbar" id="pgbar" style="width:0%"></div></div>
+  <div class="practice-workspace"><div class="practice-answer-panel">
   <div class="pcard" id="pcard">
     <div class="peq" id="peq">? ー ? ＝ ？</div>
     <div class="ptimer" id="ptimer">⏱ 0.0 びょう</div>
@@ -1536,6 +1544,7 @@
   </div>
 
   <div class="stk" id="stk"></div>
+  </div><aside class="practice-hint-panel"><h2>かんがえる ヒント</h2><p>10の まとまりから ひいてみよう</p>
   <!-- ヒントエリア（くりさがりありのみ） -->
   <div id="hint-area" style="display:none;margin-top:10px;">
     <!-- ヒント選択ボタン行 -->
@@ -1580,7 +1589,7 @@
       <iframe id="hint-soroban-frame" src="about:blank" style="width:100%;height:340px;border:none;display:block;background:#1a0a00;"></iframe>
     </div>
   </div>
-</div>
+</aside></div></div>
 
 <!-- 結果 -->
 <div id="result" class="sc">
@@ -1900,11 +1909,13 @@ var calcInput = '';
 // ======================================================
 // 効果音
 // ======================================================
-var sfxOn = true;
-var voiceOn = true;
+var sfxOn = storageLoadText('hikizan_sfx_on','1') !== '0';
+var voiceOn = storageLoadText('hikizan_voice_on','1') !== '0';
 
 function toggleSfx() {
   sfxOn = !sfxOn;
+  storageSaveText('hikizan_sfx_on',sfxOn?'1':'0');
+  if (typeof setFx === 'function') setFx('fx_sfx',sfxOn);
   var btn = document.getElementById('sfx-btn');
   btn.className = 'snd-btn ' + (sfxOn ? 'on' : 'off');
   btn.textContent = (sfxOn ? '🔔' : '🔕') + ' おと';
@@ -1913,6 +1924,7 @@ function toggleSfx() {
 }
 function toggleVoice() {
   voiceOn = !voiceOn;
+  storageSaveText('hikizan_voice_on',voiceOn?'1':'0');
   var btn = document.getElementById('voice-btn');
   btn.className = 'snd-btn ' + (voiceOn ? 'on' : 'off');
   btn.textContent = (voiceOn ? '🗣' : '🔇') + ' こえ';
@@ -2118,8 +2130,9 @@ if (window.speechSynthesis) {
 // ======================================================
 function getSt(r) {
   if (!r || !r.att || !r.last) return 'unseen';
-  if (!r.last.ok || r.last.el >= 8000) return 'weak';
-  if (r.last.ok && r.last.el < 3000) return 'master';
+  if (!r.last.ok) return 'weak';
+  if (isMasterTime(r.last.el)) return 'master';
+  if (r.last.el >= 8000) return 'weak';
   return 'ok';
 }
 var ST_DOT = {master:'#3A90E0', ok:'#5AAA30', weak:'#D4407E', unseen:'#C0B090'};
@@ -2416,7 +2429,7 @@ function showKotsuSub(n) {
   }
   document.getElementById('ksub-desc').textContent = (kSt.axis === 'top'
     ? (kSt.kind === 'no' ? 'ひかれる数ごとの れんしゅう。' : 'ひかれる数ごとの れんしゅう。')
-    : 'ひく数ごとの れんしゅう。') + ' ' + ps.length + 'もん。きろくは つけません。';
+    : 'ひく数ごとの れんしゅう。') + ' ' + ps.length + 'もん。マスターして メダルをあつめよう。';
   kUpdQI();
   renKotsuSt();
   document.getElementById('kfa').classList.add('on');
@@ -2429,7 +2442,7 @@ function kUpdQI() {
   document.getElementById('kqi').textContent = ps.length ? ps.length+'もん あります' : 'がいとうするもんだいがありません';
 }
 function kFiltP() {
-  return kBuildP().slice();
+  return kBuildP().filter(function(p) { return kSt.filt !== 'weak' || getSt(kD[kk(kSt.kind,kSt.axis,kSt.num,p)]) === 'weak'; });
 }
 function kSelFilt(f) {
   kSt.filt = f;
@@ -2438,13 +2451,18 @@ function kSelFilt(f) {
   kUpdQI();
 }
 function goKotsuR() {
-  alert('このれんしゅうは きろくに のこしません。');
+  renKotsuR(); show('kotsu-records');
 }
 function goKotsuSt() {
   renKotsuSt();
   show('kotsu-stats');
 }
-function renKotsuR() { document.getElementById('kr-list').innerHTML = ''; }
+function renKotsuR() {
+  document.getElementById('kr-list').innerHTML = kBuildP().map(function(p) {
+    var r=kD[kk(kSt.kind,kSt.axis,kSt.num,p)],st=getSt(r);
+    return riHtml(ST_DOT[st],p.a+'−'+p.b+'='+p.ans,r ? r.att+'かい・'+Math.round(r.cor/r.att*100)+'%' : 'まだ やっていないよ',ST_BG[st],ST_TC[st],ST_PT[st]);
+  }).join('');
+}
 function renKotsuSt() {
   var ps = kBuildP();
   var m = 0, ok = 0, w = 0, u = 0;
@@ -2525,6 +2543,7 @@ function showAllMasterPopup() {
 }
 
 function startSession(ps, limit) {
+  clearNextQuestionTimer();
   var cap = (limit === 'all') ? ps.length : (typeof limit === 'number' ? limit : 20);
   var weak=[],rest=[];
   for (var i=0;i<ps.length;i++){var st=getSt(gD[gk(gSt.mode,ps[i])]);if(st==='weak')weak.push(ps[i]);else rest.push(ps[i]);}
@@ -2550,6 +2569,7 @@ function startSession(ps, limit) {
 // セッション（コツ）
 // ======================================================
 function kStart() {
+  clearNextQuestionTimer();
   var ps=kFiltP();
   if (!ps.length){alert('がいとうするもんだいがありません。');return;}
   var weak=[],rest=[];
@@ -2590,6 +2610,10 @@ function fitEq(text) {
 }
 
 function showP() {
+  if (sess._sessionEnding || recitationActive()) return;
+  // Changing input tabs must not reopen an already submitted question.
+  if (sess._answerSubmitted && sess._answeredIndex === sess.idx) return;
+  sess._answerSubmitted = false;
   if (sess.idx >= sess.queue.length) { finish(); return; }
   var p = sess.queue[sess.idx], tot = sess.queue.length;
   document.getElementById('pctr').textContent = (sess.idx+1)+'/'+tot;
@@ -2628,7 +2652,7 @@ function showP() {
     ha.style.display = isBorrow ? 'block' : 'none';
     if (isBorrow) hintSetProblem(p);
   }
-  sess.startTime = Date.now();
+  if (sess._timedIndex !== sess.idx) { sess.startTime = Date.now(); sess._timedIndex = sess.idx; }
   if (tIv) clearInterval(tIv);
   tIv = setInterval(function(){
     document.getElementById('ptimer').textContent = '⏱ '+((Date.now()-sess.startTime)/1000).toFixed(1)+' びょう';
@@ -2653,6 +2677,10 @@ function buildA(p) {
 }
 
 function chk(v,btn,p) {
+  if (!sess || sess._answerSubmitted || sess._sessionEnding || recitationActive() || !sess.queue || sess.queue[sess.idx] !== p || !document.getElementById('practice').classList.contains('on')) return;
+  sess._answerSubmitted = true;
+  sess._answeredIndex = sess.idx;
+  sess._calcDone = true;
   if (tIv){clearInterval(tIv);tIv=null;}
   var el=Date.now()-sess.startTime, ok=v===p.ans;
   fitEq(p.a+' ー '+p.b+' ＝ '+p.ans);
@@ -2669,6 +2697,7 @@ function chk(v,btn,p) {
     lsSave(LS_KD, kD);
   }
   sess.results.push({p:p,el:el,ok:ok});
+  NinjaRaid.answer(ok);
   var fbl=document.getElementById('fbl');
   var abtns=document.querySelectorAll('.abtn');
   for (var i=0;i<abtns.length;i++) abtns[i].onclick=null;
@@ -2680,7 +2709,7 @@ function chk(v,btn,p) {
   }
   if (ok) {
     sess.streak++;
-    var isFast = el < 3000;
+    var isFast = isMasterTime(el);
     showImg('seikai', 600);
     throwShurikenBurst(btn, sess.streak >= 10 ? 10 : (sess.streak >= 5 ? 5 : (sess.streak >= 3 ? 3 : 1)));
     if (sess.streak >= 3) sndStreak(sess.streak);
@@ -2692,77 +2721,42 @@ function chk(v,btn,p) {
     else if (isFast) fbl.textContent='⚡ はやい！ せいかい！';
     else fbl.textContent='✓ せいかい！';
     fbl.className='fbl fbok';
-    setTimeout(function(){sess.idx++;showP();},600);
+    queueNextQuestion(600);
   } else {
     sess.streak=0;
     showImg('fuseikai', 1200);
     sndWrong();
     fbl.textContent='✗ こたえは '+p.ans+' だよ';
     fbl.className='fbl fbng';
-    setTimeout(function(){sess.idx++;showP();},1400);
+    if (recitationEnabled('immediate')) startRecitation([p], function() { queueNextQuestion(0); });
+    else queueNextQuestion(1400);
   }
 }
 
 function endSess() {
+  if (recitationActive()) return;
+  sess._sessionEnding = true;
+  clearNextQuestionTimer();
   if (tIv){clearInterval(tIv);tIv=null;}
   if (!sess.results||!sess.results.length){show((sessMode==='drill')?'kotsu-sub':'home');return;}
   finish();
 }
 
 function finish() {
+  sess._sessionEnding = true;
+  clearNextQuestionTimer();
   if (tIv){clearInterval(tIv);tIv=null;}
-  var res=sess.results,tot=res.length,cor=0,sumT=0;
-  for (var i=0;i<res.length;i++){if(res[i].ok)cor++;sumT+=res[i].el;}
-  var acc=tot?Math.round(cor/tot*100):0;
-  var avgT=tot?(sumT/tot/1000).toFixed(1):'0';
-  var ms=0;
-  if (sessMode==='normal') {
-    var keys=Object.keys(gD);
-    for (var i=0;i<keys.length;i++) if(keys[i].indexOf(gSt.mode+':')===0&&getSt(gD[keys[i]])==='master')ms++;
+  if (sess._finishRendered || recitationActive()) return;
+  if (!sess._recitationFinished && recitationEnabled('end')) {
+    var missed = uniqueMissedProblems(sess.results || []);
+    if (missed.length) {
+      sess._recitationFinished = true;
+      startRecitation(missed, finish);
+      return;
+    }
   }
-  document.getElementById('rv-t').textContent=tot+'もん';
-  document.getElementById('rv-a').textContent=acc+'%';
-  document.getElementById('rv-avg').textContent=avgT+'秒';
-  document.getElementById('rv-m').textContent=ms+'もん';
-  if (acc===100) {
-    sndPerfect();
-    document.getElementById('rbi').textContent='🎉';
-    document.getElementById('rt2').textContent='かんぺき！すごい！';
-  } else if (acc>=70) {
-    sndGoodFinish();
-    document.getElementById('rbi').textContent='😊';
-    document.getElementById('rt2').textContent='よくできました！';
-  } else {
-    sndTryAgain();
-    document.getElementById('rbi').textContent='💪';
-    document.getElementById('rt2').textContent='もう少し！がんばれ！';
-  }
-  document.getElementById('rs2').textContent=tot+'もんちゅう '+cor+'もん せいかい';
-  if (acc===100) {
-    showPerfectEffect(function(){
-      show('result');
-      if (sessMode==='normal') {
-        var earnedDef = null;
-        for (var bi = 0; bi < ACH_BADGE_DEFS.length; bi++) {
-          var bd = ACH_BADGE_DEFS[bi];
-          if (bd.mode === gSt.mode && getAchBadgeUnlocked(bd)) {
-            if (!earnedDef || bd.limit === 'all') earnedDef = bd;
-          }
-        }
-        if (earnedDef) {
-          setTimeout(function() { showAchBadgeMasterPopup(earnedDef); }, 120);
-        }
-      } else if (sessMode.indexOf('kotsu') === 0) {
-        var def = getCurrentKotsuDef();
-        var pr = def ? getKotsuProgress(def) : null;
-        if (pr && pr.allMaster) {
-          setTimeout(function() { showKotsuMasterPopup(def); }, 120);
-        }
-      }
-    });
-    return;
-  }
-  show('result');
+  sess._finishRendered = true;
+  hunterFinishOutcome();
 }
 
 // ======================================================
@@ -2827,6 +2821,13 @@ function renHG(mode,id){
 // 画面切替・リセット
 // ======================================================
 function show(n){
+  if (typeof recitationActive === 'function' && recitationActive()) return;
+  if (n !== 'practice') {
+    clearNextQuestionTimer();
+    clearHunterHintTimers();
+    if (tIv) { clearInterval(tIv); tIv = null; }
+    if (sess && sess.queue) sess._sessionEnding = true;
+  }
   var ss=document.querySelectorAll('.sc');
   for (var i=0;i<ss.length;i++) ss[i].classList.remove('on');
   var el=document.getElementById(n);
@@ -2834,16 +2835,20 @@ function show(n){
   if (n==='home'){updDots();updQI();updKotsuBanner();}
   if (n==='settings'){setAnswerMode(answerMode);
 renderAchievements();renderVoiceSettings();renderPraiseEdit();syncImageSettingsUI();}
+  if (n==='advanced-settings'){renderVoiceSettings();renderPraiseEdit();syncImageSettingsUI();}
   if (n==='achievements'){renderAchievements();}
   var qb=document.getElementById('quit-bar');
   if (qb){if(n==='practice')qb.classList.add('show');else qb.classList.remove('show');}
 }
 
 function resetData(){
-  if (!confirm('きろくをすべてけします。よろしいですか？')) return;
+  if (!confirm('きろく・メダル・★・買い物・進化をリセットします。設定・画像・音声は残ります。よろしいですか？')) return;
   gD={}; kD={};
   try{localStorage.removeItem(LS_GD);localStorage.removeItem(LS_KD);}catch(e){}
+  badgeData={};saveBadgeData();shopData={};saveShopData();HunterHud.setStarCount(0);clearHunterDebugOverrides();setSeenAchStage(0);
+  setDebugAutoAward(true);hideDebugPanel();
   updDots(); updQI();
+  renderAchievements();show('home');
 }
 
 // ======================================================
@@ -3300,6 +3305,7 @@ function resetImg(key) {
 
 var imgTimer = null;
 function showImg(key, dur) {
+  if (typeof hunterEffectEnabled === 'function' && !hunterEffectEnabled('answer')) return;
   var ov = document.getElementById('img-overlay');
   var im = document.getElementById('overlay-img');
   if (!ov || !im) return;
@@ -3331,6 +3337,7 @@ function getFxOriginRect(originEl) {
 }
 
 function throwShurikenBurst(originEl, count) {
+  if (typeof hunterEffectEnabled === 'function' && !hunterEffectEnabled('burst')) return;
   var fxLayer = document.getElementById('fx-layer');
   if (!fxLayer) return;
   var rect = getFxOriginRect(originEl);
@@ -3370,6 +3377,7 @@ function throwShurikenBurst(originEl, count) {
 }
 
 function showPerfectEffect(onDone) {
+  if (typeof hunterEffectEnabled === 'function' && !hunterEffectEnabled('perfect')) { if(onDone)onDone(); return; }
   var ov = document.getElementById('perfect-overlay');
   var canvas = document.getElementById('lightning-canvas');
   var flashEl = document.getElementById('pf-flash');
@@ -3534,6 +3542,7 @@ var hintCircles = [];
 function hEl(id) { return document.getElementById(id); }
 
 function toggleHint1() {
+  clearHunterHintTimers();
   var box  = hEl('hint-box');
   var box2 = hEl('hint-soroban-box');
   var btn1 = hEl('hint-btn1');
@@ -3555,6 +3564,7 @@ function toggleHint1() {
 }
 
 function toggleHint2() {
+  clearHunterHintTimers();
   var box  = hEl('hint-box');
   var box2 = hEl('hint-soroban-box');
   var btn1 = hEl('hint-btn1');
@@ -3577,6 +3587,7 @@ function toggleHint2() {
 function toggleHint() { toggleHint1(); }
 
 function hintSetProblem(p) {
+  clearHunterHintTimers();
   hintP = p;
   hintVisible = false;
   var box  = hEl('hint-box');
@@ -3590,6 +3601,7 @@ function hintSetProblem(p) {
 }
 
 function hintStartProblem() {
+  clearHunterHintTimers();
   if (!hintP) return;
   var MINUEND  = hintP.a;
   var SUBTRACT = hintP.b;
@@ -3809,7 +3821,7 @@ function hjk1(M, S, B) {
   hEl('hint-right-text').classList.add('show');
   if (B <= 0) {
     // ばらがない（a=10）→ 減減法は選べない、自動で減加法へ（bottom-textはhjk2に任せる）
-    setTimeout(function() {
+    hunterHintLater(function() {
       hEl('hint-choice-btns').classList.remove('show');
       hintChooseJukka(M, S, B);
     }, 600);
@@ -3817,7 +3829,7 @@ function hjk1(M, S, B) {
     hEl('hint-bottom-text').textContent = 'どこからひく？';
     hEl('hint-choice-btns').classList.add('show');
   }
-  setTimeout(function() {
+  hunterHintLater(function() {
     var zone = hEl('hint-dot-zone');
     // 「◯こ」スパン（hint-right-textの最初のspan）を探す
     var rtEl = hEl('hint-right-text');
@@ -3860,7 +3872,7 @@ function hintChooseJukka(M, S, B) {
 
 function hjk2(M, S, B) {
   hEl('hint-bottom-text').textContent = '10から ひくよ。';
-  setTimeout(function() { hSetFrame(false, B); hEl('hint-top-frame').style.opacity = '1'; }, 80);
+  hunterHintLater(function() { hSetFrame(false, B); hEl('hint-top-frame').style.opacity = '1'; }, 80);
 }
 
 function hjk3(M, S, B) {
@@ -3871,7 +3883,7 @@ function hjk3(M, S, B) {
   hEl('hint-formula-box').classList.add('show');
   var ids = [];
   for (var i = 0; i < S; i++) ids.push('hdt' + (10 - S + i));
-  setTimeout(function() { hMoveDashToDots(ids); }, 100);
+  hunterHintLater(function() { hMoveDashToDots(ids); }, 100);
 }
 
 function hjk4(M, S, B) {
@@ -3894,7 +3906,7 @@ function hjk5(M, S, B) {
     if (d) d.classList.add('fading');
   }
   hFadeAll();
-  setTimeout(function() {
+  hunterHintLater(function() {
     for (var j = 0; j < rem; j++) {
       var el = document.getElementById('hdt' + j);
       if (el) el.classList.add('yellow');
@@ -3921,7 +3933,7 @@ function hjk6(M, S, B) {
     return;
   }
   hEl('hint-bottom-text').textContent = 'のこった ' + B + ' と たすよ';
-  setTimeout(function() {
+  hunterHintLater(function() {
     hSetFrame(true, B);
     hEl('hint-top-frame').style.borderColor = '#1A2A40';
     hEl('hint-top-frame').style.background  = 'rgba(0,0,0,0.03)';
@@ -3977,7 +3989,7 @@ function hintBaraNext(M, S, B) {
 
 function hbr1(M, S, B) {
   hEl('hint-bottom-text').textContent = 'ばらから ひくよ';
-  setTimeout(function() { hSetFrameBot(B); hEl('hint-top-frame').style.opacity = '1'; }, 80);
+  hunterHintLater(function() { hSetFrameBot(B); hEl('hint-top-frame').style.opacity = '1'; }, 80);
 }
 
 function hbr2(M, S, B) {
@@ -4003,13 +4015,13 @@ function hbr4(M, S, B) {
   for (var j = 0; j < B; j++) idx.push(j);
   hFadeIdxs(idx);
   hEl('hint-top-frame').style.opacity = '0';
-  setTimeout(function() { nxtBtn.disabled = false; }, 700);
+  hunterHintLater(function() { nxtBtn.disabled = false; }, 700);
 }
 
 function hbr5(M, S, B) {
   var rest = S - B;
   hEl('hint-bottom-text').innerHTML = 'もう<span class="hcol-blue">' + rest + '</span>ひいて';
-  setTimeout(function() {
+  hunterHintLater(function() {
     hSetFrameTop(S);
     hEl('hint-top-frame').style.opacity = '1';
     for (var i = 0; i < rest; i++) hMoveDashIdx(B + i, 'hdt' + (10 - rest + i));
@@ -4045,7 +4057,7 @@ function hbr7(M, S, B) {
   var idx = [];
   for (var j = B; j < S; j++) idx.push(j);
   hFadeIdxs(idx);
-  setTimeout(function() {
+  hunterHintLater(function() {
     hEl('hint-formula-box').innerHTML = hFHtml([
       {text:'10',cls:'hcol-red'},{text:' ー ',cls:'hcol-red'},
       {text:''+rest,cls:'hcol-blue'},{text:' ＝ ',cls:''},
@@ -4159,7 +4171,8 @@ function hwLoadModel() {
   hwModelLoaded = true;
   var st = document.getElementById('hw-model-status');
   if (!window.tf) {
-    if (st) st.textContent = 'TF.js が見つかりません';
+    hwModelLoaded = false;
+    if (st) st.textContent = '手書きを読みこめませんでした。ボタンか電卓でこたえてね。';
     return;
   }
   if (st) st.textContent = 'モデル よみこみちゅう…';
@@ -4167,7 +4180,8 @@ function hwLoadModel() {
     hwModel = m;
     if (st) st.textContent = '✅ てがきモード つかえるよ！';
   }).catch(function(e) {
-    if (st) st.textContent = '⚠ モデル読み込み失敗（モデルを置いてね）';
+    hwModelLoaded = false;
+    if (st) st.textContent = '手書きを読みこめませんでした。もう一度「てがき」を押してね。';
     console.warn('hw model load failed:', e);
   });
 }
@@ -4224,7 +4238,7 @@ function hwCheckAnswer(recognized) {
   var hintEl = document.getElementById('hw-hint');
   if (recognized === null || recognized === undefined) {
     if(hintEl) { hintEl.textContent='うまく よめなかった… もう1かい！'; hintEl.className='hw-hint ng'; }
-    setTimeout(hwClear, 900);
+    hunterClearWritingLater(900);
     return;
   }
 
@@ -4238,7 +4252,9 @@ function hwCheckAnswer(recognized) {
     hwAnswerLocked = true;
     if(hintEl) { hintEl.textContent='✅ せいかい！'; hintEl.className='hw-hint ok'; }
     var pcardEl = document.getElementById('pcard');
+    var answerSession = sess, answerSerial = hwQuestionSerial;
     setTimeout(function() {
+      if (sess !== answerSession || hwQuestionSerial !== answerSerial || sess.queue[sess.idx] !== p || sess._sessionEnding) return;
       hwClear();
       chk(correct, pcardEl, p);
     }, 400);
@@ -4247,7 +4263,12 @@ function hwCheckAnswer(recognized) {
       hintEl.textContent='もう1かい かいてみて ✏️';
       hintEl.className='hw-hint ng';
     }
-    setTimeout(hwClear, 700);
+    if (recitationEnabled('immediate') || recitationEnabled('end')) {
+      hwAnswerLocked = true;
+      chk(recognized, document.getElementById('pcard'), p);
+      return;
+    }
+    hunterClearWritingLater(700);
   }
 }
 
@@ -4843,5 +4864,17 @@ function textToHira(txt) {
   observer.observe(botEl, { childList: true, characterData: true, subtree: true });
 })();
 </script>
+<script src="./js/17-recitation.js"></script>
+<script src="./js/18-raid.js"></script>
+<script src="./js/hunter-progression.js"></script>
+<script src="./js/ninja/00-fx-settings.js"></script>
+<script src="./js/ninja/04-settings-fx.js"></script>
+<script src="./js/ninja/08-effects-perfect.js"></script>
+<script src="./js/ninja/08-effects-button.js"></script>
+<script src="./js/ninja/09-achievement-effects.js"></script>
+<script src="./js/ninja/09-achievement-effects-gem.js"></script>
+<script src="./js/ninja/09-achievement-effects-badge.js"></script>
+<script src="./js/ninja/09-achievement-levelup.js"></script>
+<script src="./js/hunter-shop-debug.js"></script>
 </body>
 </html>
