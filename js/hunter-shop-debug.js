@@ -190,6 +190,12 @@
     "desc": "幻獣とともに歩んだ冒険の記念章。"
   }
 ];
+  SHOP_ITEMS.forEach(function(item, index) {
+    item.category = item.img ? 'creature' : index < 12 ? 'explore' : index < 16 ? 'relic' : 'legend';
+  });
+  SHOP_ITEMS = SHOP_ITEMS.concat(HUNTER_EXTRA_SHOP_ITEMS);
+  var shopCategory = 'all';
+  var shopCategories = [['all','すべて'],['explore','探索どうぐ'],['material','森のめぐみ'],['relic','魔法の道具'],['legend','伝説のおたから'],['creature','幻獣'],['owned','購入済み']];
   function getShopItemImagePath(index) { return SHOP_ITEMS[index].img || ''; }
 
   function trimJapanesePeriod(text) {
@@ -980,6 +986,17 @@
       + '<div class="shop-count-line">購入済み ' + ownedCount + ' / ' + SHOP_ITEMS.length + '</div></div>'
       + '<div class="shop-meta">ためた★: ★×' + total + '<br>購入済みの品はタップで詳細を見られる</div>';
     el.appendChild(head);
+    var filters = document.createElement('div');
+    filters.className = 'hunter-shop-filters';
+    filters.setAttribute('aria-label', '商品の分類');
+    shopCategories.forEach(function(category) {
+      var button = document.createElement('button');
+      button.type = 'button'; button.textContent = category[1];
+      button.setAttribute('aria-pressed', String(shopCategory === category[0]));
+      button.onclick = function() { shopCategory = category[0]; renderShopCollection(); };
+      filters.appendChild(button);
+    });
+    el.appendChild(filters);
 
     if (!SHOP_ITEMS.length) {
       var empty = document.createElement('div');
@@ -993,12 +1010,13 @@
     grid.className = 'ach-shop-grid';
     SHOP_ITEMS.forEach(function (item, index) {
       var owned = hasShopItem(item.id);
+      if (shopCategory === 'owned' ? !owned : shopCategory !== 'all' && item.category !== shopCategory) return;
       var card = document.createElement('div');
       card.className = 'shop-card' + (owned ? ' owned' : '');
       var title = owned ? '購入済み' : ('★' + item.price + 'で かう');
       var afford = total >= item.price;
       card.innerHTML = ''
-        + '<div class="shop-ico">' + item.ico + '</div>'
+        + '<div class="shop-ico">' + (item.img ? '<img src="' + item.img + '" alt="">' : item.ico) + '</div>'
         + '<div class="shop-name">' + item.name + '</div>'
         + '<div class="shop-desc">' + item.desc + '</div>'
         + '<div class="shop-price"><span>' + title + '</span><small>' + (owned ? '詳細を見る' : (afford ? '買える' : '★がたりない')) + '</small></div>';
@@ -1035,6 +1053,7 @@
       }
       grid.appendChild(card);
     });
+    if (!grid.children.length) { var empty = document.createElement('p'); empty.className = 'shop-empty'; empty.textContent = 'まだ購入した おたからは ありません。'; grid.appendChild(empty); }
     el.appendChild(grid);
   }
 

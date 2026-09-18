@@ -1314,6 +1314,7 @@
 <link rel="stylesheet" href="./css/07-hunter-learning.css">
 <link rel="stylesheet" href="./css/08-ninja-imports.css">
 <link rel="stylesheet" href="./css/ninja/01-transitions.css">
+<link rel="stylesheet" href="./css/09-hunter-refresh.css">
 <script src="./js/hunter-learning-runtime.js"></script>
 <script src="./js/hunter-legacy-migrate.js"></script>
 <script src="./js/00-learning-settings.js"></script>
@@ -1328,49 +1329,36 @@
 
 <!-- ホーム -->
 <div id="home" class="sc on">
-  <div class="hdr">
-    <div class="hdr-t">ひきざん れんしゅう</div>
-    <div class="hdr-s">まいにち れんしゅうして はかせに なろう！</div>
-  </div>
-  <div class="dot-row" id="dotrow"></div>
-  <div class="mgrid">
-    <div class="mc mc-no msel" id="cn" onclick="selMode('no')">
-      <div class="mc-ico">🌱</div><div class="mc-t">くりさがり なし</div><div class="mc-d">かんたんな ひきざん</div>
-    </div>
-    <div class="mc mc-ten" id="ct" onclick="selMode('ten')">
-      <div class="mc-ico">🔥</div><div class="mc-t">10から ひく！</div><div class="mc-d">10-1〜10-9を ぜんぶ</div>
-    </div>
-    <div class="mc mc-cy" id="cc" onclick="selMode('borrow')">
-      <div class="mc-ico">⭐</div><div class="mc-t">くりさがり あり</div><div class="mc-d">むずかしい ひきざん</div>
-    </div>
-  </div>
-  <div class="frow">
-    <button class="fb fb-a on" id="fa" onclick="selFilt('all')">すべて</button>
-    <button class="fb fb-w" id="fw" onclick="selFilt('weak')">にがて だけ</button>
-  </div>
-  <div class="qi" id="qi"></div>
-  <div class="start-btn-row" id="start-btn-row">
-    <button class="go-btn go-btn-20" id="go-btn-20" onclick="start(20)">２０もん ▶</button>
-    <button class="go-btn go-btn-all" id="go-btn-all" onclick="start('all')">ぜんもん ▶</button>
-  </div>
-  <div id="kotsu-banner-area" style="margin-top:12px;display:none;">
-    <div class="kotsu-banner" onclick="showKotsuHome(gSt.mode==='borrow'?'borrow':'no')">
-      <div class="kotsu-ico">💡</div>
-      <div style="flex:1">
-        <div class="kotsu-title">こまかくわけて、れんしゅう！</div>
-        <div class="kotsu-desc">くりかえして、かんぺきにしよう！</div>
+  <header class="hunter-heading">
+    <img src="img/hunter-crystal.svg" alt="" width="64" height="64">
+    <div><p class="hunter-eyebrow">ひきざんで、未知の世界へ。</p><h1>幻獣ハンター</h1></div>
+    <button class="hunter-collection-link" onclick="show('achievements')">✦ 幻獣ずかん</button>
+  </header>
+  <div class="hunter-mission-layout">
+    <section class="hunter-course-panel" aria-labelledby="hunter-course-heading">
+      <div class="hunter-section-heading"><span>01</span><div><h2 id="hunter-course-heading">コースを えらぼう</h2><p>どの ひきざんに ちょうせんする？</p></div></div>
+      <div class="mgrid">
+        <button class="mc mc-no msel" id="cn" onclick="selMode('no')" aria-pressed="true"><span class="mc-ico">🌿</span><span class="mc-copy"><span class="mc-t">くりさがり なし</span><span class="mc-d">まずは ここから</span><span class="mc-example">7 − 3 = 4</span></span><span class="mc-check" aria-hidden="true">✓</span></button>
+        <button class="mc mc-ten" id="ct" onclick="selMode('ten')" aria-pressed="false"><span class="mc-ico">🔥</span><span class="mc-copy"><span class="mc-t">10から ひく</span><span class="mc-d">10の まとまりを マスター</span><span class="mc-example">10 − 6 = 4</span></span><span class="mc-check" aria-hidden="true">✓</span></button>
+        <button class="mc mc-cy" id="cc" onclick="selMode('borrow')" aria-pressed="false"><span class="mc-ico">⚡</span><span class="mc-copy"><span class="mc-t">くりさがり あり</span><span class="mc-d">つぎの ステップへ</span><span class="mc-example">13 − 7 = 6</span></span><span class="mc-check" aria-hidden="true">✓</span></button>
       </div>
-      <div class="kotsu-arr">›</div>
-    </div>
+      <div class="hunter-progress-label">これまでの れんしゅう</div><div class="dot-row" id="dotrow"></div>
+      <div id="kotsu-banner-area" style="display:none;">
+        <button class="kotsu-banner" onclick="showKotsuHome(gSt.mode==='borrow'?'borrow':'no')"><span class="kotsu-ico">🧭</span><span class="hunter-banner-copy"><span class="kotsu-title">かずを えらんで れんしゅう</span><span class="kotsu-desc">「3を ひく」など、ひとつずつ きわめよう</span></span><span class="kotsu-arr">→</span></button>
+      </div>
+    </section>
+    <section class="hunter-departure-panel" aria-labelledby="hunter-departure-heading">
+      <div class="hunter-section-heading"><span>02</span><div><h2 id="hunter-departure-heading">ぼうけんの じゅんび</h2><p id="hunter-selected-course">くりさがり なし</p></div></div>
+      <div class="hunter-filter-label">れんしゅうする もんだい</div>
+      <div class="frow"><button class="fb fb-a on" id="fa" onclick="selFilt('all')">すべて</button><button class="fb fb-w" id="fw" onclick="selFilt('weak')">にがて だけ</button></div>
+      <div class="qi" id="qi" aria-live="polite"></div>
+      <div class="hunter-departure-art"><img src="img/hunter-crystal.svg" alt="召喚の水晶"><p>ひきざんを きわめて<br>幻獣を なかまに しよう！</p></div>
+      <div class="start-btn-row" id="start-btn-row"><button class="go-btn go-btn-20" id="go-btn-20" onclick="start(20)">２０もん ▶</button><button class="go-btn go-btn-all" id="go-btn-all" onclick="start('all')">ぜんもん ▶</button></div>
+    </section>
   </div>
-  <div class="sm-row">
-    <button class="sml" onclick="goR()">きろく</button>
-    <button class="sml" onclick="goSt()">とうけい</button>
-    <button class="sml" onclick="show('settings')">せってい</button>
-    <button class="sml" onclick="resetData()">リセット</button>
-    <button class="sml" onclick="show('changelog')" style="color:#555;border-color:#bbb;">へんこうりれき</button>
-     <button class="sml" onclick="show('achievements')" style="color:#3A3A9A;border-color:#AAAAE8;">実績</button>
-  </div>
+  <nav class="sm-row hunter-navigation" aria-label="メニュー">
+    <button class="sml" onclick="goR()">きろく</button><button class="sml" onclick="goSt()">とうけい</button><button class="sml" onclick="show('achievements')">実績</button><button class="sml" onclick="show('settings')">せってい</button><button class="sml" onclick="show('changelog')">へんこうりれき</button><button class="sml" onclick="resetData()">リセット</button>
+  </nav>
 </div>
 
 <!-- せってい -->
@@ -1480,8 +1468,8 @@
   </div>
   <div style="font-size:12px;color:#A04040;font-weight:600;margin-bottom:10px;" id="kotsu-home-desc">こまかくわけて、れんしゅう！ くりかえして、かんぺきにしよう！</div>
   <div class="frow" style="margin-bottom:10px;">
-    <button class="fb fb-a on" id="kaxis-top" onclick="setKotsuAxis('top')">ひかれる数ごと</button>
-    <button class="fb fb-w" id="kaxis-bottom" onclick="setKotsuAxis('bottom')">ひく数ごと</button>
+    <button class="fb fb-a on" id="kaxis-top" onclick="setKotsuAxis('top')">ひかれる数を えらぶ <small>7 − □</small></button>
+    <button class="fb fb-w" id="kaxis-bottom" onclick="setKotsuAxis('bottom')">ひく数を えらぶ <small>□ − 3</small></button>
   </div>
   <div class="num-grid" id="num-grid"></div>
   <div class="leg" style="justify-content:center;margin-top:4px;">
@@ -1695,7 +1683,7 @@
   <div class="ach-shell">
     <div class="ach-left">
       <button class="ach-back" onclick="show('home')">← もどる</button>
-      <div class="ach-avatar-stage" id="ach-avatar-stage" onclick="openAchLevelPreview()" style="cursor:pointer;" title="タップで ひょうじ">
+      <div class="ach-avatar-stage" id="ach-avatar-stage">
         <div class="ach-avatar-halo"></div>
         <img id="ach-avatar-img" class="ach-avatar-img" src="img/genju_hunter_lv1.png" alt="げんじゅうハンター"
              onerror="this.style.display='none';document.getElementById('ach-avatar-css').textContent='🧭'">
@@ -1853,7 +1841,7 @@
 <!-- じっせき画面：幻獣ハンター レベルアップ演出 -->
 <div id="ninja-levelup-overlay" class="ninja-levelup-overlay" style="display:none;" onclick="closeAchLevelPreview()">
   <div class="ninja-levelup-backdrop"></div>
-  <div class="ninja-levelup-card" onclick="event.stopPropagation()">
+  <div class="ninja-levelup-card">
     <div class="ninja-levelup-flash"></div>
     <div class="ninja-levelup-toptext" id="ninja-levelup-toptext">れべるあっぷ！</div>
     <div class="ninja-levelup-visual">
@@ -2401,18 +2389,21 @@ function renNumGrid() {
     ps = kSt.axis === 'top'
       ? (kSt.kind === 'no' ? buildKTopNo(n) : buildKTopBorrow(n))
       : (kSt.kind === 'no' ? buildKNo(n) : buildKP(n));
-    var col = getKotsuCol(n), dh = '';
+    var col = getKotsuCol(n), dh = '', mastered = 0;
     for (var i = 0; i < ps.length; i++) {
       st = getSt(kD[kk(kSt.kind, kSt.axis, n, ps[i])]);
+      if (st === 'master') mastered++;
       dotCol = ST_DOT[st] || ST_DOT['unseen'];
       dh += '<div class="ndot" style="background:'+dotCol+'"></div>';
     }
     var lbl = kSt.axis === 'top' ? 'からひかれるもんだい' : 'をひくもんだい';
-    h += '<div class="num-card" style="border-color:'+col.bd+';background:'+col.bg+'" onclick="showKotsuSub('+n+')">'
-      + '<div class="num-big" style="color:'+col.tc+'">'+n+'</div>'
-      + '<div class="num-lbl">'+lbl+'</div>'
-      + '<div class="num-dots">'+dh+'</div>'
-      + '</div>';
+    h += '<button type="button" class="num-card" onclick="showKotsuSub('+n+')">'
+      + '<span class="num-big">'+n+'</span>'
+      + '<span class="num-lbl">'+lbl+'</span>'
+      + '<span class="hunter-number-example">'+(kSt.axis === 'top' ? n+' − □' : '□ − '+n)+' = ?</span>'
+      + '<span class="num-dots">'+dh+'</span>'
+      + '<span class="hunter-number-progress">マスター '+mastered+' / '+ps.length+'</span>'
+      + '</button>';
   }
   document.getElementById('num-grid').innerHTML = h;
 }
@@ -4663,7 +4654,7 @@ function renderAchievements() {
   var footer = document.getElementById('ach-footer-next');
   if (footer) footer.textContent = getAchFooterText(ACH_TAB);
 
-  checkAchLevelUp(stageIdx);
+  // Level-up celebrations run only in the completed-session reward queue.
 }
 
 // ── かいほう済みカードのタップ演出（宝石バースト） ──
@@ -4769,12 +4760,7 @@ function playAchLevelUp(stageDef) {
     ov.classList.add('is-restored');
   }, 900));
 }
-function openAchLevelPreview() {
-  var counts = getAchTabCounts();
-  var total = counts.badgeOn + counts.kotsuOn;
-  var stageIdx = getAchStageIndex(total);
-  playAchLevelUp(ACH_STAGES[stageIdx]);
-}
+
 function closeAchLevelPreview() {
   var ov = document.getElementById('ninja-levelup-overlay');
   if (!ov) return;
@@ -4866,6 +4852,7 @@ function textToHira(txt) {
 </script>
 <script src="./js/17-recitation.js"></script>
 <script src="./js/18-raid.js"></script>
+<script src="./js/hunter-creatures.js"></script>
 <script src="./js/hunter-progression.js"></script>
 <script src="./js/ninja/00-fx-settings.js"></script>
 <script src="./js/ninja/04-settings-fx.js"></script>
@@ -4875,6 +4862,8 @@ function textToHira(txt) {
 <script src="./js/ninja/09-achievement-effects-gem.js"></script>
 <script src="./js/ninja/09-achievement-effects-badge.js"></script>
 <script src="./js/ninja/09-achievement-levelup.js"></script>
+<script src="./js/hunter-shop-catalog.js"></script>
 <script src="./js/hunter-shop-debug.js"></script>
+<script src="./js/hunter-refresh.js"></script>
 </body>
 </html>

@@ -40,6 +40,11 @@ function showGemUnlockEffect(gemImg, gemName, onDone) {
   title.appendChild(line2);
 
   parts.card.appendChild(title);
+  var close = document.createElement('button');
+  close.type = 'button';
+  close.className = 'hunter-reward-close';
+  close.textContent = 'タップで とじる';
+  parts.card.appendChild(close);
 
   document.body.appendChild(parts.overlay);
   try {

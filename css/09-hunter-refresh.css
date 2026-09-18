@@ -1,0 +1,106 @@
+/* Hunter's selection screens: a wide expedition desk, with a stacked phone layout. */
+body:has(#home.on), body:has(#kotsu-home.on), body:has(#kotsu-sub.on) {
+  background: radial-gradient(ellipse at 0 0, #d6eee6, transparent 55%), #f4f5ef;
+  color: #173f3a;
+  padding: clamp(16px, 2.5vw, 36px);
+}
+body:has(#home.on) #app, body:has(#kotsu-home.on) #app, body:has(#kotsu-sub.on) #app {max-width:1200px;}
+button {font-family:inherit;}
+button:focus-visible, summary:focus-visible, [role=button]:focus-visible {outline:3px solid #df9d30;outline-offset:4px;}
+.hunter-heading {display:flex;align-items:center;gap:14px;margin-bottom:24px;}
+.hunter-heading>img {background:#123e38;border-radius:18px;padding:5px;}
+.hunter-eyebrow {font-size:12px;font-weight:700;letter-spacing:.12em;color:#58736b;}
+.hunter-heading h1 {font-size:clamp(24px,3vw,36px);letter-spacing:.08em;}
+.hunter-collection-link {margin-left:auto;background:white;border:1px solid #a9c5b9;border-radius:999px;padding:12px 20px;color:#214d42;font-weight:800;cursor:pointer;}
+.hunter-mission-layout {display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px;}
+.hunter-course-panel,.hunter-departure-panel {min-width:0;border-radius:26px;padding:26px;}
+.hunter-course-panel {background:#fffdf7;border:1px solid #dce4d7;box-shadow:0 12px 36px #193d2910;}
+.hunter-departure-panel {background:radial-gradient(ellipse at 80% 50%,#245d52,transparent 65%),#153e38;color:#f4f7ec;box-shadow:0 12px 36px #193d2920;display:flex;flex-direction:column;}
+.hunter-section-heading {display:flex;gap:12px;align-items:center;margin-bottom:22px;}
+.hunter-section-heading>span {font-size:14px;font-weight:800;border:1px solid #a3bdad;border-radius:50%;width:36px;height:36px;display:grid;place-items:center;flex:none;}
+.hunter-section-heading h2 {font-size:20px;letter-spacing:.035em;}
+.hunter-section-heading p {font-size:12px;opacity:.72;margin-top:5px;}
+#home .mgrid {grid-template-columns:1fr;gap:12px;margin:0;}
+#home .mc {display:flex;align-items:center;gap:18px;text-align:left;border:2px solid #e0e8dd;padding:15px 20px;border-radius:16px;color:#23473e;font:inherit;background:#fff;box-shadow:none;}
+#home .mc:hover {transform:translateY(-2px);border-color:#88afa0;}
+#home .mc.msel {border-color:#32846c;background:#eaf5eb;box-shadow:0 0 0 2px #32846c14;}
+#home .mc-ico {font-size:30px;display:grid;place-items:center;width:54px;height:54px;background:#f1f5e9;border-radius:14px;margin:0;flex:none;}
+.mc-copy {display:grid;grid-template-columns:1fr auto;align-items:center;width:100%;gap:3px 16px;}
+#home .mc-t {font-size:17px;color:inherit;display:block;}
+#home .mc-d {font-size:12px;display:block;grid-row:2;color:#687b71;}
+.mc-example {grid-column:2;grid-row:1 / 3;font-size:16px;font-weight:800;white-space:nowrap;}
+.mc-check {visibility:hidden;flex:none;color:#23785d;font-weight:900;}
+.msel .mc-check {visibility:visible;}
+.hunter-progress-label {font-size:11px;color:#718075;margin-top:20px;}
+#home .dot-row {justify-content:flex-start;margin:8px 0 14px;gap:4px;}
+#home .dot {width:8px;height:8px;}
+#home .kotsu-banner {width:100%;margin:16px 0 0;padding:14px;text-align:left;background:#f4f1e5;border:1px solid #e3dbc3;border-radius:14px;}
+.hunter-banner-copy {display:block;flex:1;}
+.hunter-banner-copy>span {display:block;}
+#home .kotsu-title {color:#655637;font-size:14px;}
+#home .kotsu-desc {color:#81755a;font-size:11px;margin-top:4px;}
+.hunter-filter-label {font-size:12px;color:#bdd6ca;margin:0 0 10px;}
+#home .frow {justify-content:stretch;gap:8px;margin:0;}
+#home .fb {flex:1;border:1px solid #719587;border-radius:12px;color:#d2e9dc;background:transparent;padding:12px 8px;}
+#home .fb.on {color:#163e35;background:#e4f4dd;border-color:#e4f4dd;}
+#home .qi {color:#c4dace;text-align:left;line-height:1.7;margin:12px 0 0;}
+.hunter-departure-art {display:flex;align-items:center;justify-content:center;gap:18px;flex:1;min-height:150px;}
+.hunter-departure-art img {width:132px;height:132px;}
+.hunter-departure-art p {font-size:14px;line-height:1.9;color:#e8e2bf;font-weight:700;}
+#home .start-btn-row {margin:8px 0 0;gap:10px;}
+#home .go-btn {border-radius:14px;padding:18px 8px;letter-spacing:.03em;font-size:17px;border:1px solid #ecc784;box-shadow:0 4px 0 #9b7437;background:#efd18e;color:#283c2c;}
+#home .go-btn-all {background:transparent;color:#f6e4b8;box-shadow:0 4px 0 #0d2c27;}
+#home .go-btn:disabled {opacity:.4;}
+.hunter-navigation {flex-wrap:wrap;justify-content:center;gap:8px;margin:20px 0 16px;}
+.hunter-navigation .sml {background:transparent;border:1px solid #c8d6c8;color:#496257;font-size:12px;padding:9px 17px;border-radius:999px;}
+.hunter-shop-link {display:flex;align-items:center;justify-content:space-between;background:#fffaf0;border:1px solid #e2d4ad;border-radius:16px;padding:14px 20px;margin-top:12px;font-weight:800;}
+.hunter-shop-link small {display:block;font-size:11px;font-weight:600;color:#8a7956;margin-top:3px;}
+.hunter-shop-link .hunter-stars {width:auto;min-width:100px;margin:0;padding:10px 20px;font-size:20px;}
+.hunter-raid-details {border:1px solid #cbd9ce;border-radius:14px;padding:14px 20px;background:#ffffff65;}
+.hunter-raid-details summary {font-size:13px;font-weight:700;cursor:pointer;}
+.hunter-raid-details .learning-settings {margin:14px 0 0;}
+#kotsu-home .page-head,#kotsu-sub .page-head {margin-bottom:26px;}
+#kotsu-home .num-grid {grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin:24px 0;}
+#kotsu-home .num-card {padding:24px 12px;border:1px solid #cddbd0;background:#fffef8;color:#214c40;border-radius:20px;box-shadow:0 6px 18px #2447350b;font:inherit;}
+#kotsu-home .num-card:hover {border-color:#34856a;transform:translateY(-3px);background:#edf6ec;}
+#kotsu-home .num-big {display:block;color:#285f4d;font-size:36px;}
+#kotsu-home .num-lbl {display:block;font-size:12px;margin:6px 0 12px;color:#708376;}
+.hunter-number-example {display:block;font-size:20px;font-weight:800;margin-bottom:12px;}
+.hunter-number-progress {display:block;font-size:11px;margin-top:7px;color:#748174;}
+#kotsu-home .fb {background:#fffef8;border:1px solid #bed0bf;color:#55725e;border-radius:14px;}
+#kotsu-home .fb.on {background:#245c4c;border-color:#245c4c;color:white;}
+#kotsu-home .fb small {display:block;margin-top:4px;font-size:15px;opacity:.8;}
+#kotsu-home .frow,#kotsu-sub .frow {justify-content:flex-start;flex-wrap:wrap;}
+#kotsu-sub {max-width:900px;margin:0 auto;}
+#kotsu-sub .kotsu-sub-desc {background:#fffdf6;padding:24px;border:1px solid #d8e4d5;border-radius:20px;line-height:1.8;}
+#kotsu-sub>.go-btn {max-width:440px;margin:24px auto;}
+.hunter-shop-filters {display:flex;gap:8px;flex-wrap:wrap;margin:14px 0;}
+.hunter-shop-filters button {padding:9px 15px;border:1px solid #49665c;border-radius:999px;color:#c9e4d8;background:#173e35;cursor:pointer;font-weight:700;}
+.hunter-shop-filters button[aria-pressed=true] {background:#efcf87;color:#26372a;border-color:#efcf87;}
+.shop-ico img {width:64px;height:64px;object-fit:contain;}
+/* Original medals have wide transparent margins. A square cover viewport uses that
+   empty space, making the actual medal large without changing the source art. */
+.gem-burst-overlay[role=dialog] {background:#061b18c9;animation:none;padding:16px;overflow:auto;}
+.gem-burst-overlay[role=dialog] .gem-burst-card {padding:20px!important;gap:8px;height:auto;min-height:0;max-height:calc(100dvh - 32px);overflow:auto;}
+.gem-burst-overlay[role=dialog] .gem-burst-img {width:min(80vw,58dvh,520px);height:min(80vw,58dvh,520px);max-width:100%;max-height:none;object-fit:cover;flex-shrink:0;}
+.hunter-reward-close,.ninja-levelup-footer {border:1px solid #83a59a;border-radius:999px;background:#183d35;color:#f4f6df;padding:10px 22px;cursor:pointer;font:700 14px inherit;}
+.ninja-levelup-overlay {position:fixed;}
+.ninja-levelup-card {overflow:auto;max-height:calc(100dvh - 24px);}
+/* A summoned crystal, surrounded by a light pulse, replaces the spinning avatar. */
+#scene-wipe .wipe-star {background-image:url('../img/hunter-crystal.svg');width:220px;height:220px;filter:drop-shadow(0 0 26px #62f4d6);}
+#scene-wipe .wipe-swipe {display:none;}
+#scene-wipe .wipe-backdrop {background:radial-gradient(ellipse,#103d32b0,#09271c55);}
+#scene-wipe .wipe-burst {background:radial-gradient(circle,#e0fff7 0%,#72e4c777 35%,transparent 68%);}
+#scene-wipe.active .wipe-star {animation:hunterSummon 600ms ease both;}
+@keyframes hunterSummon {0%{transform:translate(-50%,-40%) scale(.7);opacity:0}35%,65%{transform:translate(-50%,-50%) scale(1);opacity:1}100%{transform:translate(-50%,-60%) scale(1.08);opacity:0}}
+@media(min-width:1050px) {#kotsu-home .num-grid {grid-template-columns:repeat(5,minmax(0,1fr));}}
+@media(max-width:900px) {.mc-copy{grid-template-columns:1fr}.mc-example{grid-column:1;grid-row:3;margin-top:4px}.hunter-course-panel,.hunter-departure-panel{padding:20px}.hunter-mission-layout{gap:16px}#home .mc{padding:13px;gap:12px}}
+@media(max-width:650px) {
+ body:has(#home.on),body:has(#kotsu-home.on),body:has(#kotsu-sub.on){padding-top:58px;}
+ #kotsu-home .frow .fb{flex:1;padding:10px 6px;font-size:12px;}
+ .hunter-mission-layout{grid-template-columns:1fr}.hunter-heading{gap:10px;margin-bottom:18px}.hunter-heading>img{width:48px;height:48px}.hunter-heading h1{font-size:24px}.hunter-eyebrow{font-size:10px;letter-spacing:0}.hunter-collection-link{padding:10px;font-size:11px}.hunter-section-heading h2{font-size:18px}.mc-copy{grid-template-columns:1fr auto}.mc-example{grid-column:2;grid-row:1/3;font-size:14px}#home .mc-t{font-size:15px}#home .mc-ico{width:40px;height:45px;font-size:24px}#home .mc{gap:10px}.hunter-departure-art{min-height:130px}.hunter-departure-art img{width:110px;height:110px}#kotsu-home .num-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}#kotsu-home .num-card{padding:18px 4px}.hunter-shop-link{padding:12px}.hunter-shop-link small{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce) {
+ #scene-wipe.active .wipe-star{animation:none;opacity:1;transform:translate(-50%,-50%)}
+ #scene-wipe.active .wipe-burst{animation:none}.gem-burst-card{animation:none}
+}

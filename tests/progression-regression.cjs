@@ -20,7 +20,7 @@ const assert=require('node:assert/strict');
  await page.locator('#dbg-star-input').fill('100');await page.locator('#dbg-star-set').click();assert.equal(await page.evaluate(()=>HunterHud.getStarCount()),100);
  await page.locator('#dbg-close-panel').click();
  await page.evaluate(()=>{setAchTab('shop');show('achievements');});
- assert(await page.locator('#ach-group-shop').isVisible());assert.equal(await page.locator('.shop-card').count(),24);
+ assert(await page.locator('#ach-group-shop').isVisible());assert.equal(await page.locator('.shop-card').count(),100);
  await page.locator('.shop-buy').first().click();assert.equal(await page.evaluate(()=>HunterHud.getStarCount()),95);
  await page.evaluate(()=>purchaseShopItem('field_bag'));assert.equal(await page.evaluate(()=>HunterHud.getStarCount()),95);
  await page.locator('.shop-card.owned').first().click();assert(await page.locator('#shop-detail-overlay.show').isVisible());

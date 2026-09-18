@@ -50,14 +50,14 @@ function collectHunterAwards() {
   ACH_BADGE_DEFS.forEach(function(def) {
     if (!badgeData[def.key] && hunterBadgeReady(def)) {
       badgeData[def.key] = {date:new Date().toISOString()};
-      added.push({img:def.img,title:def.title});
+      added.push({img:def.img,title:hunterCreatureName(def)});
     }
   });
   KOTSU_IMG_DEFS.forEach(function(def) {
     var key = 'kotsu_'+def.key;
     if (!badgeData[key] && hunterRawKotsuProgress(def).allMaster) {
       badgeData[key] = {date:new Date().toISOString()};
-      added.push({img:kotsuImgSrc(def),title:def.title});
+      added.push({img:kotsuImgSrc(def),title:hunterCreatureName(def)});
     }
   });
   saveBadgeData(); return added;
