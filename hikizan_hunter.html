@@ -1315,6 +1315,7 @@
 <link rel="stylesheet" href="./css/08-ninja-imports.css">
 <link rel="stylesheet" href="./css/ninja/01-transitions.css">
 <link rel="stylesheet" href="./css/09-hunter-refresh.css">
+<script src="./js/hunter-creatures.js"></script>
 <script src="./js/hunter-learning-runtime.js"></script>
 <script src="./js/hunter-legacy-migrate.js"></script>
 <script src="./js/00-learning-settings.js"></script>
@@ -1532,7 +1533,7 @@
   </div>
 
   <div class="stk" id="stk"></div>
-  </div><aside class="practice-hint-panel"><h2>かんがえる ヒント</h2><p>10の まとまりから ひいてみよう</p>
+  </div><aside class="practice-hint-panel" style="display:none"><h2>かんがえる ヒント</h2><p>10の まとまりから ひいてみよう</p>
   <!-- ヒントエリア（くりさがりありのみ） -->
   <div id="hint-area" style="display:none;margin-top:10px;">
     <!-- ヒント選択ボタン行 -->
@@ -1826,7 +1827,7 @@
 
 <!-- じっせき画面：カードタップ演出（実績メダル / コツメダル 共通） -->
 <div id="ach-preview-overlay" class="gem-burst-overlay" style="display:none;" onclick="closeAchPreview()">
-  <div class="gem-burst-card" onclick="event.stopPropagation()">
+  <div class="gem-burst-card">
     <div class="gem-burst-img-wrap">
       <img id="ach-preview-img" class="gem-burst-img" src="" alt="" onerror="this.style.display='none'">
     </div>
@@ -1835,6 +1836,7 @@
       <div class="gem-burst-title-sub" id="ach-preview-title-sub"></div>
     </div>
     <div class="gem-burst-sub" id="ach-preview-sub"></div>
+    <button type="button" class="ach-preview-close">タップで とじる</button>
   </div>
 </div>
 
@@ -2641,6 +2643,7 @@ function showP() {
   var isBorrow = (p.a === 10 || (p.a >= 11 && (p.a%10) < p.b));
   if (ha) {
     ha.style.display = isBorrow ? 'block' : 'none';
+    ha.closest('.practice-hint-panel').style.display = isBorrow ? 'block' : 'none';
     if (isBorrow) hintSetProblem(p);
   }
   if (sess._timedIndex !== sess.idx) { sess.startTime = Date.now(); sess._timedIndex = sess.idx; }
@@ -4486,7 +4489,7 @@ function renderAchBadgeGroup() {
         on: on,
         img: def.img,
         ico: def.ico,
-        name: def.title,
+        name: hunterCreatureName(def),
         cond: on ? '✅ かいほうずみ' : def.desc,
         onClick: function () { openAchBadgePreview(def); }
       }));
@@ -4510,7 +4513,7 @@ function renderAchKotsuGroup() {
         on: on,
         img: kotsuImgSrc(def),
         ico: '🏅',
-        name: def.title,
+        name: hunterCreatureName(def),
         cond: on ? '✅ マスター' : (pr.master + '/' + pr.total + ' クリア'),
         iconSize: 64,
         onClick: function () { openAchKotsuPreview(def); }
@@ -4531,7 +4534,7 @@ function renderAchGemsSidebar() {
       var on = !!pr.allMaster;
       var card = document.createElement('div');
       card.className = 'ach-gem-card ' + (on ? 'unlocked' : 'locked');
-      card.title = def.title;
+      card.title = hunterCreatureName(def);
       if (on) {
         card.style.cursor = 'pointer';
         card.addEventListener('click', function () { openAchKotsuPreview(def); });
@@ -4681,7 +4684,7 @@ function showAchPreviewEffect(cfg) {
   if (typeof sndPerfect === 'function') { try { sndPerfect(); } catch (e) {} }
 
   if (_achPreviewTimer) clearTimeout(_achPreviewTimer);
-  _achPreviewTimer = setTimeout(function () { ov.style.display = 'none'; }, 1800);
+  _achPreviewTimer = null;
 }
 function closeAchPreview() {
   var ov = document.getElementById('ach-preview-overlay');
@@ -4691,7 +4694,7 @@ function closeAchPreview() {
 function openAchBadgePreview(def) {
   showAchPreviewEffect({
     img: def.img,
-    titleMain: '🏅 実績メダル',
+    titleMain: hunterCreatureName(def),
     titleSub: def.title.replace(/\n/g, ' '),
     sub: def.desc.replace(/\n/g, ' ')
   });
@@ -4699,7 +4702,7 @@ function openAchBadgePreview(def) {
 function openAchKotsuPreview(def) {
   showAchPreviewEffect({
     img: kotsuImgSrc(def),
-    titleMain: '🏆 コツメダル',
+    titleMain: hunterCreatureName(def),
     titleSub: def.title,
     sub: 'ぜんぶ マスターしたよ！'
   });
@@ -4852,7 +4855,6 @@ function textToHira(txt) {
 </script>
 <script src="./js/17-recitation.js"></script>
 <script src="./js/18-raid.js"></script>
-<script src="./js/hunter-creatures.js"></script>
 <script src="./js/hunter-progression.js"></script>
 <script src="./js/ninja/00-fx-settings.js"></script>
 <script src="./js/ninja/04-settings-fx.js"></script>

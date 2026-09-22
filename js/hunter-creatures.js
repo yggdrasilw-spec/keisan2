@@ -45,3 +45,8 @@ var HUNTER_CREATURE_NAMES = {
 function hunterCreatureName(def) {
   return HUNTER_CREATURE_NAMES[def.key] || 'あたらしい幻獣';
 }
+
+function hunterMasterLabel(def) {
+  if (def.axis) return (def.kind === 'borrow' ? 'くりさがりあり・' : 'くりさがりなし・') + def.num + (def.axis === 'top' ? 'からひく' : 'をひく');
+  return def.title.replace(/\n/g, ' ').replace(/メダル/g, '');
+}

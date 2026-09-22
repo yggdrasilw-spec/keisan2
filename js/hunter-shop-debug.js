@@ -131,35 +131,31 @@
   },
   {
     "id": "orthros",
-    "ico": "🐺",
-    "name": "オルトロス",
+    "ico": "🧿",
+    "name": "双眼のまもり石",
     "price": 80,
-    "desc": "二つの頭で仲間を見守る、たのもしい幻獣。",
-    "img": "img/オルトロス.png"
+    "desc": "二つの光で帰り道を示すお守り。"
   },
   {
     "id": "manticore",
-    "ico": "🦁",
-    "name": "マンティコア",
+    "ico": "🗡️",
+    "name": "翼の短剣",
     "price": 100,
-    "desc": "大きな翼と鋭い尾をもつ、勇敢な幻獣。",
-    "img": "img/マンティコア.png"
+    "desc": "翼の模様が刻まれた冒険の短剣。"
   },
   {
     "id": "unicorn",
-    "ico": "🦄",
-    "name": "ユニコーン",
+    "ico": "🪔",
+    "name": "清めのランプ",
     "price": 120,
-    "desc": "一本の角に清らかな光を宿す幻獣。",
-    "img": "img/ユニコーン.png"
+    "desc": "清らかな光で暗い道を照らすランプ。"
   },
   {
     "id": "gozu_mezu",
-    "ico": "🐂",
-    "name": "牛頭馬頭",
+    "ico": "🛡️",
+    "name": "双守の大盾",
     "price": 150,
-    "desc": "力を合わせて道を切り開く、二人の守護者。",
-    "img": "img/牛頭馬頭.png"
+    "desc": "二つの紋章で仲間を守る大きな盾。"
   },
   {
     "id": "dragon_scale",
@@ -191,11 +187,11 @@
   }
 ];
   SHOP_ITEMS.forEach(function(item, index) {
-    item.category = item.img ? 'creature' : index < 12 ? 'explore' : index < 16 ? 'relic' : 'legend';
+    item.category = index < 12 ? 'explore' : index < 16 ? 'relic' : 'legend';
   });
   SHOP_ITEMS = SHOP_ITEMS.concat(HUNTER_EXTRA_SHOP_ITEMS);
   var shopCategory = 'all';
-  var shopCategories = [['all','すべて'],['explore','探索どうぐ'],['material','森のめぐみ'],['relic','魔法の道具'],['legend','伝説のおたから'],['creature','幻獣'],['owned','購入済み']];
+  var shopCategories = [['all','すべて'],['explore','探索どうぐ'],['material','森のめぐみ'],['relic','魔法の道具'],['legend','伝説のおたから'],['owned','購入済み']];
   function getShopItemImagePath(index) { return SHOP_ITEMS[index].img || ''; }
 
   function trimJapanesePeriod(text) {
@@ -650,6 +646,10 @@
         + '</div>'
         + '</div>';
       document.body.appendChild(o);
+      var masterSection = document.createElement('div');
+      masterSection.className = 'dbg-section';
+      renderMasterControl(masterSection);
+      o.querySelector('.dbg-dialog').insertBefore(masterSection, o.querySelector('.dbg-section'));
     }
   }
 
