@@ -1320,6 +1320,7 @@
 <script src="./js/hunter-legacy-migrate.js"></script>
 <script src="./js/00-learning-settings.js"></script>
 <script src="./vendor/tf.min.js"></script>
+<link rel="stylesheet" href="./css/10-hunter-challenges.css">
 </head>
 <body>
 <div id="start-screen" onclick="hikizanStartTap()">
@@ -2837,6 +2838,7 @@ renderAchievements();renderVoiceSettings();renderPraiseEdit();syncImageSettingsU
 
 function resetData(){
   if (!confirm('きろく・メダル・★・買い物・進化をリセットします。設定・画像・音声は残ります。よろしいですか？')) return;
+  Object.keys(localStorage).filter(function(key){return key.indexOf('hikizan_challenge_')===0;}).forEach(function(key){localStorage.removeItem(key);});
   gD={}; kD={};
   try{localStorage.removeItem(LS_GD);localStorage.removeItem(LS_KD);}catch(e){}
   badgeData={};saveBadgeData();shopData={};saveShopData();HunterHud.setStarCount(0);clearHunterDebugOverrides();setSeenAchStage(0);
@@ -4867,5 +4869,7 @@ function textToHira(txt) {
 <script src="./js/hunter-shop-catalog.js"></script>
 <script src="./js/hunter-shop-debug.js"></script>
 <script src="./js/hunter-refresh.js"></script>
+<script src="./js/hunter-challenges.js"></script>
+<script src="./js/hunter-lore.js"></script>
 </body>
 </html>
