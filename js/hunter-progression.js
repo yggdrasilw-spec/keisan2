@@ -25,6 +25,7 @@ var HunterHud = {
 };
 var hunterRawKotsuProgress = getKotsuProgress;
 function hunterBadgeReady(def) {
+  if(def.challenge)return storageLoadText('hikizan_challenge_'+def.mode+'_'+def.challenge+'_clear','0')==='1';
   var problems = buildP(def.mode);
   var mastered = problems.filter(function(p) { return getSt(gD[gk(def.mode,p)]) === 'master'; }).length;
   return problems.length > 0 && mastered >= (def.limit === 'all' ? problems.length : def.limit);

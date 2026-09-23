@@ -6,9 +6,9 @@
     syncCourse();
   };
   function syncCourse() {
-    var modes = ['no', 'ten', 'borrow'];
-    var labels = ['くりさがり なし', '10から ひく', 'くりさがり あり'];
-    ['cn', 'ct', 'cc'].forEach(function (id, i) {
+    var modes = ['no', 'ten', 'borrow', 'mix'];
+    var labels = ['くりさがり なし', '10から ひく', 'くりさがり あり', 'ばらばら'];
+    ['cn', 'ct', 'cc', 'cm'].forEach(function (id, i) {
       document.getElementById(id).setAttribute('aria-pressed', String(gSt.mode === modes[i]));
     });
     document.getElementById('hunter-selected-course').textContent = labels[modes.indexOf(gSt.mode)];

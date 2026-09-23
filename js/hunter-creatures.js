@@ -1,6 +1,8 @@
 // Display names are kept separate from learning conditions and saved reward IDs.
 // Official creature names supplied by the author, in learning-condition order.
 var HUNTER_CREATURE_NAMES = {
+  mix_20: 'プリズム・スタッグ',
+  mix_all: 'アストラル・ドラゴン',
   easy_20: 'ユニコーン',
   easy_all: 'ヨルムンガンド',
   ten_all: 'マンティコア',

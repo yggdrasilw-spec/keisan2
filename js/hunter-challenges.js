@@ -3,6 +3,14 @@
   'use strict';
   var modes = {shinsoku:{name:'神速',sub:'しんそく',ms:2000},super:{name:'超神速',sub:'ちょうしんそく',ms:1500},mugen:{name:'無限',sub:'むげん',ms:4000}};
   var clock = null, pending = null;
+  window.hunterChallengeAccess=function(mode){
+    var normal=ACH_BADGE_DEFS.filter(function(def){return !def.challenge;});
+    var count=normal.filter(function(def){return getAchBadgeUnlocked(def);}).length;
+    var cleared=['no','ten','borrow','mix'].filter(function(course){return storageLoadText('hikizan_challenge_'+course+'_shinsoku_clear','0')==='1';}).length;
+    if(count<normal.length)return {open:false,text:'実績メダルを すべて あつめよう（'+count+'/'+normal.length+'）'};
+    if(mode==='super' && cleared<4)return {open:false,text:'4コースの 神速を クリアしよう（'+cleared+'/4）'};
+    return {open:true,text:'ちょうせん できるよ'};
+  };
   function stopClock(){clearInterval(clock);clock=null;}
   function active(){return sess && sess.hunterChallenge;}
   function limit(){return active()==='mugen'?Math.max(2500,4000-sess.results.length*120):modes[active()].ms;}
@@ -15,7 +23,7 @@
     if(!remaining){sess.challengeReason='時間ぎれ！';sess._sessionEnding=true;finish();}
   }
   window.startHunterChallenge=function(mode){
-    if(!modes[mode])return;
+    if(!modes[mode] || !hunterChallengeAccess(mode).open)return;
     document.getElementById('hunter-challenge-dialog').close();
     pending=mode;
     startSession(buildP(gSt.mode),mode==='mugen'?'all':20);
@@ -34,7 +42,7 @@
     document.getElementById('hunter-time-track').hidden=!on;
     document.getElementById('practice').classList.toggle('hunter-challenge-active',on);
     if(!on || sess._sessionEnding || sess._answerSubmitted)return;
-    document.getElementById('pbdg').textContent=modes[active()].name+' ｜ '+({no:'くりさがりなし',ten:'10からひく',borrow:'くりさがりあり'})[gSt.mode];
+    document.getElementById('pbdg').textContent=modes[active()].name+' ｜ '+({no:'くりさがりなし',ten:'10からひく',borrow:'くりさがりあり',mix:'ばらばら'})[gSt.mode];
     if(active()==='mugen')document.getElementById('pctr').textContent=sess.results.length+' もん突破';
     if(tIv){clearInterval(tIv);tIv=null;}
     stopClock();updateClock();if(!sess._sessionEnding)clock=setInterval(updateClock,25);
@@ -62,7 +70,8 @@
     var count=sess.results.filter(function(r){return r.ok;}).length;
     var cleared=active()!=='mugen' && count===sess.queue.length;
     var best=Math.max(count,Number(storageLoadText(bestKey(),'0'))||0);storageSaveText(bestKey(),best);
-    if(cleared)storageSaveText(bestKey()+'_clear','1');
+    var newBadges=[];
+    if(cleared){storageSaveText(bestKey()+'_clear','1');newBadges=collectHunterSpeedBadges();}
     document.getElementById('rbi').textContent=cleared?'🏆':'⚡';
     document.getElementById('rt2').textContent=cleared?modes[active()].name+' クリア！':count+'もん 突破！';
     document.getElementById('rs2').textContent=sess.challengeReason || (cleared?'すべて 時間内に せいかい！':'ここまでの記録を 保存したよ');
@@ -73,6 +82,10 @@
     document.getElementById('rv-m').textContent=best+'もん';
     document.getElementById('hunter-result-reward').textContent=modes[active()].name+' ｜ 自己ベスト '+best+'もん';
     show('result');if(cleared)sndHunterPerfect();
+    if(newBadges.length){
+      var badge=newBadges[0];document.getElementById('hunter-result-reward').textContent+=' ｜ '+badge.title.replace(/\n/g,' ')+' ゲット！';
+      if(hunterEffectEnabled('medal'))showGemUnlockEffect(badge.img,badge.title+'\nゲット！',function(){renderAchievementOverview();});
+    }
   };
   var baseShow=show;
   show=function(screen){if(screen!=='practice')stopClock();return baseShow(screen);};
@@ -90,6 +103,8 @@
       var cards=dialog.querySelector('.hunter-challenge-cards');cards.replaceChildren();
       Object.keys(modes).forEach(function(key,i){var m=modes[key],b=document.createElement('button'),best=storageLoadText('hikizan_challenge_'+gSt.mode+'_'+key,'0');b.className='hunter-challenge-card mode-'+key;
         b.innerHTML='<span class="hunter-challenge-symbol">'+['ϟ','ϟϟ','∞'][i]+'</span><span><small>'+m.sub+'</small><strong>'+m.name+'</strong><span>'+(key==='mugen'?'4秒からだんだん速く。最短2.5秒':(m.ms/1000)+'秒 × '+Math.min(20,buildP(gSt.mode).length)+'問')+'</span><em>自己ベスト '+Number(best)+'もん</em></span><b>▶</b>';
+        var access=hunterChallengeAccess(key);b.disabled=!access.open;
+        if(!access.open){b.classList.add('is-locked');b.querySelector('b').textContent='🔒';var note=document.createElement('span');note.className='hunter-lock-note';note.textContent=access.text;b.querySelector('em').after(note);}
         b.onclick=function(){startHunterChallenge(key);};cards.appendChild(b);
       });dialog.showModal();
     };

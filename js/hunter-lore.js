@@ -1,5 +1,7 @@
 // Short, child-friendly field notes. Adventure descriptions are original game lore.
 var HUNTER_LORE = {
+ mix_20:['虹角の幻獣','このゲームだけのオリジナル幻獣。水晶の角に、森・炎・雷の三つの光を集める白い鹿です。','いろいろなひき算を20問マスターしたハンターの前に現れます。問題が変わっても、落ち着いて考える力のしるしです。'],
+ mix_all:['星めぐりの幻獣','このゲームだけのオリジナル幻獣。星空の翼と銀色の体をもち、色とりどりの水晶と空を旅する竜です。','ばらばらコースの全問をマスターすると仲間になります。すべてのひき算をきわめたハンターを、新しい冒険へ案内します。'],
  easy_20:['一角の幻獣','額に一本の角をもつ、馬に似た幻獣。ユニコーンという名前には「一つの角」という意味があります。','森の奥で出会える、やさしい案内役。小さな一歩を重ねるハンターを見守ります。'],
  easy_all:['世界をめぐる大蛇','北欧の神話に登場する大きな蛇。世界をぐるりと取り巻くほどの大きさだと語られています。','長い体は、最後まで続けた練習のしるし。遠くまで進む勇気をくれます。'],
  ten_all:['複合の幻獣','人の顔、ライオンの体、危険な尾をもつと伝えられる幻獣。翼のある姿で描かれることもあります。','いろいろな力を組み合わせる名人。「10のまとまり」を使いこなすハンターの仲間です。'],
@@ -43,7 +45,7 @@ var HUNTER_LORE = {
 };
 (function(){
   var selected=null,returnFocus=null;
-  ['openAchBadgePreview','openAchKotsuPreview'].forEach(function(name){var original=window[name];window[name]=function(def){selected=def;returnFocus=document.activeElement;original(def);document.getElementById('hunter-lore-open').focus();};});
+  ['openAchBadgePreview','openAchKotsuPreview'].forEach(function(name){var original=window[name];window[name]=function(def){selected=def;returnFocus=document.activeElement;original(def);var button=document.getElementById('hunter-lore-open');button.hidden=!!def.challenge;(def.challenge?document.querySelector('#ach-preview-overlay .ach-preview-close'):button).focus();};});
   document.addEventListener('DOMContentLoaded',function(){
     var button=document.createElement('button');button.id='hunter-lore-open';button.type='button';button.className='hunter-lore-button';button.textContent='解説を 見る　→';
     document.querySelector('#ach-preview-overlay .ach-preview-close').before(button);

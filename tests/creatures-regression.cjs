@@ -10,7 +10,7 @@ const assert=require('node:assert/strict');
   await page.evaluate(()=>{document.getElementById('start-screen').remove();sfxOn=false;voiceOn=false;});
   const keys=await page.evaluate(()=>ACH_BADGE_DEFS.concat(KOTSU_IMG_DEFS).map(d=>d.key));
   const names=await page.evaluate(()=>HUNTER_CREATURE_NAMES);
-  assert.equal(keys.length,40);
+  assert.equal(keys.length,50);
   assert.deepEqual(Object.keys(names).sort(),keys.sort());
   assert(Object.values(names).every(n=>n && !n.includes('メダル')));
   // Exercise both branches of the real award collector without altering saved records.
@@ -19,7 +19,7 @@ const assert=require('node:assert/strict');
    hunterBadgeReady=()=>true;hunterRawKotsuProgress=()=>({allMaster:true});badgeData={};
    try{return collectHunterAwards();}finally{hunterBadgeReady=ready;hunterRawKotsuProgress=progress;}
   });
-  assert.equal(awards.length,40);
+  assert.equal(awards.length,50);
   assert.deepEqual(awards.map(a=>a.title).sort(),Object.values(names).sort());
   await page.addStyleTag({content:'.gem-burst-card{animation:none!important}'});
   for(const award of awards){
@@ -33,6 +33,6 @@ const assert=require('node:assert/strict');
    await page.locator('.hunter-reward-close').click();
   }
   assert.deepEqual(errors,[]);
-  console.log('PASS: all 40 official names match reward keys, award collector uses names, all titles fit 360px and close on tap');
+  console.log('PASS: all 50 achievement names match reward keys, award collector uses names, all titles fit 360px and close on tap');
  } finally {await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1);});

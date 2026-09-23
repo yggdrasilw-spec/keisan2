@@ -1321,6 +1321,7 @@
 <script src="./js/00-learning-settings.js"></script>
 <script src="./vendor/tf.min.js"></script>
 <link rel="stylesheet" href="./css/10-hunter-challenges.css">
+<link rel="stylesheet" href="./css/11-hunter-flow.css">
 </head>
 <body>
 <div id="start-screen" onclick="hikizanStartTap()">
@@ -1343,6 +1344,7 @@
         <button class="mc mc-no msel" id="cn" onclick="selMode('no')" aria-pressed="true"><span class="mc-ico">🌿</span><span class="mc-copy"><span class="mc-t">くりさがり なし</span><span class="mc-d">まずは ここから</span><span class="mc-example">7 − 3 = 4</span></span><span class="mc-check" aria-hidden="true">✓</span></button>
         <button class="mc mc-ten" id="ct" onclick="selMode('ten')" aria-pressed="false"><span class="mc-ico">🔥</span><span class="mc-copy"><span class="mc-t">10から ひく</span><span class="mc-d">10の まとまりを マスター</span><span class="mc-example">10 − 6 = 4</span></span><span class="mc-check" aria-hidden="true">✓</span></button>
         <button class="mc mc-cy" id="cc" onclick="selMode('borrow')" aria-pressed="false"><span class="mc-ico">⚡</span><span class="mc-copy"><span class="mc-t">くりさがり あり</span><span class="mc-d">つぎの ステップへ</span><span class="mc-example">13 − 7 = 6</span></span><span class="mc-check" aria-hidden="true">✓</span></button>
+        <button class="mc mc-mix" id="cm" onclick="selMode('mix')" aria-pressed="false"><span class="mc-ico">🎲</span><span class="mc-copy"><span class="mc-t">ばらばら</span><span class="mc-d">ぜんぶの コースを まぜるよ</span><span class="mc-example">7 − 3 ／ 13 − 7</span></span><span class="mc-check" aria-hidden="true">✓</span></button>
       </div>
       <div class="hunter-progress-label">これまでの れんしゅう</div><div class="dot-row" id="dotrow"></div>
       <div id="kotsu-banner-area" style="display:none;">
@@ -1607,6 +1609,7 @@
     <button class="tab tab-no" id="rtn" onclick="swR('no')">くりさがり なし</button>
     <button class="tab tab-ten" id="rtt" onclick="swR('ten')">10から ひく！</button>
     <button class="tab tab-off" id="rtc" onclick="swR('borrow')">くりさがり あり</button>
+    <button class="tab tab-off" id="rtm" onclick="swR('mix')">ばらばら</button>
   </div>
   <div class="leg">
     <span><span class="ldot" style="background:#3A90E0"></span>マスター</span>
@@ -1628,6 +1631,7 @@
   <div class="gsect"><div class="gtitle">🌱 くりさがりなし</div><div class="hgrid" id="hgno"></div></div>
   <div class="gsect"><div class="gtitle">🔥 10からひく！</div><div class="hgrid" id="hgten"></div></div>
   <div class="gsect"><div class="gtitle">⭐ くりさがりあり</div><div class="hgrid" id="hgcy"></div></div>
+  <div class="gsect"><div class="gtitle">🎲 ばらばら</div><div class="hgrid" id="hgmix"></div></div>
   <div class="hleg">
     <span><span class="hsq" style="background:#3A90E0"></span>マスター</span>
     <span><span class="hsq" style="background:#7DC95E"></span>がんばろう</span>
@@ -2167,6 +2171,8 @@ function getKotsuCol(n) {
 // ======================================================
 // 繰り下がりなし: 答えが1以上、引く数 >= 1
 function buildP(m) {
+  // Borrow already includes 10-minus: combine without duplicate problems.
+  if (m === "mix") return buildP("no").concat(buildP("borrow"));
   var p = [];
   if (m === 'no') {
     // 繰り下がりなし: a - b で a<=10, b<=a, 答え>=1, 十の位不変
@@ -2258,7 +2264,7 @@ function sh(a) {
 // ホーム
 // ======================================================
 function updDots() {
-  var modes = ['no','ten','borrow'], all = [], mc = 0;
+  var modes = ['no','ten','borrow','mix'], all = [], mc = 0;
   for (var mi=0; mi<modes.length; mi++) {
     var ps = buildP(modes[mi]);
     for (var pi=0; pi<ps.length; pi++) all.push({mode:modes[mi], p:ps[pi]});
@@ -2300,6 +2306,7 @@ function updStartBtnRow() {
 
 function selMode(m) {
   gSt.mode = m;
+  document.getElementById('cm').classList.toggle('msel', m==='mix');
   document.getElementById('cn').classList.toggle('msel', m==='no');
   document.getElementById('ct').classList.toggle('msel', m==='ten');
   document.getElementById('cc').classList.toggle('msel', m==='borrow');
@@ -2545,7 +2552,7 @@ function startSession(ps, limit) {
   sess.scope = (limit === 'all') ? 'all' : 20;
   sessMode='normal';
   var bdg=document.getElementById('pbdg');
-  bdg.textContent=gSt.mode==='no'?'くりさがりなし':(gSt.mode==='ten'?'10からひく！':'くりさがりあり');
+  bdg.textContent=gSt.mode==='mix'?'ばらばら':gSt.mode==='no'?'くりさがりなし':(gSt.mode==='ten'?'10からひく！':'くりさがりあり');
   bdg.className='pbdg '+(gSt.mode==='no'?'bno':(gSt.mode==='ten'?'bten':'bcy'));
   document.getElementById('pcard').className='pcard';
   document.getElementById('peq').className='peq';
@@ -2773,6 +2780,7 @@ function swR(m){
   document.getElementById('rtn').className='tab '+(m==='no'?'tab-no':'tab-off');
   document.getElementById('rtt').className='tab '+(m==='ten'?'tab-ten':'tab-off');
   document.getElementById('rtc').className='tab '+(m==='borrow'?'tab-cy':'tab-off');
+  document.getElementById('rtm').className='tab '+(m==='mix'?'tab-cy':'tab-off');
   renR();
 }
 
@@ -2789,7 +2797,7 @@ function renR(){
 }
 
 function renSt(){
-  var modes=['no','ten','borrow'], m=0,ok=0,w=0;
+  var modes=['no','ten','borrow','mix'], m=0,ok=0,w=0;
   for (var mi=0; mi<modes.length; mi++) {
     var all = buildP(modes[mi]);
     for (var i=0;i<all.length;i++){
@@ -2800,7 +2808,7 @@ function renSt(){
   document.getElementById('ss-m').textContent=m;
   document.getElementById('ss-ok').textContent=ok;
   document.getElementById('ss-w').textContent=w;
-  renHG('no','hgno'); renHG('ten','hgten'); renHG('borrow','hgcy');
+  renHG('no','hgno'); renHG('ten','hgten'); renHG('borrow','hgcy'); renHG('mix','hgmix');
 }
 
 function renHG(mode,id){
@@ -4404,7 +4412,9 @@ var ACH_BADGE_DEFS = [
   { key: 'easy_all', ico: '🌿', title: 'かんたん\n全問メダル',   img: 'img/medal_easy_all.png', mode: 'no',     limit: 'all', desc: 'かんたんモードの\n全問を マスター' },
   { key: 'ten_all',  ico: '🔥', title: '10からひく\n全問メダル', img: 'img/medal_ten_all.png',  mode: 'ten',    limit: 'all', desc: '10からひくモードの\n全問を マスター' },
   { key: 'hard_20',  ico: '💜', title: 'むずかしい\n20問メダル', img: 'img/medal_hard20.png',   mode: 'borrow', limit: 20,  desc: 'むずかしいモードの\n20問を ぜんぶ マスター' },
-  { key: 'hard_all', ico: '⭐', title: 'むずかしい\n全問メダル', img: 'img/medal_hard_all.png', mode: 'borrow', limit: 'all', desc: 'むずかしいモードの\n全問を マスター' }
+  { key: 'hard_all', ico: '⭐', title: 'むずかしい\n全問メダル', img: 'img/medal_hard_all.png', mode: 'borrow', limit: 'all', desc: 'むずかしいモードの\n全問を マスター' },
+  { key:'mix_20', ico:'🌈', title:'ばらばら\n20問メダル', img:'img/medal_mix20.png', mode:'mix', limit:20, desc:'ばらばらコースの\n20問を ぜんぶ マスター' },
+  { key:'mix_all', ico:'🌌', title:'ばらばら\n全問メダル', img:'img/medal_mix_all.png', mode:'mix', limit:'all', desc:'ばらばらコースの\n全問を マスター' },
 ];
 
 function getAchBadgeUnlocked(def) {
@@ -4486,6 +4496,8 @@ function renderAchBadgeGroup() {
   grid.className = 'ach-badge-grid';
   for (var i = 0; i < ACH_BADGE_DEFS.length; i++) {
     (function (def) {
+      var previous=ACH_BADGE_DEFS[i-1];
+      if(!previous || previous.challenge!==def.challenge){var heading=document.createElement('h3');heading.className='hunter-badge-group-title';heading.textContent=def.challenge==='super'?'超神速 おうぎバッジ':def.challenge==='shinsoku'?'神速 おうぎバッジ':'実績メダル';grid.appendChild(heading);}
       var on = getAchBadgeUnlocked(def);
       grid.appendChild(buildAchCardEl({
         on: on,
@@ -4857,6 +4869,7 @@ function textToHira(txt) {
 </script>
 <script src="./js/17-recitation.js"></script>
 <script src="./js/18-raid.js"></script>
+<script src="./js/hunter-speed-badges.js"></script>
 <script src="./js/hunter-progression.js"></script>
 <script src="./js/ninja/00-fx-settings.js"></script>
 <script src="./js/ninja/04-settings-fx.js"></script>
@@ -4871,5 +4884,6 @@ function textToHira(txt) {
 <script src="./js/hunter-refresh.js"></script>
 <script src="./js/hunter-challenges.js"></script>
 <script src="./js/hunter-lore.js"></script>
+<script src="./js/hunter-flow.js"></script>
 </body>
 </html>
