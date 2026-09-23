@@ -102,3 +102,7 @@ body:not(:has(#practice.on)):not(:has(#settings.on)) #sound-bar{display:none}
 #home .mc-mix.msel{border-color:#8064a6;background:#eee3fc}
 .tabrow{flex-wrap:wrap}
 .hunter-badge-group-title{grid-column:1/-1;color:#ffe58d;font-size:16px;padding:12px 4px 4px}
+#ach-preview-overlay{position:fixed;inset:0;width:100vw;height:100dvh;animation:none;transform:none;margin:0;max-width:none}
+#ach-preview-overlay .gem-burst-card{flex:0 1 640px;width:calc(100vw - 32px);max-width:640px;height:auto;animation:none;transform:none;box-sizing:border-box}
+#ach-preview-overlay .gem-burst-img-wrap{flex:none;height:min(45dvh,65vw);overflow:visible}
+#ach-preview-overlay .gem-burst-img{max-width:100%;object-fit:contain}
