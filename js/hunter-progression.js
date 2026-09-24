@@ -25,6 +25,7 @@ var HunterHud = {
 };
 var hunterRawKotsuProgress = getKotsuProgress;
 function hunterBadgeReady(def) {
+  if(def.challenge)return storageLoadText('hikizan_challenge_'+def.mode+'_'+def.challenge+'_clear','0')==='1';
   var problems = buildP(def.mode);
   var mastered = problems.filter(function(p) { return getSt(gD[gk(def.mode,p)]) === 'master'; }).length;
   return problems.length > 0 && mastered >= (def.limit === 'all' ? problems.length : def.limit);
@@ -50,14 +51,14 @@ function collectHunterAwards() {
   ACH_BADGE_DEFS.forEach(function(def) {
     if (!badgeData[def.key] && hunterBadgeReady(def)) {
       badgeData[def.key] = {date:new Date().toISOString()};
-      added.push({img:def.img,title:def.title});
+      added.push({img:def.img,title:hunterCreatureName(def),master:hunterMasterLabel(def)});
     }
   });
   KOTSU_IMG_DEFS.forEach(function(def) {
     var key = 'kotsu_'+def.key;
     if (!badgeData[key] && hunterRawKotsuProgress(def).allMaster) {
       badgeData[key] = {date:new Date().toISOString()};
-      added.push({img:kotsuImgSrc(def),title:def.title});
+      added.push({img:kotsuImgSrc(def),title:hunterCreatureName(def),master:hunterMasterLabel(def)});
     }
   });
   saveBadgeData(); return added;
@@ -71,7 +72,7 @@ renderAchievements = function() {
   hunterOriginalRenderAchievements();
   var group = document.getElementById('ach-group-shop');
   if (group) { group.style.display = ACH_TAB === 'shop' ? 'block' : 'none'; renderShopCollection(); }
-  if (ACH_TAB === 'shop') document.getElementById('ach-footer-next').textContent = '練習でためた★で、探索どうぐや幻獣をあつめよう。';
+  if (ACH_TAB === 'shop') document.getElementById('ach-footer-next').textContent = '練習でためた★で、探索どうぐやおたからをあつめよう。';
 };
 function renderAchievement() { renderAchievements(); }
 var hunterBaseShow=show,hunterWipeTimer=null;
@@ -130,9 +131,12 @@ function hunterFinishOutcome() {
     if (sess !== session || !document.getElementById('result').classList.contains('on')) return;
     if (!newAwards.length || !hunterEffectEnabled('medal')) {evolve();return;}
     var award = newAwards.shift();
-    showGemUnlockEffect(award.img,award.title+'\nゲット！',nextAward);
+    showGemUnlockEffect(award.img,award.master+' マスター！\n'+award.title+'ゲット！',nextAward);
   }
-  if (acc===100 && completed && hunterEffectEnabled('perfect')) {sndPerfect();showPerfectEffect(nextAward);}
+  if (acc===100 && completed) {
+    sndHunterPerfect();
+    if (hunterEffectEnabled('perfect')) showPerfectEffect(nextAward); else nextAward();
+  }
   else {if(acc>=70)sndGoodFinish();else sndTryAgain();nextAward();}
 }
 function hunterBackupPayload() {
@@ -188,5 +192,55 @@ document.addEventListener('DOMContentLoaded',function() {
   document.getElementById('advanced-settings').appendChild(save);document.getElementById('hunter-export').onclick=exportHunterSave;
   document.getElementById('hunter-import').onclick=function(){document.getElementById('hunter-import-file').click();};
   document.getElementById('hunter-import-file').onchange=async function(){var file=this.files[0];if(!file)return;try{var text=await file.text();var parsed=JSON.parse(text);if(parsed.schema!=='hikizan-hunter-save')throw Error('幻獣ハンターのセーブファイルを選んでください。');if(!confirm('このファイルで幻獣ハンターのデータを復元しますか？'))return;importHunterSave(text);location.reload();}catch(e){alert(e.message);}finally{this.value='';}};
-  var debugNote=document.createElement('p');debugNote.className='hunter-debug-note';debugNote.textContent='先生向け：下のマークを10秒長押しするとデバッグモードを開けます。';document.getElementById('advanced-settings').appendChild(debugNote);
 });
+
+// Match the addition app’s full-score fanfare.
+function sndHunterPerfect(){
+  if (!sfxOn) return;
+  var ac = getAC(); if (!ac) return;
+  var t = ac.currentTime;
+  [[0,80],[0.08,60],[0.16,50]].forEach(function(pair){
+    var osc=ac.createOscillator(), g=ac.createGain();
+    osc.connect(g); g.connect(ac.destination);
+    osc.type='sawtooth'; osc.frequency.setValueAtTime(pair[1], t+pair[0]);
+    g.gain.setValueAtTime(0.55, t+pair[0]);
+    g.gain.exponentialRampToValueAtTime(0.001, t+pair[0]+0.18);
+    osc.start(t+pair[0]); osc.stop(t+pair[0]+0.18);
+  });
+  [0,0.08,0.16].forEach(function(d){
+    var osc=ac.createOscillator(), g=ac.createGain();
+    osc.connect(g); g.connect(ac.destination);
+    osc.type='sine'; osc.frequency.setValueAtTime(120, t+d);
+    osc.frequency.exponentialRampToValueAtTime(40, t+d+0.15);
+    g.gain.setValueAtTime(0.7, t+d);
+    g.gain.exponentialRampToValueAtTime(0.001, t+d+0.22);
+    osc.start(t+d); osc.stop(t+d+0.22);
+  });
+  var chars=['ぜ','ん','も','ん','せ','い','か','い'];
+  chars.forEach(function(_, i){
+    var d=0.30+i*0.28;
+    var osc=ac.createOscillator(), g=ac.createGain();
+    osc.connect(g); g.connect(ac.destination);
+    osc.type='square'; osc.frequency.setValueAtTime(200-i*8, t+d);
+    osc.frequency.exponentialRampToValueAtTime(60, t+d+0.12);
+    g.gain.setValueAtTime(0.4, t+d);
+    g.gain.exponentialRampToValueAtTime(0.001, t+d+0.18);
+    osc.start(t+d); osc.stop(t+d+0.18);
+    var osc2=ac.createOscillator(), g2=ac.createGain();
+    osc2.connect(g2); g2.connect(ac.destination);
+    osc2.type='sine'; osc2.frequency.setValueAtTime(1200+i*80, t+d);
+    g2.gain.setValueAtTime(0.18, t+d);
+    g2.gain.exponentialRampToValueAtTime(0.001, t+d+0.10);
+    osc2.start(t+d); osc2.stop(t+d+0.10);
+  });
+  var fanfare=[{f:523,d:0.12,delay:0},{f:659,d:0.12,delay:0.12},{f:784,d:0.12,delay:0.24},{f:1047,d:0.18,delay:0.36},{f:1319,d:0.40,delay:0.54}];
+  var fanStart=0.30+8*0.28+0.2;
+  fanfare.forEach(function(n){
+    var osc=ac.createOscillator(), g=ac.createGain();
+    osc.connect(g); g.connect(ac.destination);
+    osc.type='sine'; osc.frequency.setValueAtTime(n.f, t+fanStart+n.delay);
+    g.gain.setValueAtTime(0.32, t+fanStart+n.delay);
+    g.gain.exponentialRampToValueAtTime(0.001, t+fanStart+n.delay+n.d);
+    osc.start(t+fanStart+n.delay); osc.stop(t+fanStart+n.delay+n.d);
+  });
+}

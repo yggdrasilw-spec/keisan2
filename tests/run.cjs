@@ -11,7 +11,7 @@ const server = http.createServer((req,res)=>{
 });
 server.listen(8874,'127.0.0.1',async()=>{
   let failed=false;
-  for(const name of (process.argv.slice(2).length ? process.argv.slice(2) : ['model','learning','progression','hints','raid','migration'])){
+  for(const name of (process.argv.slice(2).length ? process.argv.slice(2) : ['model','learning','progression','hints','raid','migration','refresh','creatures','home-fit'])){
     console.log('\nTEST '+name);
     const code=await new Promise(resolve=>{const child=spawn(process.execPath,[path.join(__dirname,name+'-regression.cjs')],{cwd:root,stdio:'inherit',env:process.env});child.on('exit',resolve);});
     if(code!==0)failed=true;

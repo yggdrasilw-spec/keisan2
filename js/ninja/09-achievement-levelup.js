@@ -157,7 +157,8 @@ function showNinjaLevelUpEffect(beforeTotal, onDone) {
   copy.appendChild(desc);
   card.appendChild(copy);
 
-  var footer = _ninjaCreateEl('div', 'ninja-levelup-footer', 'タップで とじる');
+  var footer = _ninjaCreateEl('button', 'ninja-levelup-footer', 'タップで とじる');
+  footer.type = 'button';
   card.appendChild(footer);
 
   overlay.appendChild(backdrop);
@@ -178,9 +179,9 @@ function showNinjaLevelUpEffect(beforeTotal, onDone) {
     if (closing) return;
     closing = true;
     clearTimers();
-    try { overlay.removeEventListener('pointerdown', onClose, true); } catch(e) {}
-    try { backdrop.removeEventListener('pointerdown', onClose, true); } catch(e) {}
-    try { card.removeEventListener('pointerdown', onClose, true); } catch(e) {}
+    try { overlay.removeEventListener('click', onClose, true); } catch(e) {}
+    try { backdrop.removeEventListener('click', onClose, true); } catch(e) {}
+    try { card.removeEventListener('click', onClose, true); } catch(e) {}
     if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
     if (typeof onDone === 'function') onDone();
   }
@@ -191,11 +192,12 @@ function showNinjaLevelUpEffect(beforeTotal, onDone) {
     finish();
   }
 
-  overlay.addEventListener('pointerdown', onClose, true);
-  backdrop.addEventListener('pointerdown', onClose, true);
-  card.addEventListener('pointerdown', onClose, true);
+  overlay.addEventListener('click', onClose, true);
+  backdrop.addEventListener('click', onClose, true);
+  card.addEventListener('click', onClose, true);
 
   requestAnimationFrame(function() {
+    if (closing) return;
     overlay.classList.add('is-open');
     schedule(function(){ overlay.classList.add('is-flash'); }, 180);
     schedule(function(){ overlay.classList.add('is-absorb'); }, 950);

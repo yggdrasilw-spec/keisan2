@@ -131,35 +131,31 @@
   },
   {
     "id": "orthros",
-    "ico": "🐺",
-    "name": "オルトロス",
+    "ico": "🧿",
+    "name": "双眼のまもり石",
     "price": 80,
-    "desc": "二つの頭で仲間を見守る、たのもしい幻獣。",
-    "img": "img/オルトロス.png"
+    "desc": "二つの光で帰り道を示すお守り。"
   },
   {
     "id": "manticore",
-    "ico": "🦁",
-    "name": "マンティコア",
+    "ico": "🗡️",
+    "name": "翼の短剣",
     "price": 100,
-    "desc": "大きな翼と鋭い尾をもつ、勇敢な幻獣。",
-    "img": "img/マンティコア.png"
+    "desc": "翼の模様が刻まれた冒険の短剣。"
   },
   {
     "id": "unicorn",
-    "ico": "🦄",
-    "name": "ユニコーン",
+    "ico": "🪔",
+    "name": "清めのランプ",
     "price": 120,
-    "desc": "一本の角に清らかな光を宿す幻獣。",
-    "img": "img/ユニコーン.png"
+    "desc": "清らかな光で暗い道を照らすランプ。"
   },
   {
     "id": "gozu_mezu",
-    "ico": "🐂",
-    "name": "牛頭馬頭",
+    "ico": "🛡️",
+    "name": "双守の大盾",
     "price": 150,
-    "desc": "力を合わせて道を切り開く、二人の守護者。",
-    "img": "img/牛頭馬頭.png"
+    "desc": "二つの紋章で仲間を守る大きな盾。"
   },
   {
     "id": "dragon_scale",
@@ -190,6 +186,14 @@
     "desc": "幻獣とともに歩んだ冒険の記念章。"
   }
 ];
+  SHOP_ITEMS.forEach(function(item, index) {
+    item.category = index < 12 ? 'explore' : index < 16 ? 'relic' : 'legend';
+  });
+  SHOP_ITEMS.forEach(function(item){item.img='img/shop/'+item.id+'.webp';});
+  SHOP_ITEMS = SHOP_ITEMS.concat(HUNTER_EXTRA_SHOP_ITEMS);
+  SHOP_ITEMS.forEach(function(item){item.img='img/shop/'+item.id+'.webp';});
+  var shopCategory = 'all';
+  var shopCategories = [['all','すべて'],['explore','探索どうぐ'],['material','森のめぐみ'],['relic','魔法の道具'],['legend','伝説のおたから'],['owned','購入済み']];
   function getShopItemImagePath(index) { return SHOP_ITEMS[index].img || ''; }
 
   function trimJapanesePeriod(text) {
@@ -644,6 +648,10 @@
         + '</div>'
         + '</div>';
       document.body.appendChild(o);
+      var masterSection = document.createElement('div');
+      masterSection.className = 'dbg-section';
+      renderMasterControl(masterSection);
+      o.querySelector('.dbg-dialog').insertBefore(masterSection, o.querySelector('.dbg-section'));
     }
   }
 
@@ -980,6 +988,17 @@
       + '<div class="shop-count-line">購入済み ' + ownedCount + ' / ' + SHOP_ITEMS.length + '</div></div>'
       + '<div class="shop-meta">ためた★: ★×' + total + '<br>購入済みの品はタップで詳細を見られる</div>';
     el.appendChild(head);
+    var filters = document.createElement('div');
+    filters.className = 'hunter-shop-filters';
+    filters.setAttribute('aria-label', '商品の分類');
+    shopCategories.forEach(function(category) {
+      var button = document.createElement('button');
+      button.type = 'button'; button.textContent = category[1];
+      button.setAttribute('aria-pressed', String(shopCategory === category[0]));
+      button.onclick = function() { shopCategory = category[0]; renderShopCollection(); };
+      filters.appendChild(button);
+    });
+    el.appendChild(filters);
 
     if (!SHOP_ITEMS.length) {
       var empty = document.createElement('div');
@@ -993,12 +1012,13 @@
     grid.className = 'ach-shop-grid';
     SHOP_ITEMS.forEach(function (item, index) {
       var owned = hasShopItem(item.id);
+      if (shopCategory === 'owned' ? !owned : shopCategory !== 'all' && item.category !== shopCategory) return;
       var card = document.createElement('div');
       card.className = 'shop-card' + (owned ? ' owned' : '');
       var title = owned ? '購入済み' : ('★' + item.price + 'で かう');
       var afford = total >= item.price;
       card.innerHTML = ''
-        + '<div class="shop-ico">' + item.ico + '</div>'
+        + '<div class="shop-ico"><span class="shop-emoji"' + (item.img ? '' : ' hidden') + '>' + item.ico + '</span>' + (item.img ? '<img src="' + item.img + '" alt="" onload="this.previousElementSibling.hidden=true" onerror="this.hidden=true">' : '') + '</div>'
         + '<div class="shop-name">' + item.name + '</div>'
         + '<div class="shop-desc">' + item.desc + '</div>'
         + '<div class="shop-price"><span>' + title + '</span><small>' + (owned ? '詳細を見る' : (afford ? '買える' : '★がたりない')) + '</small></div>';
@@ -1035,6 +1055,7 @@
       }
       grid.appendChild(card);
     });
+    if (!grid.children.length) { var empty = document.createElement('p'); empty.className = 'shop-empty'; empty.textContent = 'まだ購入した おたからは ありません。'; grid.appendChild(empty); }
     el.appendChild(grid);
   }
 

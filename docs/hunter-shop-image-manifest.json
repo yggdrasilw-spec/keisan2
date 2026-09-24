@@ -1,0 +1,802 @@
+[
+  {
+    "id": "field_bag",
+    "name": "探索バッグ",
+    "description": "道具をまとめて、幻獣のすむ森へ出発。",
+    "icon": "🎒",
+    "category": "explore",
+    "image": "img/shop/field_bag.webp"
+  },
+  {
+    "id": "healing_herb",
+    "name": "いやしの薬草",
+    "description": "冒険の休憩に使う、森の薬草。",
+    "icon": "🌿",
+    "category": "explore",
+    "image": "img/shop/healing_herb.webp"
+  },
+  {
+    "id": "lantern",
+    "name": "星明かりのランタン",
+    "description": "暗い洞窟にやさしい光をともす。",
+    "icon": "🏮",
+    "category": "explore",
+    "image": "img/shop/lantern.webp"
+  },
+  {
+    "id": "compass",
+    "name": "幻獣コンパス",
+    "description": "幻獣の気配を感じる不思議な羅針盤。",
+    "icon": "🧭",
+    "category": "explore",
+    "image": "img/shop/compass.webp"
+  },
+  {
+    "id": "boots",
+    "name": "風のブーツ",
+    "description": "草原を軽やかに歩く探索用の靴。",
+    "icon": "🥾",
+    "category": "explore",
+    "image": "img/shop/boots.webp"
+  },
+  {
+    "id": "field_book",
+    "name": "幻獣ずかん",
+    "description": "出会った幻獣のひみつを書きとめよう。",
+    "icon": "📗",
+    "category": "explore",
+    "image": "img/shop/field_book.webp"
+  },
+  {
+    "id": "net",
+    "name": "銀糸のあみ",
+    "description": "光る糸で編まれたハンターの道具。",
+    "icon": "🕸️",
+    "category": "explore",
+    "image": "img/shop/net.webp"
+  },
+  {
+    "id": "cloak",
+    "name": "森かげのマント",
+    "description": "木々にとけこむ緑色のマント。",
+    "icon": "🧥",
+    "category": "explore",
+    "image": "img/shop/cloak.webp"
+  },
+  {
+    "id": "crystal",
+    "name": "召喚の水晶",
+    "description": "幻獣と心を通わせるための水晶。",
+    "icon": "🔮",
+    "category": "explore",
+    "image": "img/shop/crystal.webp"
+  },
+  {
+    "id": "shield",
+    "name": "守りの盾",
+    "description": "冒険の仲間を守る丈夫な盾。",
+    "icon": "🛡️",
+    "category": "explore",
+    "image": "img/shop/shield.webp"
+  },
+  {
+    "id": "horn",
+    "name": "呼び声の角笛",
+    "description": "遠くの仲間へ合図を送る角笛。",
+    "icon": "📯",
+    "category": "explore",
+    "image": "img/shop/horn.webp"
+  },
+  {
+    "id": "map",
+    "name": "古代の地図",
+    "description": "まだ見ぬ幻獣のすみかを探そう。",
+    "icon": "🗺️",
+    "category": "explore",
+    "image": "img/shop/map.webp"
+  },
+  {
+    "id": "water_charm",
+    "name": "水のまもり",
+    "description": "清らかな泉の力を宿すお守り。",
+    "icon": "💧",
+    "category": "explore",
+    "image": "img/shop/water_charm.webp"
+  },
+  {
+    "id": "fire_charm",
+    "name": "火のまもり",
+    "description": "勇気をくれる小さな炎のお守り。",
+    "icon": "🔥",
+    "category": "explore",
+    "image": "img/shop/fire_charm.webp"
+  },
+  {
+    "id": "moon_bow",
+    "name": "月光の弓",
+    "description": "月の光をまとった伝説の弓。",
+    "icon": "🏹",
+    "category": "explore",
+    "image": "img/shop/moon_bow.webp"
+  },
+  {
+    "id": "staff",
+    "name": "星よみの杖",
+    "description": "星の道しるべを映し出す杖。",
+    "icon": "🪄",
+    "category": "explore",
+    "image": "img/shop/staff.webp"
+  },
+  {
+    "id": "orthros",
+    "name": "双眼のまもり石",
+    "description": "二つの光で帰り道を示すお守り。",
+    "icon": "🧿",
+    "category": "explore",
+    "image": "img/shop/orthros.webp"
+  },
+  {
+    "id": "manticore",
+    "name": "翼の短剣",
+    "description": "翼の模様が刻まれた冒険の短剣。",
+    "icon": "🗡️",
+    "category": "explore",
+    "image": "img/shop/manticore.webp"
+  },
+  {
+    "id": "unicorn",
+    "name": "清めのランプ",
+    "description": "清らかな光で暗い道を照らすランプ。",
+    "icon": "🪔",
+    "category": "explore",
+    "image": "img/shop/unicorn.webp"
+  },
+  {
+    "id": "gozu_mezu",
+    "name": "双守の大盾",
+    "description": "二つの紋章で仲間を守る大きな盾。",
+    "icon": "🛡️",
+    "category": "explore",
+    "image": "img/shop/gozu_mezu.webp"
+  },
+  {
+    "id": "dragon_scale",
+    "name": "竜のうろこ",
+    "description": "古い竜から授かったきらめくうろこ。",
+    "icon": "🐉",
+    "category": "explore",
+    "image": "img/shop/dragon_scale.webp"
+  },
+  {
+    "id": "phoenix_feather",
+    "name": "不死鳥の羽",
+    "description": "新しい冒険への勇気をくれる羽。",
+    "icon": "🪶",
+    "category": "explore",
+    "image": "img/shop/phoenix_feather.webp"
+  },
+  {
+    "id": "hunter_crown",
+    "name": "幻獣ハンターの冠",
+    "description": "たくさんの修行を重ねたハンターの証。",
+    "icon": "👑",
+    "category": "explore",
+    "image": "img/shop/hunter_crown.webp"
+  },
+  {
+    "id": "legend_mark",
+    "name": "伝説のハンターの証",
+    "description": "幻獣とともに歩んだ冒険の記念章。",
+    "icon": "🏅",
+    "category": "explore",
+    "image": "img/shop/legend_mark.webp"
+  },
+  {
+    "id": "hunter_rope",
+    "name": "冒険のロープ",
+    "description": "がけや谷をこえる、丈夫なロープ。",
+    "icon": "🪢",
+    "category": "explore",
+    "image": "img/shop/hunter_rope.webp"
+  },
+  {
+    "id": "hunter_canteen",
+    "name": "泉の水とう",
+    "description": "きれいな水を持ち歩く、旅の必需品。",
+    "icon": "🫙",
+    "category": "explore",
+    "image": "img/shop/hunter_canteen.webp"
+  },
+  {
+    "id": "hunter_tent",
+    "name": "木かげのテント",
+    "description": "森の夜を安心してすごせる小さな家。",
+    "icon": "⛺",
+    "category": "explore",
+    "image": "img/shop/hunter_tent.webp"
+  },
+  {
+    "id": "hunter_spyglass",
+    "name": "遠見の望遠鏡",
+    "description": "遠くの空を飛ぶ幻獣を見つけよう。",
+    "icon": "🔭",
+    "category": "explore",
+    "image": "img/shop/hunter_spyglass.webp"
+  },
+  {
+    "id": "hunter_notebook",
+    "name": "足あと手帳",
+    "description": "不思議な足あとを見つけたら書きとめよう。",
+    "icon": "📓",
+    "category": "explore",
+    "image": "img/shop/hunter_notebook.webp"
+  },
+  {
+    "id": "hunter_quill",
+    "name": "記録の羽ペン",
+    "description": "冒険の思い出を地図に書きこむペン。",
+    "icon": "🪶",
+    "category": "explore",
+    "image": "img/shop/hunter_quill.webp"
+  },
+  {
+    "id": "hunter_flint",
+    "name": "火おこし石",
+    "description": "たき火をともす、火花の出る石。",
+    "icon": "🪨",
+    "category": "explore",
+    "image": "img/shop/hunter_flint.webp"
+  },
+  {
+    "id": "hunter_cookpot",
+    "name": "旅人のなべ",
+    "description": "仲間と温かいごはんを分け合おう。",
+    "icon": "🍲",
+    "category": "explore",
+    "image": "img/shop/hunter_cookpot.webp"
+  },
+  {
+    "id": "hunter_rations",
+    "name": "木の実のおべんとう",
+    "description": "長い道のりの元気をくれる木の実。",
+    "icon": "🧺",
+    "category": "explore",
+    "image": "img/shop/hunter_rations.webp"
+  },
+  {
+    "id": "hunter_sleeping_bag",
+    "name": "ふわふわ寝ぶくろ",
+    "description": "寒い夜もあたたかく眠れるよ。",
+    "icon": "🛌",
+    "category": "explore",
+    "image": "img/shop/hunter_sleeping_bag.webp"
+  },
+  {
+    "id": "hunter_gloves",
+    "name": "岩のぼり手ぶくろ",
+    "description": "岩場をしっかりつかめる手ぶくろ。",
+    "icon": "🧤",
+    "category": "explore",
+    "image": "img/shop/hunter_gloves.webp"
+  },
+  {
+    "id": "hunter_raincoat",
+    "name": "葉っぱの雨がっぱ",
+    "description": "大きな葉っぱで作った雨の日の服。",
+    "icon": "🍃",
+    "category": "explore",
+    "image": "img/shop/hunter_raincoat.webp"
+  },
+  {
+    "id": "hunter_whistle",
+    "name": "森の合図笛",
+    "description": "迷ったときは仲間に合図を送ろう。",
+    "icon": "🪈",
+    "category": "explore",
+    "image": "img/shop/hunter_whistle.webp"
+  },
+  {
+    "id": "hunter_shovel",
+    "name": "おたからスコップ",
+    "description": "土の中にかくれた宝物を探す道具。",
+    "icon": "🪏",
+    "category": "explore",
+    "image": "img/shop/hunter_shovel.webp"
+  },
+  {
+    "id": "hunter_fishing_rod",
+    "name": "星つりざお",
+    "description": "夜の湖で光る魚をつってみよう。",
+    "icon": "🎣",
+    "category": "explore",
+    "image": "img/shop/hunter_fishing_rod.webp"
+  },
+  {
+    "id": "hunter_snowshoes",
+    "name": "雪わたりのくつ",
+    "description": "深い雪でも軽やかに歩けるくつ。",
+    "icon": "🎿",
+    "category": "explore",
+    "image": "img/shop/hunter_snowshoes.webp"
+  },
+  {
+    "id": "hunter_raft",
+    "name": "木のいかだ",
+    "description": "静かな川をわたる小さな船。",
+    "icon": "🛶",
+    "category": "explore",
+    "image": "img/shop/hunter_raft.webp"
+  },
+  {
+    "id": "hunter_saddle",
+    "name": "相棒のくら",
+    "description": "幻獣の背中に乗って遠くへ出発。",
+    "icon": "🐎",
+    "category": "explore",
+    "image": "img/shop/hunter_saddle.webp"
+  },
+  {
+    "id": "hunter_flag",
+    "name": "ハンターの旗",
+    "description": "冒険の拠点に立てる仲間のしるし。",
+    "icon": "🚩",
+    "category": "explore",
+    "image": "img/shop/hunter_flag.webp"
+  },
+  {
+    "id": "hunter_moon_leaf",
+    "name": "月しずくの葉",
+    "description": "月明かりの下でしずくを集める葉。",
+    "icon": "🌿",
+    "category": "material",
+    "image": "img/shop/hunter_moon_leaf.webp"
+  },
+  {
+    "id": "hunter_sun_seed",
+    "name": "ひだまりの種",
+    "description": "植えると小さな光の花がさく種。",
+    "icon": "🌻",
+    "category": "material",
+    "image": "img/shop/hunter_sun_seed.webp"
+  },
+  {
+    "id": "hunter_starlight_sand",
+    "name": "星くずの砂",
+    "description": "暗い場所で星のようにきらめく砂。",
+    "icon": "✨",
+    "category": "material",
+    "image": "img/shop/hunter_starlight_sand.webp"
+  },
+  {
+    "id": "hunter_rain_pearl",
+    "name": "雨の真珠",
+    "description": "雨あがりの泉で見つかる丸い宝石。",
+    "icon": "🫧",
+    "category": "material",
+    "image": "img/shop/hunter_rain_pearl.webp"
+  },
+  {
+    "id": "hunter_wind_flower",
+    "name": "風まちの花",
+    "description": "風がふくたび、やさしく歌う花。",
+    "icon": "🌼",
+    "category": "material",
+    "image": "img/shop/hunter_wind_flower.webp"
+  },
+  {
+    "id": "hunter_frost_berry",
+    "name": "こおりの実",
+    "description": "雪山で育つ、ひんやりした青い実。",
+    "icon": "🫐",
+    "category": "material",
+    "image": "img/shop/hunter_frost_berry.webp"
+  },
+  {
+    "id": "hunter_ember_nut",
+    "name": "ほのおの木の実",
+    "description": "手に持つとほんのり温かい木の実。",
+    "icon": "🌰",
+    "category": "material",
+    "image": "img/shop/hunter_ember_nut.webp"
+  },
+  {
+    "id": "hunter_rainbow_mushroom",
+    "name": "にじいろキノコ",
+    "description": "見る向きによって色が変わるキノコ。",
+    "icon": "🍄",
+    "category": "material",
+    "image": "img/shop/hunter_rainbow_mushroom.webp"
+  },
+  {
+    "id": "hunter_cloud_cotton",
+    "name": "雲のわた",
+    "description": "空からふわりと落ちてきた軽いわた。",
+    "icon": "☁️",
+    "category": "material",
+    "image": "img/shop/hunter_cloud_cotton.webp"
+  },
+  {
+    "id": "hunter_sea_glass",
+    "name": "海色ガラス",
+    "description": "波にみがかれた、すきとおるかけら。",
+    "icon": "🩵",
+    "category": "material",
+    "image": "img/shop/hunter_sea_glass.webp"
+  },
+  {
+    "id": "hunter_echo_shell",
+    "name": "こだまの貝がら",
+    "description": "耳にあてると遠い海の音が聞こえる。",
+    "icon": "🐚",
+    "category": "material",
+    "image": "img/shop/hunter_echo_shell.webp"
+  },
+  {
+    "id": "hunter_glow_moss",
+    "name": "ひかりゴケ",
+    "description": "洞窟を緑色に照らす小さな植物。",
+    "icon": "🌱",
+    "category": "material",
+    "image": "img/shop/hunter_glow_moss.webp"
+  },
+  {
+    "id": "hunter_forest_honey",
+    "name": "精霊のはちみつ",
+    "description": "森の花の香りがつまった甘い宝物。",
+    "icon": "🍯",
+    "category": "material",
+    "image": "img/shop/hunter_forest_honey.webp"
+  },
+  {
+    "id": "hunter_amber_drop",
+    "name": "こはくのしずく",
+    "description": "古い森の記憶をとじこめた樹液の石。",
+    "icon": "🟠",
+    "category": "material",
+    "image": "img/shop/hunter_amber_drop.webp"
+  },
+  {
+    "id": "hunter_night_ink",
+    "name": "夜空のインク",
+    "description": "星図を書くための、青く光るインク。",
+    "icon": "🖋️",
+    "category": "material",
+    "image": "img/shop/hunter_night_ink.webp"
+  },
+  {
+    "id": "hunter_silver_thread",
+    "name": "月の銀糸",
+    "description": "月明かりをより合わせた細い糸。",
+    "icon": "🧵",
+    "category": "material",
+    "image": "img/shop/hunter_silver_thread.webp"
+  },
+  {
+    "id": "hunter_rainbow_feather",
+    "name": "にじの羽",
+    "description": "空をわたる鳥が残した七色の羽。",
+    "icon": "🪶",
+    "category": "material",
+    "image": "img/shop/hunter_rainbow_feather.webp"
+  },
+  {
+    "id": "hunter_ancient_wood",
+    "name": "古木のえだ",
+    "description": "長い年月を生きた大樹からの贈り物。",
+    "icon": "🪵",
+    "category": "material",
+    "image": "img/shop/hunter_ancient_wood.webp"
+  },
+  {
+    "id": "hunter_spring_crystal",
+    "name": "泉の結晶",
+    "description": "清らかな水の力が集まった結晶。",
+    "icon": "💎",
+    "category": "material",
+    "image": "img/shop/hunter_spring_crystal.webp"
+  },
+  {
+    "id": "hunter_wind_bell",
+    "name": "風よびのすず",
+    "description": "鳴らすと木々をゆらす風が集まる。",
+    "icon": "🔔",
+    "category": "relic",
+    "image": "img/shop/hunter_wind_bell.webp"
+  },
+  {
+    "id": "hunter_moon_mirror",
+    "name": "月うつしの鏡",
+    "description": "昼でも月を映し出す不思議な鏡。",
+    "icon": "🪞",
+    "category": "relic",
+    "image": "img/shop/hunter_moon_mirror.webp"
+  },
+  {
+    "id": "hunter_star_key",
+    "name": "星のとびらの鍵",
+    "description": "星の模様がある、とびらを開く鍵。",
+    "icon": "🗝️",
+    "category": "relic",
+    "image": "img/shop/hunter_star_key.webp"
+  },
+  {
+    "id": "hunter_water_orb",
+    "name": "水のオーブ",
+    "description": "水面に小さな道を作る青い宝玉。",
+    "icon": "🔵",
+    "category": "relic",
+    "image": "img/shop/hunter_water_orb.webp"
+  },
+  {
+    "id": "hunter_fire_orb",
+    "name": "炎のオーブ",
+    "description": "消えない小さな炎を宿した宝玉。",
+    "icon": "🔴",
+    "category": "relic",
+    "image": "img/shop/hunter_fire_orb.webp"
+  },
+  {
+    "id": "hunter_earth_orb",
+    "name": "大地のオーブ",
+    "description": "足もとの大地の声が聞こえる宝玉。",
+    "icon": "🟤",
+    "category": "relic",
+    "image": "img/shop/hunter_earth_orb.webp"
+  },
+  {
+    "id": "hunter_wind_orb",
+    "name": "風のオーブ",
+    "description": "草原の風をとじこめた緑の宝玉。",
+    "icon": "🟢",
+    "category": "relic",
+    "image": "img/shop/hunter_wind_orb.webp"
+  },
+  {
+    "id": "hunter_light_orb",
+    "name": "光のオーブ",
+    "description": "暗い道を明るく照らす光の宝玉。",
+    "icon": "🟡",
+    "category": "relic",
+    "image": "img/shop/hunter_light_orb.webp"
+  },
+  {
+    "id": "hunter_shadow_orb",
+    "name": "影のオーブ",
+    "description": "木かげのひみつを映し出す宝玉。",
+    "icon": "🟣",
+    "category": "relic",
+    "image": "img/shop/hunter_shadow_orb.webp"
+  },
+  {
+    "id": "hunter_spell_scroll",
+    "name": "召喚の巻物",
+    "description": "幻獣を呼ぶ古い言葉が書かれた巻物。",
+    "icon": "📜",
+    "category": "relic",
+    "image": "img/shop/hunter_spell_scroll.webp"
+  },
+  {
+    "id": "hunter_storm_ring",
+    "name": "いかずちの指輪",
+    "description": "雷雲の力が宿る、きらめく指輪。",
+    "icon": "💍",
+    "category": "relic",
+    "image": "img/shop/hunter_storm_ring.webp"
+  },
+  {
+    "id": "hunter_frost_pendant",
+    "name": "氷のペンダント",
+    "description": "真夏でもとけない氷でできた首かざり。",
+    "icon": "🧊",
+    "category": "relic",
+    "image": "img/shop/hunter_frost_pendant.webp"
+  },
+  {
+    "id": "hunter_flower_wand",
+    "name": "花さかせの杖",
+    "description": "歩いた道に小さな花をさかせる杖。",
+    "icon": "🌷",
+    "category": "relic",
+    "image": "img/shop/hunter_flower_wand.webp"
+  },
+  {
+    "id": "hunter_dream_pillow",
+    "name": "夢わたりのまくら",
+    "description": "幻獣の夢をいっしょに見られるまくら。",
+    "icon": "🌙",
+    "category": "relic",
+    "image": "img/shop/hunter_dream_pillow.webp"
+  },
+  {
+    "id": "hunter_time_sandglass",
+    "name": "星砂のすなどけい",
+    "description": "空の星と同じ速さで砂が落ちる時計。",
+    "icon": "⌛",
+    "category": "relic",
+    "image": "img/shop/hunter_time_sandglass.webp"
+  },
+  {
+    "id": "hunter_echo_harp",
+    "name": "こだまのハープ",
+    "description": "森の仲間が集まってくる音色の楽器。",
+    "icon": "🎶",
+    "category": "relic",
+    "image": "img/shop/hunter_echo_harp.webp"
+  },
+  {
+    "id": "hunter_cloud_carpet",
+    "name": "雲のじゅうたん",
+    "description": "地面から少しだけ浮かぶじゅうたん。",
+    "icon": "🧶",
+    "category": "relic",
+    "image": "img/shop/hunter_cloud_carpet.webp"
+  },
+  {
+    "id": "hunter_portal_lantern",
+    "name": "道しるべの灯",
+    "description": "帰り道を忘れても拠点へ導く灯り。",
+    "icon": "🏮",
+    "category": "relic",
+    "image": "img/shop/hunter_portal_lantern.webp"
+  },
+  {
+    "id": "hunter_contract_book",
+    "name": "幻獣との約束の書",
+    "description": "仲間になった幻獣との約束を記す本。",
+    "icon": "📖",
+    "category": "relic",
+    "image": "img/shop/hunter_contract_book.webp"
+  },
+  {
+    "id": "hunter_azure_scale",
+    "name": "青き守護のうろこ",
+    "description": "東の空を守る幻獣からの贈り物。",
+    "icon": "🐉",
+    "category": "legend",
+    "image": "img/shop/hunter_azure_scale.webp"
+  },
+  {
+    "id": "hunter_white_fang",
+    "name": "白き守護のきば",
+    "description": "雪のように白く輝く、守護のしるし。",
+    "icon": "🦷",
+    "category": "legend",
+    "image": "img/shop/hunter_white_fang.webp"
+  },
+  {
+    "id": "hunter_scarlet_plume",
+    "name": "紅き守護の羽",
+    "description": "夕焼けの色をした、温かい羽。",
+    "icon": "🪶",
+    "category": "legend",
+    "image": "img/shop/hunter_scarlet_plume.webp"
+  },
+  {
+    "id": "hunter_black_shell",
+    "name": "玄き守護のこうら",
+    "description": "長い時を生きた守り手の宝物。",
+    "icon": "🐢",
+    "category": "legend",
+    "image": "img/shop/hunter_black_shell.webp"
+  },
+  {
+    "id": "hunter_golden_horn",
+    "name": "黄金のつの",
+    "description": "森の王者が残した、黄金のかけら。",
+    "icon": "🦌",
+    "category": "legend",
+    "image": "img/shop/hunter_golden_horn.webp"
+  },
+  {
+    "id": "hunter_sea_crown",
+    "name": "深海の王冠",
+    "description": "海の底の王国で作られた小さな冠。",
+    "icon": "👑",
+    "category": "legend",
+    "image": "img/shop/hunter_sea_crown.webp"
+  },
+  {
+    "id": "hunter_sky_chalice",
+    "name": "天空のさかずき",
+    "description": "雲の上から届いた、星を映す器。",
+    "icon": "🏆",
+    "category": "legend",
+    "image": "img/shop/hunter_sky_chalice.webp"
+  },
+  {
+    "id": "hunter_world_seed",
+    "name": "世界樹の種",
+    "description": "いつか空まで育つと伝わる大きな種。",
+    "icon": "🌳",
+    "category": "legend",
+    "image": "img/shop/hunter_world_seed.webp"
+  },
+  {
+    "id": "hunter_meteor_shard",
+    "name": "流星のかけら",
+    "description": "夜空をかけぬけた星の落とし物。",
+    "icon": "☄️",
+    "category": "legend",
+    "image": "img/shop/hunter_meteor_shard.webp"
+  },
+  {
+    "id": "hunter_aurora_cloth",
+    "name": "オーロラの布",
+    "description": "空の光を織りこんだ、ゆらめく布。",
+    "icon": "🌌",
+    "category": "legend",
+    "image": "img/shop/hunter_aurora_cloth.webp"
+  },
+  {
+    "id": "hunter_sun_medallion",
+    "name": "太陽の紋章",
+    "description": "夜明けの勇気をくれる金色の紋章。",
+    "icon": "☀️",
+    "category": "legend",
+    "image": "img/shop/hunter_sun_medallion.webp"
+  },
+  {
+    "id": "hunter_moon_medallion",
+    "name": "月の紋章",
+    "description": "静かな夜を見守る銀色の紋章。",
+    "icon": "🌙",
+    "category": "legend",
+    "image": "img/shop/hunter_moon_medallion.webp"
+  },
+  {
+    "id": "hunter_seven_star_map",
+    "name": "七つ星の地図",
+    "description": "七つの秘境への道が記された地図。",
+    "icon": "🗺️",
+    "category": "legend",
+    "image": "img/shop/hunter_seven_star_map.webp"
+  },
+  {
+    "id": "hunter_prism_crystal",
+    "name": "七色の召喚石",
+    "description": "すべての色が集まる特別な水晶。",
+    "icon": "🔮",
+    "category": "legend",
+    "image": "img/shop/hunter_prism_crystal.webp"
+  },
+  {
+    "id": "hunter_royal_seal",
+    "name": "幻獣王の印",
+    "description": "幻獣たちに信頼された者のしるし。",
+    "icon": "🔱",
+    "category": "legend",
+    "image": "img/shop/hunter_royal_seal.webp"
+  },
+  {
+    "id": "hunter_eternal_flame",
+    "name": "とこしえの灯火",
+    "description": "どんな嵐の中でも消えない灯り。",
+    "icon": "🕯️",
+    "category": "legend",
+    "image": "img/shop/hunter_eternal_flame.webp"
+  },
+  {
+    "id": "hunter_first_contract",
+    "name": "はじまりの契約",
+    "description": "最初のハンターが残した大切な約束。",
+    "icon": "📜",
+    "category": "legend",
+    "image": "img/shop/hunter_first_contract.webp"
+  },
+  {
+    "id": "hunter_celestial_compass",
+    "name": "天空の羅針盤",
+    "description": "まだ地図にない世界への道を示す。",
+    "icon": "🧭",
+    "category": "legend",
+    "image": "img/shop/hunter_celestial_compass.webp"
+  },
+  {
+    "id": "hunter_bond_gem",
+    "name": "きずなの宝玉",
+    "description": "仲間との思い出がつまった最高の宝物。",
+    "icon": "💠",
+    "category": "legend",
+    "image": "img/shop/hunter_bond_gem.webp"
+  }
+]

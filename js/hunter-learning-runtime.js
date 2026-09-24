@@ -34,9 +34,3 @@ function refreshVisibleScreen() {
   if (document.getElementById('stats').classList.contains('on')) renSt();
   if (document.getElementById('achievements').classList.contains('on')) renderAchievements();
 }
-document.addEventListener('DOMContentLoaded', function() {
-  var section = document.createElement('details'); section.className = 'learning-settings';
-  var summary = document.createElement('summary'); summary.textContent = '先生・保護者向け：マスター判定の設定';
-  section.appendChild(summary); renderMasterControl(section);
-  document.getElementById('settings').appendChild(section);
-});
