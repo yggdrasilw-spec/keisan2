@@ -18,10 +18,11 @@
   var stepsButton = document.getElementById('hint-btn1');
   var sorobanButton = document.getElementById('hint-btn2');
   var originalSetProblem = hintSetProblem;
-  var method = 'sakura';
-
   function noBorrow(p) { return p && p.a < 10 && p.a >= p.b; }
-  function closeStatic() { box.hidden = true; }
+  function closeStatic() {
+    if (box.dataset.type === 'sakura' && window.HunterSakuraLesson) HunterSakuraLesson.stop();
+    box.hidden = true;
+  }
   function sync() {
     var p = hintP;
     var simple = noBorrow(p);
@@ -34,6 +35,7 @@
   function openStatic(type) {
     if (!hintP || (type === 'dots' ? !noBorrow(hintP) || !enabled.dots : noBorrow(hintP) || !enabled.sakura)) return;
     var wasOpen = !box.hidden && box.dataset.type === type;
+    closeStatic();
     clearHunterHintTimers();
     document.getElementById('hint-box').style.display = 'none';
     document.getElementById('hint-soroban-box').style.display = 'none';
@@ -41,7 +43,7 @@
     box.hidden = wasOpen;
     if (wasOpen) return;
     box.dataset.type = type;
-    if (type === 'dots') renderDots(); else renderMethod();
+    if (type === 'dots') renderDots(); else HunterSakuraLesson.mount(box, hintP);
   }
   function renderDots() {
     var p = hintP;
@@ -52,28 +54,6 @@
       '<div class="hunter-dot-legend"><span>● ひかれる数 ' + p.a + '</span><span>● ひく数 ' + p.b + '</span></div>' +
       '<div class="hunter-dot-grid" role="img" aria-label="ひかれる数' + p.a + 'このうち、ひく数' + p.b + 'こを赤くした、5こずつ2だんのドット">' + grid + '</div>' +
       '<div class="hunter-static-caption">あおい ドットが いくつ のこるか かぞえてみよう。</div>';
-  }
-  function tree(top, left, right, banana) {
-    return '<svg class="hunter-tree" viewBox="0 0 340 145" role="img" aria-label="' + top + 'を' + left + 'と' + right + 'にわける">' +
-      '<text x="170" y="31" font-size="30">' + top + '</text><path class="branch" d="M170 42 L105 91 M170 42 L235 91"/>' +
-      '<circle class="' + (banana ? 'ten' : 'fruit') + '" cx="105" cy="109" r="31"/><circle class="fruit" cx="235" cy="109" r="31"/>' +
-      '<text x="105" y="119" font-size="27">' + left + '</text><text x="235" y="119" font-size="27">' + right + '</text></svg>';
-  }
-  function renderMethod() {
-    var p = hintP, ones = p.a - 10, need = p.b - ones;
-    var cherry = method === 'sakura';
-    var diagram = cherry ? tree(p.b, ones, need, false) : tree(p.a, 10, ones, true);
-    var expression = cherry ?
-      p.a + ' － ' + ones + ' ＝ 10<br>10 － ' + need + ' ＝ ' + p.ans :
-      '10 － ' + p.b + ' ＝ ' + (10 - p.b) + '<br>' + (10 - p.b) + ' ＋ ' + ones + ' ＝ ' + p.ans;
-    box.innerHTML = '<div class="hunter-static-title"><span class="minuend">' + p.a + '</span> － <span class="subtrahend">' + p.b + '</span> ＝ ？</div>' +
-      '<div class="hunter-methods"><button type="button" data-method="sakura" aria-pressed="' + cherry + '">さくらんぼ</button>' +
-      '<button type="button" data-method="banana" aria-pressed="' + !cherry + '">バナナ計算</button></div>' + diagram +
-      '<div class="hunter-static-caption">' + (cherry ? p.b + 'を ' + ones + 'と ' + need + 'に わけるよ。' : p.a + 'を 10と ' + ones + 'に わけるよ。') + '</div>' +
-      '<div class="hunter-formula">' + expression + '</div>';
-    box.querySelectorAll('[data-method]').forEach(function (button) {
-      button.addEventListener('click', function () { method = button.dataset.method; renderMethod(); });
-    });
   }
   dotsButton.addEventListener('click', function () { openStatic('dots'); });
   sakuraButton.addEventListener('click', function () { openStatic('sakura'); });

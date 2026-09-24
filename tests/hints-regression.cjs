@@ -16,14 +16,24 @@ const assert=require('node:assert/strict');
  await page.evaluate(()=>startSession([{a:13,b:9,ans:4}],1));
  assert(await page.locator('#hint-btn-sakura').isVisible());
  await page.locator('#hint-btn-sakura').click();
- assert((await page.locator('.hunter-formula').innerText()).includes('10 － 6 ＝ 4'));
- await page.locator('[data-method="banana"]').click();
- assert((await page.locator('.hunter-formula').innerText()).includes('1 ＋ 3 ＝ 4'));
+ assert.equal(await page.locator('.hunter-sakura-message').innerText(),'10からひいて、たすよ。');
+ await page.waitForFunction(()=>document.querySelector('.hunter-sakura-replay').textContent.includes('もういちど'),null,{timeout:10000});
+ assert.equal(await page.locator('.hunter-sakura-message').innerText(),'10から9を引いて、のこりの1と3を足すよ。');
+ assert.equal(await page.locator('.hunter-sakura-svg .lesson-stage.shown').count(),2);
+ await page.waitForTimeout(850);
+ await page.locator('#hint-static-box').screenshot({path:'tests/sakura-genka.png'});
+ await page.locator('[data-method="gengen"]').click();
+ assert.equal(await page.locator('.hunter-sakura-message').innerText(),'2回に分けて、引くよ。');
+ await page.waitForFunction(()=>document.querySelector('.hunter-sakura-replay').textContent.includes('もういちど'),null,{timeout:12000});
+ assert.equal(await page.locator('.hunter-sakura-message').innerText(),'こんどは、6をひくよ。10－6＝4');
+ assert.equal(await page.locator('.hunter-sakura-svg .lesson-stage.shown').count(),3);
+ await page.waitForTimeout(850);
+ await page.locator('#hint-static-box').screenshot({path:'tests/sakura-gengen.png'});
  await page.evaluate(()=>{document.querySelector('[data-hunter-hint="sakura"]').click();});
  assert.equal(await page.locator('#hint-btn-sakura').isVisible(),false);
  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('hikizan_hunter_hint_options')).sakura),false);
  await page.evaluate(()=>{document.querySelector('[data-hunter-hint="sakura"]').click();});
- console.log('PASS: static 5-by-2 subtraction dots, both decompositions, saved hint selection');
+ console.log('PASS: static 5-by-2 subtraction dots, narrated decomposition diagrams, saved hint selection');
  for(const problem of [{a:13,b:8,ans:5},{a:10,b:9,ans:1},{a:18,b:9,ans:9}]){
   for(const branch of problem.a===10?['jukka']:['jukka','bara']){
    await page.evaluate(p=>{startSession([p],1);toggleHint1();},problem);
