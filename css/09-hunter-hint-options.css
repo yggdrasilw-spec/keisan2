@@ -1,0 +1,28 @@
+.hunter-hint-settings { border:2px solid #e0c28b; border-radius:16px; padding:12px 14px; margin:0 0 16px; background:#fffbf0; }
+.hunter-hint-settings legend { font-size:14px; font-weight:800; color:#3a2a00; padding:0 5px; }
+.hunter-hint-settings p { font-size:12px; margin:2px 0 8px; color:#705636; }
+.hunter-hint-settings label { display:block; padding:6px 0; font-size:13px; font-weight:700; cursor:pointer; }
+.hunter-hint-settings input { width:18px; height:18px; vertical-align:middle; accent-color:#8654bc; }
+#hint-btn-dots, #hint-btn-sakura { border-radius:16px; padding:5px 14px; font-size:12px; font-weight:700; background:#fff3d6; border:2px solid #f5a623; color:#7a5000; cursor:pointer; font-family:inherit; }
+#hint-btn-dots[hidden], #hint-btn-sakura[hidden], #hint-static-box[hidden] { display:none !important; }
+#hint-static-box { margin-top:8px; border-radius:16px; border:2px solid #e0c28b; background:#fffdf6; padding:12px; }
+.hunter-static-title { text-align:center; font-size:18px; font-weight:900; margin-bottom:10px; }
+.hunter-static-title .minuend { color:#176697; }
+.hunter-static-title .subtrahend { color:#b43737; }
+.hunter-dot-legend { display:flex; justify-content:center; gap:18px; flex-wrap:wrap; font-size:12px; font-weight:800; margin-bottom:8px; }
+.hunter-dot-legend span:first-child { color:#176697; }
+.hunter-dot-legend span:last-child { color:#b43737; }
+.hunter-dot-grid { display:grid; grid-template-columns:repeat(5, 24px); grid-template-rows:repeat(2, 24px); gap:8px; justify-content:center; padding:12px; width:max-content; max-width:100%; margin:auto; border:2px solid #cbd5df; border-radius:12px; background:#fff; }
+.hunter-dot { width:24px; height:24px; border-radius:50%; background:#258bd7; }
+.hunter-dot.subtracted { background:#e7504f; }
+.hunter-dot.empty { background:#f4f6f8; border:1px dashed #ccd4dc; }
+.hunter-static-caption { text-align:center; font-size:13px; font-weight:700; margin-top:10px; color:#46556a; }
+.hunter-methods { display:flex; gap:8px; justify-content:center; margin-bottom:12px; flex-wrap:wrap; }
+.hunter-methods button { border:2px solid #d5a2a2; border-radius:12px; padding:7px 12px; background:#fff; color:#723b3b; font-family:inherit; font-size:13px; font-weight:800; cursor:pointer; }
+.hunter-methods button[aria-pressed="true"] { background:#fce9e9; border-color:#c96b6b; }
+.hunter-tree { width:100%; max-width:340px; display:block; margin:auto; }
+.hunter-tree text { font-family:'Nunito',sans-serif; font-weight:800; text-anchor:middle; fill:#233149; }
+.hunter-tree .branch { fill:none; stroke:#557695; stroke-width:3; }
+.hunter-tree .fruit { fill:#ffe4e7; stroke:#ca8a9a; stroke-width:2; }
+.hunter-tree .ten { fill:#fff4d5; stroke:#d3a743; }
+.hunter-formula { text-align:center; font-size:18px; font-weight:900; color:#233149; margin-top:6px; }

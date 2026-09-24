@@ -1,0 +1,33 @@
+/* Hunter keeps its two subtraction hints and its original portrait layout. */
+.practice-workspace {margin-top:8px;}
+.practice-hint-panel {margin-top:12px;}
+#recitation-overlay {box-sizing:border-box;}
+#practice-raid-status {flex-shrink:0;}
+.hunter-stars {display:block; width:100%; margin:12px 0; padding:12px; border:2px solid #e0b34e; border-radius:16px; background:#fff3ce; color:#785006; font:800 22px inherit; cursor:pointer;}
+.hunter-reward {padding:10px; border-radius:12px; background:#fff3ce; color:#795000; font-weight:800; margin-bottom:12px;}
+.hunter-debug-note {margin:16px 0; color:#606070; font-size:12px;}
+#ach-group-shop {width:100%;}
+.learning-settings button {padding:9px 14px; border-radius:10px; border:1px solid #c8b58e; cursor:pointer; font:inherit;}
+@media (min-width:800px) and (min-aspect-ratio:4/3) {
+  body:has(#practice.on) {padding:0;}
+  .practice-hint-panel {margin-top:0; max-height:100%; overflow:auto;}
+  #practice #hint-box {padding:10px;}
+  #practice #hint-scene {padding:8px; margin-bottom:4px;}
+  #practice #hint-problem-title {margin-bottom:4px;}
+  #practice #hint-next-btn {margin-top:6px;}
+  #practice #hint-soroban-frame {height:clamp(210px,48vh,400px)!important;}
+  #practice .hw-board-wrap {width:min(100%,500px);}
+}
+@media (min-width:800px) and (min-aspect-ratio:4/3) and (max-height:650px) {
+  #practice #hint-problem-title {font-size:16px;}
+  #practice #hint-num-label {font-size:14px; min-height:18px; margin-bottom:2px;}
+  #practice #hint-formula-box, #practice #hint-sum-formula {font-size:15px; min-height:18px; margin-top:3px;}
+  #practice #hint-bottom-text {font-size:14px; min-height:18px; margin-top:4px;}
+  #practice #hint-final-formula {font-size:19px; min-height:24px; margin-top:4px;}
+  #practice #hint-choice-btns {margin-top:4px;}
+}
+@media (max-width:799px) {
+  .practice-hint-panel {padding:10px;}
+  #hint-dot-row-area {gap:6px; flex-wrap:wrap;}
+  #hint-right-panel {width:auto; max-width:100%;}
+}
