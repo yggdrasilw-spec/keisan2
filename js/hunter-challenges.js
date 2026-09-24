@@ -93,7 +93,7 @@
   document.addEventListener('DOMContentLoaded',function(){
     var launch=document.createElement('button');launch.id='hunter-challenge-launch';launch.className='hunter-challenge-launch';launch.innerHTML='⚡ <span>限界に ちょうせん<small>神速・超神速・無限</small></span> ›';
     document.getElementById('home').appendChild(launch);
-    var dialog=document.createElement('dialog');dialog.id='hunter-challenge-dialog';dialog.className='hunter-drawer';dialog.setAttribute('aria-labelledby','hunter-challenge-title');
+    var dialog=document.createElement('dialog');dialog.id='hunter-challenge-dialog';dialog.className='hunter-challenge-dialog';dialog.setAttribute('aria-labelledby','hunter-challenge-title');
     dialog.innerHTML='<div class="hunter-drawer-head"><span>CHALLENGE SELECT</span><button type="button" class="hunter-dialog-close" aria-label="とじる">✕</button></div><h2 id="hunter-challenge-title">限界の、その先へ。</h2><p id="hunter-challenge-course"></p><div class="hunter-challenge-cards"></div><p class="hunter-rule">まちがい・時間ぎれで 終了。<br>「すべて」の問題から出題するよ。<br>挑戦の記録は、ふだんの練習と別に保存。</p>';
     document.body.appendChild(dialog);
     dialog.querySelector('.hunter-dialog-close').onclick=function(){dialog.close();};

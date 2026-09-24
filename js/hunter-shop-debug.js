@@ -189,7 +189,9 @@
   SHOP_ITEMS.forEach(function(item, index) {
     item.category = index < 12 ? 'explore' : index < 16 ? 'relic' : 'legend';
   });
+  SHOP_ITEMS.forEach(function(item){item.img='img/shop/'+item.id+'.webp';});
   SHOP_ITEMS = SHOP_ITEMS.concat(HUNTER_EXTRA_SHOP_ITEMS);
+  SHOP_ITEMS.forEach(function(item){item.img='img/shop/'+item.id+'.webp';});
   var shopCategory = 'all';
   var shopCategories = [['all','すべて'],['explore','探索どうぐ'],['material','森のめぐみ'],['relic','魔法の道具'],['legend','伝説のおたから'],['owned','購入済み']];
   function getShopItemImagePath(index) { return SHOP_ITEMS[index].img || ''; }
@@ -1016,7 +1018,7 @@
       var title = owned ? '購入済み' : ('★' + item.price + 'で かう');
       var afford = total >= item.price;
       card.innerHTML = ''
-        + '<div class="shop-ico">' + (item.img ? '<img src="' + item.img + '" alt="">' : item.ico) + '</div>'
+        + '<div class="shop-ico"><span class="shop-emoji"' + (item.img ? '' : ' hidden') + '>' + item.ico + '</span>' + (item.img ? '<img src="' + item.img + '" alt="" onload="this.previousElementSibling.hidden=true" onerror="this.hidden=true">' : '') + '</div>'
         + '<div class="shop-name">' + item.name + '</div>'
         + '<div class="shop-desc">' + item.desc + '</div>'
         + '<div class="shop-price"><span>' + title + '</span><small>' + (owned ? '詳細を見る' : (afford ? '買える' : '★がたりない')) + '</small></div>';

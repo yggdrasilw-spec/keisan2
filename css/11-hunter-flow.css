@@ -106,3 +106,19 @@ body:not(:has(#practice.on)):not(:has(#settings.on)) #sound-bar{display:none}
 #ach-preview-overlay .gem-burst-card{flex:0 1 640px;width:calc(100vw - 32px);max-width:640px;height:auto;animation:none;transform:none;box-sizing:border-box}
 #ach-preview-overlay .gem-burst-img-wrap{flex:none;height:min(45dvh,65vw);overflow:visible}
 #ach-preview-overlay .gem-burst-img{max-width:100%;object-fit:contain}
+.hunter-challenge-dialog{position:fixed;inset:0;margin:auto;width:min(780px,calc(100vw - 32px));max-width:none;height:fit-content;max-height:calc(100dvh - 32px);overflow:auto;padding:24px;border:1px solid #8298bd;border-radius:24px;background:radial-gradient(ellipse at 50% 0,#36486c,#131c31 68%);color:#f7f3ff;box-shadow:0 24px 90px #07101ccc}
+.hunter-challenge-dialog[open]{animation:hunterChallengePop .18s ease-out}
+.hunter-challenge-dialog::backdrop{background:#081222c9;backdrop-filter:blur(5px)}
+.hunter-challenge-dialog .hunter-drawer-head{margin-bottom:12px}
+.hunter-challenge-dialog h2{font-size:clamp(22px,3vw,32px);text-align:center;margin:0 0 8px}
+.hunter-challenge-dialog #hunter-challenge-course{text-align:center}
+.hunter-challenge-dialog .hunter-challenge-cards{grid-template-columns:1fr;gap:8px;margin:14px 0}
+.hunter-challenge-dialog .hunter-challenge-card{padding:10px 14px}
+.hunter-challenge-dialog .hunter-challenge-card strong{font-size:24px}
+.hunter-challenge-dialog .hunter-rule{text-align:center}
+@keyframes hunterChallengePop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(min-width:700px){.hunter-challenge-dialog .hunter-challenge-cards{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}.hunter-challenge-dialog .hunter-challenge-card{min-height:220px;flex-direction:column;justify-content:center;text-align:center}.hunter-challenge-dialog .hunter-challenge-card>span:nth-child(2){flex:auto}.hunter-challenge-dialog .hunter-challenge-card> b{display:none}}
+.shop-ico{position:relative;overflow:hidden}
+.shop-ico .shop-emoji{position:absolute;inset:0;display:grid;place-items:center;font-size:29px}
+.shop-ico .shop-emoji[hidden]{display:none}
+.shop-ico img{position:relative;z-index:1;width:64px;height:64px;object-fit:contain;background:#fffaf1;border-radius:12px}

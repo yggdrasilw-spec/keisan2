@@ -45,10 +45,12 @@ var HUNTER_CREATURE_NAMES = {
   borrow_top_18: 'ファフニール'
 };
 function hunterCreatureName(def) {
+  if (def.challenge && typeof HUNTER_SPEED_CREATURES !== 'undefined' && HUNTER_SPEED_CREATURES[def.key]) return HUNTER_SPEED_CREATURES[def.key][0];
   return HUNTER_CREATURE_NAMES[def.key] || 'あたらしい幻獣';
 }
 
 function hunterMasterLabel(def) {
+  if (def.challenge) return def.desc.replace(/\n/g, ' ');
   if (def.axis) return (def.kind === 'borrow' ? 'くりさがりあり・' : 'くりさがりなし・') + def.num + (def.axis === 'top' ? 'からひく' : 'をひく');
   return def.title.replace(/\n/g, ' ').replace(/メダル/g, '');
 }

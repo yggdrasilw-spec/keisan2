@@ -1,5 +1,13 @@
 // Short, child-friendly field notes. Adventure descriptions are original game lore.
 var HUNTER_LORE = {
+ no_shinsoku:['風を渡る狼','疾風の中を駆け抜ける、風渡りの銀狼。風車のように回る尾で、急いでも答えを見失わない道を作ります。','くりさがりなしの神速をきわめた証。速さの中でも、ひとつずつ確かめる目を授けます。'],
+ ten_shinsoku:['十灯の星蛾','十この灯を羽に宿す小さな蛾。光をひとつずつ数えると、答えへの道が見えてきます。','10からひく神速をきわめた証。十の光を頼りに、迷わず進みます。'],
+ borrow_shinsoku:['雷角の岩獅子','石のたてがみと青い雷角をもつ獅子。雷鳴のあとに、くりさがりの道筋を照らします。','くりさがりありの神速をきわめた証。難しい道も落ち着いて駆けぬける力をくれます。'],
+ mix_shinsoku:['瞬虹の空鯨','翼のようなひれと虹色の尾をもつ空飛ぶ鯨。移り変わる景色を楽しみながら、雲の上を泳ぎます。','ばらばらの神速をきわめた証。問題が変わっても、考え方を切り替える勇気をくれます。'],
+ no_super:['蒼星の角鹿','星明かりをまとう群青色の鹿。二本の水晶角が、静かな夜空に青い道しるべを描きます。','くりさがりなしの超神速をきわめた証。見えないほど速い答えも、星のように正しく選ぶ力を授けます。'],
+ ten_super:['金環の砂漠狐','黄金の輪を九つまとった砂漠狐。輪がひとつ輝くたび、十のまとまりがはっきりします。','10からひく超神速をきわめた証。金色の輪のように、考えをすばやくまとめます。'],
+ borrow_super:['紅蓮の双翼竜','炎色の翼を二枚ひろげる竜。胸の白い光は、あわてずに考える心のしるしです。','くりさがりありの超神速をきわめた証。炎の道を正しく見分ける集中力を授けます。'],
+ mix_super:['天球の星海蛇','星座を背に泳ぐ長い海蛇。尾の先に小さな銀河をたたえ、八色の星を従えています。','ばらばらの超神速をきわめた証。変わり続ける問題の先に、広い空を見せてくれます。'],
  mix_20:['虹角の幻獣','このゲームだけのオリジナル幻獣。水晶の角に、森・炎・雷の三つの光を集める白い鹿です。','いろいろなひき算を20問マスターしたハンターの前に現れます。問題が変わっても、落ち着いて考える力のしるしです。'],
  mix_all:['星めぐりの幻獣','このゲームだけのオリジナル幻獣。星空の翼と銀色の体をもち、色とりどりの水晶と空を旅する竜です。','ばらばらコースの全問をマスターすると仲間になります。すべてのひき算をきわめたハンターを、新しい冒険へ案内します。'],
  easy_20:['一角の幻獣','額に一本の角をもつ、馬に似た幻獣。ユニコーンという名前には「一つの角」という意味があります。','森の奥で出会える、やさしい案内役。小さな一歩を重ねるハンターを見守ります。'],
@@ -58,7 +66,7 @@ var HUNTER_LORE = {
       document.getElementById('hunter-lore-name').textContent=hunterCreatureName(selected);
       var img=document.getElementById('hunter-lore-img');img.src=selected.axis?kotsuImgSrc(selected):selected.img;img.alt=hunterCreatureName(selected);
       document.getElementById('hunter-lore-tag').textContent=entry[0];document.getElementById('hunter-lore-about').textContent=entry[1];document.getElementById('hunter-lore-story').textContent=entry[2];
-      document.getElementById('hunter-lore-condition').textContent=hunterMasterLabel(selected)+' をマスター';dialog.showModal();
+      document.getElementById('hunter-lore-condition').textContent=selected.challenge ? (selected.desc.replace(/\n/g,' ')+'。') : (hunterMasterLabel(selected)+' をマスター');dialog.showModal();
     };
     var originalClose=closeAchPreview;closeAchPreview=function(){originalClose();if(returnFocus && returnFocus.isConnected)returnFocus.focus();};
     document.addEventListener('keydown',function(e){if(e.key==='Escape' && !dialog.open)closeAchPreview();});
