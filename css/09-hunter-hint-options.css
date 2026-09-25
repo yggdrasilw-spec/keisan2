@@ -19,28 +19,40 @@
 .hunter-static-caption { text-align:center; font-size:13px; font-weight:700; margin-top:10px; color:#46556a; }
 .hunter-sakura-methods { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:8px; }
 .hunter-sakura-methods[hidden] { display:none; }
-.hunter-sakura-methods button { border:2px solid #d5a2a2; border-radius:10px; padding:8px 5px; background:#fff; color:#723b3b; font-family:inherit; font-size:clamp(10px,2.6vw,13px); font-weight:800; cursor:pointer; }
-.hunter-sakura-methods button[aria-pressed="true"] { background:#fce9e9; border-color:#c96b6b; }
-.hunter-sakura-svg { display:block; width:100%; height:auto; max-height:330px; background:#fff; border-radius:10px; font-family:"Trebuchet MS","BIZ UDPGothic",sans-serif; font-weight:900; }
-.hunter-sakura-svg text { fill:#151515; text-anchor:middle; }
+.hunter-sakura-methods button { border:2px solid #c9d5d9; border-radius:10px; padding:8px 5px; background:#fff; color:#43545d; font-family:inherit; font-size:clamp(10px,2.6vw,13px); font-weight:800; cursor:pointer; }
+.hunter-sakura-methods button[data-method="genka"][aria-pressed="true"] { background:#e9f4f8; border-color:#6d9ab3; color:#245571; }
+.hunter-sakura-methods button[data-method="gengen"][aria-pressed="true"] { background:#fff0eb; border-color:#cf8879; color:#884b43; }
+.hunter-sakura-progress { margin:0 2px 5px; color:#6b7880; font-size:11px; font-weight:800; text-align:right; }
+.hunter-sakura-svg { display:block; width:100%; height:auto; max-height:330px; background:#fffdfa; border-radius:10px; font-family:"Trebuchet MS","BIZ UDPGothic",sans-serif; font-weight:900; }
+.hunter-sakura-svg text { fill:#24343d; text-anchor:middle; }
 .hunter-sakura-svg .top { font-size:130px; }
+.hunter-sakura-svg .top.minuend { fill:#245571; }
+.hunter-sakura-svg .top.subtrahend { fill:#b84f4b; }
 .hunter-sakura-svg .bottom { font-size:85px; }
-.hunter-sakura-svg .child { font-size:75px; fill:#151515; }
-.hunter-sakura-svg .small-formula { font-size:40px; text-anchor:start; }
-.hunter-sakura-svg .answer { fill:#176697; }
-.hunter-sakura-svg .branch { fill:none; stroke:#426a90; stroke-width:5; }
-.hunter-sakura-svg .fruit { fill:#ffe3e7; stroke:#7390a9; stroke-width:2; }
-.hunter-sakura-svg .banana { fill:#fffde4; fill-opacity:.62; stroke:#6a83a2; stroke-width:2; }
-.hunter-sakura-svg .ten-box { fill:#fff; stroke:#222; stroke-width:3; }
-.hunter-sakura-svg .red-arrow { fill:none; stroke:#dd2828; stroke-width:5; }
-.hunter-sakura-svg .red-head { fill:#dd2828; }
-.hunter-sakura-svg .purple-arrow { fill:none; stroke:#60418a; stroke-width:5; }
-.hunter-sakura-svg .purple-head { fill:#60418a; }
-.hunter-sakura-svg .lesson-stage { opacity:0; transition:opacity .3s ease; }
-.hunter-sakura-svg .lesson-stage.shown { opacity:1; }
+.hunter-sakura-svg .child { font-size:75px; }
+.hunter-sakura-svg .minuend-value { fill:#245571; }
+.hunter-sakura-svg .subtrahend-value { fill:#b84f4b; }
+.hunter-sakura-svg .small-formula { font-size:40px; text-anchor:start; fill:#80584b; }
+.hunter-sakura-svg .answer { fill:#237e68; }
+.hunter-sakura-svg .branch { fill:none; stroke:#527b98; stroke-width:5; stroke-linecap:round; }
+.hunter-sakura-svg .fruit { stroke-width:2.5; transform-box:fill-box; transform-origin:center; transform:scale(.72); transition:transform .35s ease; }
+.hunter-sakura-svg .fruit.from-minuend { fill:#e7f2f8; stroke:#75a7c2; }
+.hunter-sakura-svg .fruit.from-subtrahend { fill:#ffe9e5; stroke:#d59089; }
+.hunter-sakura-svg .lesson-cue.shown .fruit { transform:scale(1); }
+.hunter-sakura-svg .banana { fill:#fff1c9; fill-opacity:.58; stroke:#c69d52; stroke-width:2; }
+.hunter-sakura-svg .ten-box { fill:#f3faf8; stroke:#527c70; stroke-width:3; }
+.hunter-sakura-svg .red-arrow { fill:none; stroke:#d85e51; stroke-width:5; stroke-linecap:round; }
+.hunter-sakura-svg .red-head { fill:#d85e51; }
+.hunter-sakura-svg .purple-arrow { fill:none; stroke:#775ba1; stroke-width:5; stroke-linecap:round; }
+.hunter-sakura-svg .purple-head { fill:#775ba1; }
+.hunter-sakura-svg .focus-ring { fill:none; stroke:#d9a044; stroke-width:5; stroke-dasharray:11 9; }
+.hunter-sakura-svg .lesson-cue.shown .focus-ring { animation:hunterTenFocus 1.15s ease-in-out 2; }
+@keyframes hunterTenFocus { 50% { opacity:.4; stroke-width:8; } }
+.hunter-sakura-svg .lesson-cue { opacity:0; transition:opacity .35s ease; }
+.hunter-sakura-svg .lesson-cue.shown { opacity:1; }
 .hunter-sakura-svg .draw { stroke-dasharray:1; stroke-dashoffset:1; }
-.hunter-sakura-svg .lesson-stage.shown .draw { stroke-dashoffset:0; transition:stroke-dashoffset .7s ease; }
-.hunter-sakura-message { display:grid; place-items:center; min-height:3.5em; padding:6px 2px; text-align:center; color:#714300; font-size:clamp(12px,2.8vw,15px); font-weight:800; line-height:1.5; }
-.hunter-sakura-replay { width:100%; margin-top:5px; padding:9px 12px; border:0; border-radius:12px; background:#e4ac4b; color:#302000; font-family:inherit; font-size:14px; font-weight:900; cursor:pointer; }
+.hunter-sakura-svg .lesson-cue.shown .draw { stroke-dashoffset:0; transition:stroke-dashoffset .75s ease; }
+.hunter-sakura-message { display:grid; place-items:center; min-height:3.5em; padding:8px 5px; text-align:center; color:#344b58; font-size:clamp(12px,2.8vw,15px); font-weight:800; line-height:1.5; }
+.hunter-sakura-replay { width:100%; margin-top:5px; padding:9px 12px; border:0; border-radius:12px; background:#608d9d; color:#fff; font-family:inherit; font-size:14px; font-weight:900; cursor:pointer; }
 .hunter-sakura-replay:disabled { opacity:.55; cursor:wait; }
-@media (prefers-reduced-motion:reduce) { .hunter-sakura-svg .lesson-stage, .hunter-sakura-svg .lesson-stage.shown .draw { transition:none; } }
+@media (prefers-reduced-motion:reduce) { .hunter-sakura-svg .lesson-cue, .hunter-sakura-svg .lesson-cue.shown .draw, .hunter-sakura-svg .fruit { transition:none; animation:none; } }
