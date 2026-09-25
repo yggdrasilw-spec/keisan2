@@ -441,7 +441,7 @@
   .ach-gem-card-ico img {
     width: 28px;
     height: 28px;
-    object-fit: contain;
+    object-fit: cover;
     filter: drop-shadow(0 0 4px rgba(245,200,76,.35));
   }
   .ach-gem-card-name {
@@ -664,7 +664,7 @@
     50%      { box-shadow: 0 0 22px rgba(245,200,76,.26); }
   }
   .ach-badge-ico {
-    width: 100%;
+    width: 72px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -4456,9 +4456,10 @@ function getAchStageIndex(total) {
 function buildAchCardIconEl(imgSrc, fallbackIco, on, size) {
   var wrap = document.createElement('div');
   wrap.className = 'ach-badge-ico';
+  wrap.style.width = size + 'px';
   wrap.style.height = size + 'px';
   var img = document.createElement('img');
-  img.style.cssText = 'height:100%;width:auto;max-width:none;object-fit:cover;display:block;';
+  img.style.cssText = 'width:100%;height:100%;max-width:none;object-fit:cover;display:block;';
   img.src = imgSrc || '';
   img.alt = '';
   img.onerror = function () {
