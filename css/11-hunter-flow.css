@@ -5,20 +5,61 @@ body:has(#home.on){padding:16px 24px;background:radial-gradient(ellipse at 0 0,#
 #home .hunter-collection-link{margin:0;padding:10px 16px}
 #home .hunter-collection-link:first-of-type{margin-left:auto}
 .hunter-flow-bar{display:flex;align-items:center;gap:16px;min-height:48px;margin-bottom:12px;color:#386052;font-weight:800}
-#home .hunter-mission-layout{display:block;max-width:1000px;margin:0 auto}
-#home .hunter-course-panel,#home .hunter-departure-panel,.hunter-activity-panel{padding:28px;border-radius:24px;min-height:330px}
+#home .hunter-mission-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;max-width:860px;margin:0 auto}
+#home .hunter-course-panel,#home .hunter-departure-panel,.hunter-activity-panel{padding:20px 24px;border-radius:24px;min-height:0}
+#home .hunter-course-panel{background:linear-gradient(145deg,#fffdf7,#f4f5ef);border:1px solid #dce4d7;box-shadow:0 12px 36px #193d2910}
+#home .hunter-departure-panel{background:radial-gradient(ellipse at 90% 0%,#285b55,transparent 62%),linear-gradient(145deg,#193f3a,#102f31);border:1px solid #386c61;box-shadow:0 14px 38px #102b2b2a}
 .hunter-activity-panel{background:#fffdf7;border:1px solid #dce4d7}
-#home .mgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:32px}
-#home .mc{flex-direction:column;justify-content:center;min-height:190px;padding:20px;position:relative}
-#home .mc-copy{display:flex;flex-direction:column;gap:10px}
-#home .mc-check{position:absolute;right:12px;top:12px}
-#home .mc-ico{width:56px;height:56px;font-size:32px}
-#home .mc-t{font-size:20px}
-#home .mc-example{font-size:22px}
-#home .hunter-section-heading h2{font-size:24px}
+#home .mgrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:12px}
+#home .mc{display:grid;grid-template-columns:38px minmax(0,1fr) 18px;grid-template-rows:auto auto auto;align-content:center;align-items:center;column-gap:10px;row-gap:4px;text-align:left;min-width:0;min-height:92px;padding:12px;border:1px solid #dce4d7;border-radius:16px;background:#fffdf8;color:#23473e;box-shadow:0 3px 0 #dfe6d9;position:relative}
+#home .mc-copy{display:contents}
+#home .mc-ico{grid-column:1;grid-row:1/3;width:38px;height:42px;font-size:22px;border-radius:12px}
+#home .mc-t{grid-column:2;grid-row:1;font-size:14px;line-height:1.3}
+#home .mc-d{grid-column:2;grid-row:2;font-size:10px;line-height:1.3}
+#home .mc-example{grid-column:2;grid-row:3;font-size:11px;white-space:nowrap}
+#home .mc-check{grid-column:3;grid-row:1/4;align-self:center;justify-self:end;font-size:13px}
+#home .mc.msel{background:linear-gradient(145deg,#eff7e9,#e0f1e5);border-color:#36856e;box-shadow:0 3px 0 #2e6f60,0 0 0 1px #36856e40}
+#home .mc-no.msel{border-color:#62a46d}
+#home .mc-ten.msel{border-color:#d98b4e}
+#home .mc-cy.msel{border-color:#cf6681}
+#home .mc-mix.msel{border-color:#8c78bd;background:linear-gradient(145deg,#f9f4ff,#ebe4fa)}
+#home .hunter-section-heading{margin-bottom:0}
+#home .hunter-section-heading h2{font-size:19px}
+#home .hunter-section-heading>span{width:32px;height:32px;border-color:#83a89a;color:#285c4e}
+#home .hunter-course-panel .hunter-section-heading p{color:#58736b}
+#home .hunter-progress-label,#home #dotrow,#home #kotsu-banner-area{display:none!important}
 #home .hunter-departure-art{display:none}
-#home .hunter-departure-panel .frow,#home .start-btn-row{max-width:720px;width:100%;margin:18px auto}
-#home .go-btn{min-height:70px;font-size:24px}
+#home .hunter-departure-panel .hunter-section-heading{margin-bottom:8px}
+#home .hunter-filter-label{margin:0 0 7px;color:#d5e8dd;font-size:11px}
+#home .hunter-departure-panel .frow{justify-content:flex-start;gap:8px;margin:0}
+#home .hunter-departure-panel .fb{flex:0 1 150px;min-height:42px;border-radius:12px;padding:9px 18px;border-color:#7c9e91;color:#e3f1e8;background:#183d3b;font-weight:800}
+#home .hunter-departure-panel .fb.on{background:#f0d18d;color:#273c32;border-color:#f0d18d;box-shadow:0 3px 0 #a67b3d}
+#home .hunter-departure-panel .fb-w.on{background:#d878a0;border-color:#d878a0;color:#fff;box-shadow:0 3px 0 #914764}
+#home .hunter-departure-panel .qi{min-height:0;margin:7px 0 0;color:#c5ddd1;font-size:11px}
+#home .start-btn-row{width:100%;margin:10px 0 0}
+#home .start-btn-row .go-btn{display:flex;align-items:center;justify-content:space-between;min-height:58px;padding:12px 20px;border:1px solid #f0d18d;border-radius:14px;background:linear-gradient(115deg,#f0d18d,#d9ac62);color:#253b31;box-shadow:0 4px 0 #98723d;font-size:17px;letter-spacing:.04em;text-align:left}
+#home .start-btn-row .go-btn-arrow{font-size:27px;line-height:1}
+#home .start-btn-row .go-btn:active{transform:translateY(2px);box-shadow:0 2px 0 #98723d}
+#home .start-btn-row .go-btn:disabled{opacity:.42;filter:saturate(.4);cursor:not-allowed;transform:none}
+#home .hunter-course-panel>.hunter-challenge-launch{width:auto;min-height:42px;margin:12px 0 0;padding:9px 14px;border:1px solid #bea7dd;border-radius:12px;background:linear-gradient(120deg,#342b55,#292546);color:#f6edff;box-shadow:0 3px 0 #1d1c35;font-size:12px;gap:9px}
+#home .hunter-course-panel>.hunter-challenge-launch small{color:#dbc9ff}
+.hunter-special-heading{display:flex;align-items:center;gap:10px;margin:14px 0 8px;padding-top:12px;border-top:1px solid #d9dfd5;color:#51436d}
+.hunter-special-heading>span{display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,#4a355f,#222a48);color:#f2d88e}
+.hunter-special-heading strong,.hunter-special-heading small{display:block}
+.hunter-special-heading strong{font-size:13px;letter-spacing:.04em}
+.hunter-special-heading small{margin-top:2px;color:#7f748e;font-size:10px}
+.hunter-special-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#home .hunter-special-course{display:flex;align-items:center;gap:10px;width:100%;min-width:0;min-height:62px;margin:0;padding:10px 12px;border:1px solid #72dfec;border-left:4px solid #72dfec;border-radius:6px 15px 6px 15px;background:linear-gradient(120deg,#1a4155,#152741);color:#fff;box-shadow:0 3px 0 #102239;text-align:left}
+#home .hunter-special-course .course-btn-ico{font-size:22px}
+#home .hunter-special-course .course-btn-main{min-width:0;flex:1}
+#home .hunter-special-course .course-btn-title{font-size:13px;line-height:1.25}
+#home .hunter-special-course .course-btn-sub{font-size:9px;line-height:1.35;color:#d0d9e7}
+#home #cs-end-shinsoku{border-color:#ef98db;border-left-color:#ef98db;background:linear-gradient(120deg,#633760,#241d46);box-shadow:0 3px 0 #241d46}
+#home #cs-end-shinsoku .course-btn-ico{color:#ffb1e7}
+#home #cs-end-mugen{border-color:#ffd289;border-left-color:#ffd289;background:linear-gradient(120deg,#614a28,#332a37);box-shadow:0 3px 0 #332a37}
+#home #cs-end-mugen .course-btn-ico{color:#ffe29b}
+#home .hunter-special-course[aria-disabled=true]{opacity:.48;filter:saturate(.35)}
+#home .hunter-special-course:hover{transform:translateY(-2px)}
 .hunter-choice,#home .kotsu-banner,#home .hunter-challenge-launch{display:flex;position:static;writing-mode:horizontal-tb;align-items:center;width:100%;min-height:66px;margin:12px 0;padding:14px 20px;border-radius:14px;font-size:20px;gap:14px;text-align:left}
 .hunter-choice{flex-wrap:wrap;background:#e6f5ec;border:2px solid #98bdab;color:#173f3a;font-weight:800;cursor:pointer}
 .hunter-choice small{font-size:13px;font-weight:500}
@@ -46,21 +87,25 @@ body:not(:has(#practice.on)) #app{max-width:1200px}
  #advanced-settings .hunter-settings-body>div{min-width:0}
 }
 @media(max-height:650px) and (min-width:800px){
- #home .hunter-course-panel,#home .hunter-departure-panel,.hunter-activity-panel{padding:16px 24px;min-height:280px}
- #home .mgrid{margin-top:16px}#home .mc{min-height:160px}
+ #home .hunter-course-panel,#home .hunter-departure-panel,.hunter-activity-panel{padding:12px 20px;min-height:0}
+ #home .mgrid{margin-top:8px}#home .mc{min-height:76px}
+ .hunter-special-heading{margin:8px 0 5px;padding-top:8px}.hunter-special-course{min-height:48px!important}
  .hunter-choice,#home .kotsu-banner,#home .hunter-challenge-launch{min-height:56px;padding:10px 16px;margin:8px 0}
 }
 @media(max-width:799px){
  body:has(#home.on){padding:64px 12px 16px}
  #home .hunter-heading{flex-wrap:wrap;gap:8px}#home .hunter-heading>img{width:38px;height:38px}#home .hunter-heading h1{font-size:22px}
  #home .hunter-collection-link{padding:9px;font-size:12px}#home .hunter-eyebrow{display:none}
- #home .hunter-course-panel,#home .hunter-departure-panel,.hunter-activity-panel{padding:18px;min-height:0}
+ #home .hunter-course-panel,#home .hunter-departure-panel,.hunter-activity-panel{padding:14px 16px;min-height:0}
  #home .hunter-section-heading h2{font-size:19px}
- #home .mgrid{grid-template-columns:1fr;gap:12px;margin-top:18px}
- #home .mc{flex-direction:row;min-height:96px;padding:12px;justify-content:flex-start}
- #home .mc-copy{gap:5px;text-align:left}#home .mc-t{font-size:17px}#home .mc-example{font-size:18px}
+ #home .mgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+ #home .mc{min-height:80px;padding:10px;column-gap:8px}
+ #home .mc-t{font-size:13px}#home .mc-example{font-size:10px}
  .hunter-choice,#home .kotsu-banner,#home .hunter-challenge-launch{font-size:17px;padding:14px;min-height:76px}
- #home .start-btn-row{flex-wrap:wrap}#home .go-btn{font-size:19px}
+ #home .start-btn-row{flex-wrap:nowrap}#home .start-btn-row .go-btn{font-size:17px}
+ #home .hunter-course-panel>.hunter-challenge-launch{width:100%;justify-content:center}
+ .hunter-special-links{gap:8px}#home .hunter-special-course{gap:6px;padding:9px 8px;min-height:58px}
+ #home .hunter-special-course .course-btn-title{font-size:12px}#home .hunter-special-course .course-btn-sub{font-size:8px}
  .hunter-settings-body{columns:1}#settings,#advanced-settings,#changelog{padding:16px}
  .hunter-menu .sm-row{grid-template-columns:repeat(2,minmax(0,1fr))}
  #achievements.sc.on{padding:0;height:100dvh;min-height:0}

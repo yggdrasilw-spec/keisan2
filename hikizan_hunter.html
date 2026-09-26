@@ -1353,12 +1353,12 @@
       </div>
     </section>
     <section class="hunter-departure-panel" aria-labelledby="hunter-departure-heading">
-      <div class="hunter-section-heading"><span>02</span><div><h2 id="hunter-departure-heading">ぼうけんの じゅんび</h2><p id="hunter-selected-course">くりさがり なし</p></div></div>
+      <div class="hunter-section-heading"><span>02</span><div><h2 id="hunter-departure-heading">れんしゅうを えらぼう</h2><p id="hunter-selected-course">くりさがり なし</p></div></div>
       <div class="hunter-filter-label">れんしゅうする もんだい</div>
-      <div class="frow"><button class="fb fb-a on" id="fa" onclick="selFilt('all')">すべて</button><button class="fb fb-w" id="fw" onclick="selFilt('weak')">にがて だけ</button></div>
+      <div class="frow" role="group" aria-label="れんしゅうする もんだい"><button class="fb fb-a on" id="fa" onclick="selFilt('all')" aria-pressed="true">すべて</button><button class="fb fb-w" id="fw" onclick="selFilt('weak')" aria-pressed="false">にがて</button></div>
       <div class="qi" id="qi" aria-live="polite"></div>
       <div class="hunter-departure-art"><img src="img/hunter-crystal.svg" alt="召喚の水晶"><p>ひきざんを きわめて<br>幻獣を なかまに しよう！</p></div>
-      <div class="start-btn-row" id="start-btn-row"><button class="go-btn go-btn-20" id="go-btn-20" onclick="start(20)">２０もん ▶</button><button class="go-btn go-btn-all" id="go-btn-all" onclick="start('all')">ぜんもん ▶</button></div>
+      <div class="start-btn-row" id="start-btn-row"><button class="go-btn go-btn-all" id="go-btn-all" onclick="start('all')"><span id="go-btn-title">ぜんぶ</span><span class="go-btn-arrow" aria-hidden="true">›</span></button></div>
     </section>
   </div>
   <nav class="sm-row hunter-navigation" aria-label="メニュー">
@@ -2312,8 +2312,10 @@ function updQI() {
 function updStartBtnRow() {
   var row = document.getElementById('start-btn-row');
   if (!row) return;
-  var total = buildP(gSt.mode).length;
-  row.classList.toggle('only-all', total <= 20);
+  var title = document.getElementById('go-btn-title');
+  if (title) title.textContent = gSt.filt === 'weak' ? 'にがてを れんしゅう' : 'ぜんぶ れんしゅう';
+  var button = document.getElementById('go-btn-all');
+  if (button) button.disabled = !filtP(gSt.mode,gSt.filt).length;
 }
 
 function selMode(m) {
@@ -2322,6 +2324,12 @@ function selMode(m) {
   document.getElementById('cn').classList.toggle('msel', m==='no');
   document.getElementById('ct').classList.toggle('msel', m==='ten');
   document.getElementById('cc').classList.toggle('msel', m==='borrow');
+  document.getElementById('cn').setAttribute('aria-pressed', m==='no' ? 'true' : 'false');
+  document.getElementById('ct').setAttribute('aria-pressed', m==='ten' ? 'true' : 'false');
+  document.getElementById('cc').setAttribute('aria-pressed', m==='borrow' ? 'true' : 'false');
+  document.getElementById('cm').setAttribute('aria-pressed', m==='mix' ? 'true' : 'false');
+  var selectedCourse = document.getElementById('hunter-selected-course');
+  if (selectedCourse) selectedCourse.textContent = document.querySelector('#'+({no:'cn',ten:'ct',borrow:'cc',mix:'cm'}[m])+' .mc-t').textContent;
   updQI(); updKotsuBanner(); updStartBtnRow();
 }
 
@@ -2329,7 +2337,9 @@ function selFilt(f) {
   gSt.filt = f;
   document.getElementById('fa').classList.toggle('on', f==='all');
   document.getElementById('fw').classList.toggle('on', f==='weak');
-  updQI();
+  document.getElementById('fa').setAttribute('aria-pressed', f==='all' ? 'true' : 'false');
+  document.getElementById('fw').setAttribute('aria-pressed', f==='weak' ? 'true' : 'false');
+  updQI(); updStartBtnRow();
 }
 
 
@@ -2506,6 +2516,7 @@ function renKotsuSt() {
 var _lastStartLimit = 20;
 function start(limit) {
   if (limit === 20 || limit === 'all') { _lastStartLimit = limit; }
+  if (gSt.filt === 'weak') limit = 'all';
   var lim = _lastStartLimit;
   var ps = filtP(gSt.mode, gSt.filt);
   if (!ps.length && gSt.filt === 'weak') {
@@ -2524,13 +2535,13 @@ function start(limit) {
     return;
   }
   if (!ps.length) { alert('がいとうするもんだいがありません。'); return; }
-  startSession(ps, lim);
+  startSession(ps, gSt.filt === 'weak' ? 'all' : lim);
 }
 
 function closeAskGanbare(doIt) {
   document.getElementById('ask-ganbare-dialog').style.display = 'none';
   if (doIt && window._ganbarePs && window._ganbarePs.length) {
-    startSession(window._ganbarePs, _lastStartLimit);
+    startSession(window._ganbarePs, gSt.filt === 'weak' ? 'all' : _lastStartLimit);
   }
   window._ganbarePs = null;
 }
