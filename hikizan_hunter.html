@@ -1359,6 +1359,16 @@
       <div class="qi" id="qi" aria-live="polite"></div>
       <div class="hunter-departure-art"><img src="img/hunter-crystal.svg" alt="召喚の水晶"><p>ひきざんを きわめて<br>幻獣を なかまに しよう！</p></div>
       <div class="start-btn-row" id="start-btn-row"><button class="go-btn go-btn-all" id="go-btn-all" onclick="start('all')"><span id="go-btn-title">ぜんぶ</span><span class="go-btn-arrow" aria-hidden="true">›</span></button></div>
+      <div style="margin-top:14px;padding:14px;border:2px solid #C8D8E8;border-radius:16px;background:#fff;">
+        <div style="font-size:14px;font-weight:800;color:#1A2A40;margin-bottom:6px;">先生用</div>
+        <div style="font-size:11px;color:#5A6070;margin-bottom:10px;">今えらんでいるコース・出題範囲を児童用URLにします</div>
+        <button type="button" onclick="createHunterPresetUrl()" style="width:100%;border:0;border-radius:12px;padding:10px;background:#4A90D0;color:#fff;font-weight:800;font-family:inherit;cursor:pointer;">この設定で児童用URLを作る</button>
+        <div id="hunter-preset-result" style="display:none;margin-top:10px;">
+          <input id="hunter-preset-url" readonly aria-label="児童用URL" style="box-sizing:border-box;width:100%;padding:8px;border:1px solid #C8D8E8;border-radius:8px;font-size:11px;">
+          <button type="button" onclick="copyHunterPresetUrl()" style="margin-top:8px;border:0;border-radius:10px;padding:8px 14px;background:#315FA8;color:#fff;font-weight:800;font-family:inherit;cursor:pointer;">URLをコピー</button>
+          <span id="hunter-preset-toast" role="status" style="display:none;margin-left:8px;font-size:12px;color:#2A8010;">コピーしました</span>
+        </div>
+      </div>
     </section>
   </div>
   <nav class="sm-row hunter-navigation" aria-label="メニュー">
@@ -2341,6 +2351,53 @@ function selFilt(f) {
   document.getElementById('fw').setAttribute('aria-pressed', f==='weak' ? 'true' : 'false');
   updQI(); updStartBtnRow();
 }
+
+function createHunterPresetUrl() {
+  var params = new URLSearchParams();
+  params.set('preset', '1');
+  params.set('mode', ['no','ten','borrow','mix'].indexOf(gSt.mode) >= 0 ? gSt.mode : 'no');
+  params.set('filt', gSt.filt === 'weak' ? 'weak' : 'all');
+  var url = new URL(window.location.href);
+  url.search = params.toString();
+  url.hash = '';
+  var input = document.getElementById('hunter-preset-url');
+  var result = document.getElementById('hunter-preset-result');
+  if (input) input.value = url.href;
+  if (result) result.style.display = 'block';
+}
+
+function copyHunterPresetUrl() {
+  var input = document.getElementById('hunter-preset-url');
+  if (!input || !input.value) return;
+  var done = function() {
+    var toast = document.getElementById('hunter-preset-toast');
+    if (!toast) return;
+    toast.style.display = 'inline';
+    setTimeout(function() { toast.style.display = 'none'; }, 1800);
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(input.value).then(done).catch(function() {
+      input.select();
+      try { if (document.execCommand('copy')) done(); } catch (e) {}
+    });
+  } else {
+    input.select();
+    try { if (document.execCommand('copy')) done(); } catch (e) {}
+  }
+}
+
+function applyHunterPreset() {
+  var params;
+  try { params = new URLSearchParams(window.location.search || ''); } catch (e) { return; }
+  if (params.get('preset') !== '1') return;
+  var mode = params.get('mode');
+  var filt = params.get('filt');
+  selMode(['no','ten','borrow','mix'].indexOf(mode) >= 0 ? mode : 'no');
+  selFilt(filt === 'weak' && filtP(gSt.mode, 'weak').length > 0 ? 'weak' : 'all');
+  window.__hunterPresetPending = true;
+}
+
+applyHunterPreset();
 
 
 // ======================================================
@@ -4851,6 +4908,10 @@ function hikizanStartTap() {
   } catch (e) {}
   ss.classList.add('hide');
   setTimeout(function () { ss.style.display = 'none'; }, 460);
+  if (window.__hunterPresetPending) {
+    window.__hunterPresetPending = false;
+    setTimeout(function () { start('all'); }, 480);
+  }
 }
 hikizanPreloadAssets();
 
