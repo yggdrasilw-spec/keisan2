@@ -1361,7 +1361,16 @@
       <div class="start-btn-row" id="start-btn-row"><button class="go-btn go-btn-all" id="go-btn-all" onclick="start('all')"><span id="go-btn-title">ぜんぶ</span><span class="go-btn-arrow" aria-hidden="true">›</span></button></div>
       <div style="margin-top:14px;padding:14px;border:2px solid #C8D8E8;border-radius:16px;background:#fff;">
         <div style="font-size:14px;font-weight:800;color:#1A2A40;margin-bottom:6px;">先生用</div>
-        <div style="font-size:11px;color:#5A6070;margin-bottom:10px;">今えらんでいるコース・出題範囲を児童用URLにします</div>
+        <div style="font-size:11px;color:#5A6070;margin-bottom:10px;">コース・出題範囲・問題数・制限時間を設定します</div>
+        <label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">出題数
+          <select id="hunter-preset-count" style="margin-left:8px;padding:6px;border-radius:8px;font:inherit;"><option value="all">ぜんぶ</option><option value="10">10もん</option><option value="20">20もん</option></select>
+        </label>
+        <label style="display:block;font-size:12px;font-weight:700;margin-bottom:10px;">1問の制限時間
+          <select id="hunter-preset-time" style="margin-left:8px;padding:6px;border-radius:8px;font:inherit;"><option value="0">なし</option><option value="5">5びょう</option><option value="10">10びょう</option></select>
+        </label>
+        <label style="display:block;font-size:12px;font-weight:700;margin-bottom:10px;">こたえかた
+          <select id="hunter-preset-answer" style="margin-left:8px;padding:6px;border-radius:8px;font:inherit;"><option value="random">ボタンで えらぶ</option><option value="calc">でんたく</option><option value="hw">てがき</option></select>
+        </label>
         <button type="button" onclick="createHunterPresetUrl()" style="width:100%;border:0;border-radius:12px;padding:10px;background:#4A90D0;color:#fff;font-weight:800;font-family:inherit;cursor:pointer;">この設定で児童用URLを作る</button>
         <div id="hunter-preset-result" style="display:none;margin-top:10px;">
           <input id="hunter-preset-url" readonly aria-label="児童用URL" style="box-sizing:border-box;width:100%;padding:8px;border:1px solid #C8D8E8;border-radius:8px;font-size:11px;">
@@ -1922,6 +1931,8 @@ var rTab = 'no';
 var sessMode = 'normal';
 var answerMode = (function(){ try { return localStorage.getItem('hikizan_answerMode') || 'random'; } catch(e){ return 'random'; } })();
 var calcInput = '';
+var hunterQuestionLimit = null;
+var hunterPresetTimeLimit = 0;
 
 // ======================================================
 // 効果音
@@ -2353,10 +2364,20 @@ function selFilt(f) {
 }
 
 function createHunterPresetUrl() {
+  var countInput = document.getElementById('hunter-preset-count');
+  var timeInput = document.getElementById('hunter-preset-time');
+  var answerInput = document.getElementById('hunter-preset-answer');
+  var count = countInput && ['all','10','20'].indexOf(countInput.value) >= 0 ? countInput.value : 'all';
+  var time = timeInput && ['0','5','10'].indexOf(timeInput.value) >= 0 ? timeInput.value : '0';
+  var answer = answerInput && ['random','calc','hw'].indexOf(answerInput.value) >= 0 ? answerInput.value : answerMode;
+  if (gSt.filt === 'weak' && filtP(gSt.mode, 'weak').length === 0) selFilt('all');
   var params = new URLSearchParams();
   params.set('preset', '1');
   params.set('mode', ['no','ten','borrow','mix'].indexOf(gSt.mode) >= 0 ? gSt.mode : 'no');
   params.set('filt', gSt.filt === 'weak' ? 'weak' : 'all');
+  params.set('count', count);
+  params.set('time', time);
+  params.set('answer', ['random','calc','hw'].indexOf(answer) >= 0 ? answer : 'random');
   var url = new URL(window.location.href);
   url.search = params.toString();
   url.hash = '';
@@ -2392,8 +2413,20 @@ function applyHunterPreset() {
   if (params.get('preset') !== '1') return;
   var mode = params.get('mode');
   var filt = params.get('filt');
+  var count = params.get('count');
+  var time = params.get('time');
+  var answer = params.get('answer');
   selMode(['no','ten','borrow','mix'].indexOf(mode) >= 0 ? mode : 'no');
-  selFilt(filt === 'weak' && filtP(gSt.mode, 'weak').length > 0 ? 'weak' : 'all');
+  selFilt(filt === 'weak' ? 'weak' : 'all');
+  hunterQuestionLimit = count === '10' || count === '20' ? Number(count) : null;
+  hunterPresetTimeLimit = time === '5' || time === '10' ? Number(time) : 0;
+  if (['random','calc','hw'].indexOf(answer) >= 0) setAnswerMode(answer);
+  var countInput = document.getElementById('hunter-preset-count');
+  var timeInput = document.getElementById('hunter-preset-time');
+  var answerInput = document.getElementById('hunter-preset-answer');
+  if (countInput) countInput.value = count === '10' || count === '20' ? count : 'all';
+  if (timeInput) timeInput.value = hunterPresetTimeLimit ? String(hunterPresetTimeLimit) : '0';
+  if (answerInput) answerInput.value = answerMode;
   window.__hunterPresetPending = true;
 }
 
@@ -2577,6 +2610,12 @@ function start(limit) {
   var lim = _lastStartLimit;
   var ps = filtP(gSt.mode, gSt.filt);
   if (!ps.length && gSt.filt === 'weak') {
+    if (window.__hunterPresetPending) {
+      selFilt('all');
+      ps = filtP(gSt.mode, gSt.filt);
+    }
+  }
+  if (!ps.length && gSt.filt === 'weak') {
     var allPs = buildP(gSt.mode);
     var ganbarePs = [];
     for (var i = 0; i < allPs.length; i++) {
@@ -2592,7 +2631,9 @@ function start(limit) {
     return;
   }
   if (!ps.length) { alert('がいとうするもんだいがありません。'); return; }
-  startSession(ps, gSt.filt === 'weak' ? 'all' : lim);
+  var runLimit = hunterQuestionLimit ? Math.min(hunterQuestionLimit, ps.length) : (gSt.filt === 'weak' ? 'all' : lim);
+  startSession(ps, runLimit);
+  window.__hunterPresetPending = false;
 }
 
 function closeAskGanbare(doIt) {
@@ -2626,9 +2667,11 @@ function showAllMasterPopup() {
 function startSession(ps, limit) {
   clearNextQuestionTimer();
   var cap = (limit === 'all') ? ps.length : (typeof limit === 'number' ? limit : 20);
+  if (hunterQuestionLimit) cap = Math.min(cap, hunterQuestionLimit);
   var weak=[],rest=[];
   for (var i=0;i<ps.length;i++){var st=getSt(gD[gk(gSt.mode,ps[i])]);if(st==='weak')weak.push(ps[i]);else rest.push(ps[i]);}
   sess={queue:sh(sh(weak).concat(sh(rest))).slice(0,Math.min(ps.length,cap)),idx:0,results:[],streak:0,startTime:0,_kotsuMasterShown:false};
+  sess.questionTimeLimitMs = hunterPresetTimeLimit * 1000;
   sess.scope = (limit === 'all') ? 'all' : 20;
   sessMode='normal';
   var bdg=document.getElementById('pbdg');
@@ -2731,7 +2774,15 @@ function showP() {
   if (sess._timedIndex !== sess.idx) { sess.startTime = Date.now(); sess._timedIndex = sess.idx; }
   if (tIv) clearInterval(tIv);
   tIv = setInterval(function(){
-    document.getElementById('ptimer').textContent = '⏱ '+((Date.now()-sess.startTime)/1000).toFixed(1)+' びょう';
+    var elapsed = Date.now() - sess.startTime;
+    var timer = document.getElementById('ptimer');
+    if (timer) timer.textContent = '⏱ '+(elapsed/1000).toFixed(1)+' びょう' + (sess.questionTimeLimitMs ? ' / '+hunterPresetTimeLimit+'びょう' : '');
+    if (sess.questionTimeLimitMs && elapsed >= sess.questionTimeLimitMs) {
+      clearInterval(tIv); tIv = null;
+      var question = sess.queue[sess.idx];
+      var wrongButton = document.querySelector('#agrid .abtn');
+      if (question) chk(NaN, answerMode === 'random' ? wrongButton : null, question);
+    }
   }, 100);
 }
 
