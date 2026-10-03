@@ -7,7 +7,7 @@ const assert=require('node:assert/strict');
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.route('https://**/*',r=>r.abort());
  await page.goto('http://127.0.0.1:8874/hikizan_hunter.html');
- await page.evaluate(()=>{document.getElementById('start-screen')?.remove();voiceOn=false;sfxOn=false;showPerfectEffect=done=>done();showImg=()=>{};});
+ await page.evaluate(()=>{document.getElementById('start-screen')?.remove();voiceOn=false;sfxOn=false;learningPrefs.missExplanation=false;learningPrefs.battle='off';showPerfectEffect=done=>done();showImg=()=>{};});
  const start=async(count=2,problem={a:13,b:8,ans:5})=>{
   await page.evaluate(({count,problem})=>{clearNextQuestionTimer();if(tIv)clearInterval(tIv);sess={queue:Array.from({length:count},()=>({...problem})),idx:0,results:[],streak:0,startTime:0};sessMode='normal';gSt.mode=problem.a===10?'ten':problem.a>10?'borrow':'no';show('practice');showP();},{count,problem});
  };

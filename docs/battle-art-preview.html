@@ -1,0 +1,19 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>幻獣ハンター バトル素材</title>
+<style>body{margin:0;padding:24px;background:#eef5ef;color:#203d35;font-family:system-ui}h1{font-size:24px}.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}article{background:white;border:1px solid #bdd0c4;border-radius:16px;padding:14px}h2{font-size:16px;margin:0 0 8px}.stage{height:192px;background:#eaf0e2;display:flex;justify-content:center;align-items:end;border-radius:10px}canvas{width:192px;height:192px;image-rendering:pixelated}.label{font-size:12px;color:#617d6c}details img{width:100%;background:#eaf0e2}button,select{font:inherit;padding:8px;margin:0 8px 16px 0;border-radius:8px;border:1px solid #9fb5a6}a{color:#26664d}</style></head><body>
+<h1>幻獣ハンターのバトル素材</h1><p>ハンター4段階と、報酬に対応する幻獣50体。セル内に角・翼・尾が収まるか、下のシートで確認できます。</p>
+<button id="toggle">一時停止</button><label>動作 <select id="pose"><option value="idle">待機</option><option value="slash">攻撃</option><option value="hurt">被弾</option><option value="defeat">光になる</option><option value="bow">達成を認める</option><option value="win">ハンターの達成</option><option value="throw">3連続</option><option value="clone">5連続</option><option value="smoke">退場</option></select></label><span id="status"></span><div class="cards"></div>
+<script src="../js/hunter-battle-art.js"></script><script>
+let running=true,cards=[],manifest=[];document.getElementById('toggle').onclick=function(){running=!running;this.textContent=running?'一時停止':'再生';};
+fetch('battle-art-manifest.json').then(r=>r.json()).then(items=>{
+ manifest=items;items.forEach(item=>{const hero=item.key.startsWith('hero-'),stage=hero?Number(item.key.slice(-1)):1;
+ const article=document.createElement('article');article.innerHTML='<h2></h2><div class="stage"><canvas width="192" height="192"></canvas></div><p class="label"></p><details><summary>スプライトシート</summary><img loading="lazy"></details><p><a target="_blank">参照画像</a></p>';
+ article.querySelector('h2').textContent=item.name||item.key;article.querySelector('.label').textContent=item.key;
+ article.querySelector('img').src='../img/battle/'+item.key+'.png';article.querySelector('a').href='../'+item.ref;
+ document.querySelector('.cards').append(article);cards.push({c:article.querySelector('canvas'),kind:hero?'hero':item.key,stage});HunterBattleArt.sheet(hero?'hero':item.key,stage);
+ });draw();
+});
+function draw(){const frame=running?Math.floor(performance.now()/280)%4:0,pose=document.getElementById('pose').value;
+ cards.forEach(({c,kind,stage})=>{const ctx=c.getContext('2d');ctx.clearRect(0,0,192,192);const selected=kind==='hero'?(pose==='bow'||pose==='defeat'?'win':pose):['idle','slash','hurt','defeat','bow'].includes(pose)?pose:'idle';HunterBattleArt.draw(ctx,kind,stage,selected,frame,0,0,3,false);});
+ document.getElementById('status').textContent=Object.values(HunterBattleArt.status()).filter(s=>s==='ready').length+'/'+cards.length+' 読み込み済み';requestAnimationFrame(draw);
+}
+</script></body></html>

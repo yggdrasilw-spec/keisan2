@@ -107,6 +107,7 @@ window.HunterSakuraLesson = (function () {
         replay.disabled = false;
         replay.textContent = '↺ もういちど';
         board.setAttribute('aria-busy', 'false');
+        host.dispatchEvent(new Event('hunter-lesson-complete'));
       }
     }
     later(function () { visualReady = true; advance(); }, step.min);

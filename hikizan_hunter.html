@@ -1323,6 +1323,7 @@
 <script src="./vendor/tf.min.js"></script>
 <link rel="stylesheet" href="./css/10-hunter-challenges.css">
 <link rel="stylesheet" href="./css/11-hunter-flow.css">
+<link rel="stylesheet" href="./css/12-hunter-battle.css">
 </head>
 <body>
 <div id="start-screen" onclick="hikizanStartTap()">
@@ -2772,11 +2773,12 @@ function showP() {
   // ヒントの種類と表示条件は hintSetProblem で切り替える。
   hintSetProblem(p);
   if (sess._timedIndex !== sess.idx) { sess.startTime = Date.now(); sess._timedIndex = sess.idx; }
+  document.getElementById('ptimer').textContent='⏱ 0.0 びょう' + (sess.questionTimeLimitMs ? ' / '+Number(hunterPresetTimeLimit).toFixed(1)+'びょう' : '');
   if (tIv) clearInterval(tIv);
   tIv = setInterval(function(){
     var elapsed = Date.now() - sess.startTime;
     var timer = document.getElementById('ptimer');
-    if (timer) timer.textContent = '⏱ '+(elapsed/1000).toFixed(1)+' びょう' + (sess.questionTimeLimitMs ? ' / '+hunterPresetTimeLimit+'びょう' : '');
+    if (timer) timer.textContent = '⏱ '+(elapsed/1000).toFixed(1)+' びょう' + (sess.questionTimeLimitMs ? ' / '+Number(hunterPresetTimeLimit).toFixed(1)+'びょう' : '');
     if (sess.questionTimeLimitMs && elapsed >= sess.questionTimeLimitMs) {
       clearInterval(tIv); tIv = null;
       var question = sess.queue[sess.idx];
@@ -2824,6 +2826,7 @@ function chk(v,btn,p) {
     lsSave(LS_KD, kD);
   }
   sess.results.push({p:p,el:el,ok:ok});
+  if(window.HunterBattle)HunterBattle.answer(ok);
   NinjaRaid.answer(ok);
   var fbl=document.getElementById('fbl');
   var abtns=document.querySelectorAll('.abtn');
@@ -2855,17 +2858,21 @@ function chk(v,btn,p) {
     sndWrong();
     fbl.textContent='✗ こたえは '+p.ans+' だよ';
     fbl.className='fbl fbng';
-    if (recitationEnabled('immediate')) startRecitation([p], function() { queueNextQuestion(0); });
-    else queueNextQuestion(1400);
+    var afterExplanation=function(){
+      if (recitationEnabled('immediate')) startRecitation([p], function() { queueNextQuestion(0); });
+      else queueNextQuestion(1400);
+    };
+    if(!window.HunterAnswerReview || !HunterAnswerReview.start(p,afterExplanation))afterExplanation();
   }
 }
 
 function endSess() {
   if (recitationActive()) return;
+  sess._battleQuit = true;
   sess._sessionEnding = true;
   clearNextQuestionTimer();
   if (tIv){clearInterval(tIv);tIv=null;}
-  if (!sess.results||!sess.results.length){show((sessMode==='drill')?'kotsu-sub':'home');return;}
+  if ((!sess.results||!sess.results.length)&&!sess.hunterChallenge){show((sessMode==='drill')?'kotsu-sub':'home');return;}
   finish();
 }
 
@@ -2874,6 +2881,7 @@ function finish() {
   clearNextQuestionTimer();
   if (tIv){clearInterval(tIv);tIv=null;}
   if (sess._finishRendered || recitationActive()) return;
+  if (window.HunterBattle && HunterBattle.snapshot() && HunterBattle.snapshot().finishing) return;
   if (!sess._recitationFinished && recitationEnabled('end')) {
     var missed = uniqueMissedProblems(sess.results || []);
     if (missed.length) {
@@ -2881,6 +2889,11 @@ function finish() {
       startRecitation(missed, finish);
       return;
     }
+  }
+  if (!sess._battleFinished && window.HunterBattle) {
+    var battleSession=sess; sess._battleFinished=true;
+    var completed=!sess._battleQuit && sess.results.length===sess.queue.length && sess.results.length>0;
+    if(HunterBattle.finish(completed,function(){if(sess===battleSession)finish();}))return;
   }
   sess._finishRendered = true;
   hunterFinishOutcome();
@@ -4397,6 +4410,7 @@ function hwCheckAnswer(recognized) {
       chk(recognized, document.getElementById('pcard'), p);
       return;
     }
+    if(window.HunterBattle)HunterBattle.miss();
     hunterClearWritingLater(700);
   }
 }
@@ -5017,6 +5031,10 @@ function textToHira(txt) {
 <script src="./js/hunter-flow.js"></script>
 <script src="./js/hunter-hint-options.js"></script>
 <script src="./js/hunter-sakura-lesson.js"></script>
+<script src="./js/hunter-answer-review.js"></script>
+<script src="./js/hunter-battle-roster.js"></script>
+<script src="./js/hunter-battle-art.js"></script>
+<script src="./js/hunter-battle.js"></script>
 
 <!-- Distribution settings -->
 <script src="js/student-profile.js"></script>

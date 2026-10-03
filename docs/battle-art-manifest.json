@@ -1,0 +1,488 @@
+[
+  {
+    "key": "borrow_bottom_01",
+    "name": "ヒュドラ",
+    "ref": "img/medal_kotsu_borrow_bottom_01.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: ヒュドラ. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-6e52f87f-718c-4c8b-abf2-2a8487c67594.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_bottom_01.png"
+  },
+  {
+    "key": "borrow_bottom_02",
+    "name": "メドゥーサ",
+    "ref": "img/medal_kotsu_borrow_bottom_02.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: メドゥーサ. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-6fde79c5-bb57-4e32-ada9-4e90bd9885e3.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_bottom_02.png"
+  },
+  {
+    "key": "borrow_bottom_03",
+    "name": "天狗（てんぐ）",
+    "ref": "img/medal_kotsu_borrow_bottom_03.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 天狗. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-91b1412f-9bbf-4fd1-b0db-461439276ff5.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_bottom_03.png"
+  },
+  {
+    "key": "borrow_bottom_04",
+    "name": "鵺（ぬえ）",
+    "ref": "img/medal_kotsu_borrow_bottom_04.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 鵺. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-14a3666c-4192-45e1-a74a-6a070b93f71c.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_bottom_04.png"
+  },
+  {
+    "key": "borrow_bottom_05",
+    "name": "饕餮（とうてつ）",
+    "ref": "img/medal_kotsu_borrow_bottom_05.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 饕餮. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-a5b806a8-141b-42c3-a1c8-5092dc20d1db.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_bottom_05.png"
+  },
+  {
+    "key": "borrow_bottom_06",
+    "name": "白澤（はくたく）",
+    "ref": "img/medal_kotsu_borrow_bottom_06.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 白澤. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-b585713a-994c-418f-9cfc-afab4184d886.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_bottom_06.png"
+  },
+  {
+    "key": "borrow_bottom_07",
+    "name": "ミノタウロス",
+    "ref": "img/medal_kotsu_borrow_bottom_07.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: ミノタウロス. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-a2800bf8-4764-4afd-8af5-ea4624b29071.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_bottom_07.png"
+  },
+  {
+    "key": "borrow_bottom_08",
+    "name": "マーメイド",
+    "ref": "img/medal_kotsu_borrow_bottom_08.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: マーメイド. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-68372839-99aa-4a7f-869f-df27bdeeb3fb.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_bottom_08.png"
+  },
+  {
+    "key": "borrow_bottom_09",
+    "name": "ケンタウロス",
+    "ref": "img/medal_kotsu_borrow_bottom_09.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: ケンタウロス. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-bceddd5e-599d-4f89-bc8d-2eba3c4e3f2e.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_bottom_09.png"
+  },
+  {
+    "key": "borrow_shinsoku",
+    "name": "雷角の岩獅子",
+    "ref": "img/badge_borrow_shinsoku.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 雷角の岩獅子. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-5c800894-778a-40a8-b95b-132934d94c39.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_shinsoku.png"
+  },
+  {
+    "key": "borrow_super",
+    "name": "紅蓮の双翼竜",
+    "ref": "img/badge_borrow_super.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 紅蓮の双翼竜. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-7802a16c-adad-4bf7-aeab-86a30b27e37b.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_super.png"
+  },
+  {
+    "key": "borrow_top_11",
+    "name": "ファイヤードレイク",
+    "ref": "img/medal_kotsu_borrow_top_11.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: ファイヤードレイク. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-297d8343-4490-406c-a42f-434163ddf498.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_top_11.png"
+  },
+  {
+    "key": "borrow_top_12",
+    "name": "フェンリル",
+    "ref": "img/medal_kotsu_borrow_top_12.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: フェンリル. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-6d891761-e95c-473d-9ca6-fdb33bfc0c4d.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_top_12.png"
+  },
+  {
+    "key": "borrow_top_13",
+    "name": "ケツァルコアトル",
+    "ref": "img/medal_kotsu_borrow_top_13.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: ケツァルコアトル. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-ab1fb055-54ce-46c9-9967-b80b4bfb6b70.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_top_13.png"
+  },
+  {
+    "key": "borrow_top_14",
+    "name": "クエレブレ",
+    "ref": "img/medal_kotsu_borrow_top_14.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: クエレブレ. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-698710a5-0b95-476b-a8e0-0a812c33323d.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_top_14.png"
+  },
+  {
+    "key": "borrow_top_15",
+    "name": "ティアマト",
+    "ref": "img/medal_kotsu_borrow_top_15.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: ティアマト. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-ca816c5f-1bea-4bc6-a279-961a555adb98.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_top_15.png"
+  },
+  {
+    "key": "borrow_top_16",
+    "name": "タラスク",
+    "ref": "img/medal_kotsu_borrow_top_16.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: タラスク. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-d3764fac-9a7b-44e5-aff3-000b62a6788f.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_top_16.png"
+  },
+  {
+    "key": "borrow_top_17",
+    "name": "ニーズヘッグ",
+    "ref": "img/medal_kotsu_borrow_top_17.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: ニーズヘッグ. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-3456bddf-ad3d-4635-9337-772da6dc4f22.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_top_17.png"
+  },
+  {
+    "key": "borrow_top_18",
+    "name": "ファフニール",
+    "ref": "img/medal_kotsu_borrow_top_18.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: ファフニール. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-88aead95-3496-4309-9add-8fd3a4c57e4f.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/borrow_top_18.png"
+  },
+  {
+    "key": "easy_20",
+    "ref": "img/medal_easy20.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: Unicorn. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-be7c8d98-08ce-42ab-aa25-1fab5e63a855.png",
+    "name": "ユニコーン",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/easy_20.png"
+  },
+  {
+    "key": "easy_all",
+    "ref": "img/medal_easy_all.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: Jormungandr. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-7e5e64dd-a834-4dbb-a49f-2179f1cfa4e9.png",
+    "name": "ヨルムンガンド",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/easy_all.png"
+  },
+  {
+    "key": "hard_20",
+    "ref": "img/medal_hard20.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: Azi Dahaka light. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-f6135c60-1884-4060-96de-31318a4d6c91.png",
+    "name": "アジ・ダハーカ（光）",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/hard_20.png"
+  },
+  {
+    "key": "hard_all",
+    "ref": "img/medal_hard_all.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: Azi Dahaka dark. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-60bc9c9e-6e94-409c-b398-1aec3d34ae8b.png",
+    "name": "アジ・ダハーカ（闇）",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/hard_all.png"
+  },
+  {
+    "key": "hero-1",
+    "ref": "img/genju_hunter_lv1.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art game animation sprite sheet for a Japanese subtraction learning game. Reference image gives ONLY the character identity, outfit and colours. Create a new full-body chibi pixel-art sheet of the apprentice hunter, matching brown spiky hair, brass goggles, blue eyes, red scarf, brown leather coat, boots and glowing lantern. Face RIGHT, 3/4 side view. Exactly 4 equal columns and 7 equal rows (28 frames); no titles, labels, borders or background. Every character fully inside its cell, consistent scale and feet baseline, generous cell padding. Row 1 idle breathing; row 2 lantern light attack with arm extending; row 3 throwing three light crystals; row 4 powerful lantern magic sweeping gesture; row 5 gentle recoil; row 6 friendly victory raising lantern; row 7 retreat fading into sparkles. Four visibly different sequential animation frames per row. Small crisp pixels, limited palette, charming fantasy RPG, no blood, no weapons added, no duplicated full sheets. Real transparent alpha background, not a checkerboard.",
+    "source": "C:/Users/user/.codex/generated_images/01a1011e-7645-7633-907c-bd3ef490b5b2/exec-9a5a4dda-1373-41f0-bacf-46890fa9c4ed.png",
+    "name": "ハンター Lv.1",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/hero-1.png"
+  },
+  {
+    "key": "hero-2",
+    "ref": "img/genju_hunter_lv2.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art game animation sprite sheet for a Japanese subtraction learning game. Reference image gives ONLY the character identity, outfit and colours. Create a new full-body chibi pixel-art sheet of the advanced hunter at growth stage 2, matching the exact outfit, armour, lantern, hair, goggles, red scarf and magical equipment of this reference; ignore the reference background and any surrounding spirits. Face RIGHT, 3/4 side view. Exactly 4 equal columns and 7 equal rows (28 frames); no titles, labels, borders or background. Every character fully inside its cell, consistent scale and feet baseline, generous cell padding. Row 1 idle breathing; row 2 lantern light attack with arm extending; row 3 throwing three light crystals; row 4 powerful lantern magic sweeping gesture; row 5 gentle recoil; row 6 friendly victory raising lantern; row 7 retreat fading into sparkles. Four visibly different sequential animation frames per row. Small crisp pixels, limited palette, charming fantasy RPG, no blood, no weapons added, no duplicated full sheets. Real transparent alpha background, not a checkerboard.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-e37da334-a3ac-427d-8d62-2cdda814551d.png",
+    "name": "ハンター Lv.2",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/hero-2.png"
+  },
+  {
+    "key": "hero-3",
+    "ref": "img/genju_hunter_lv3.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art game animation sprite sheet for a Japanese subtraction learning game. Reference image gives ONLY the character identity, outfit and colours. Create a new full-body chibi pixel-art sheet of the advanced hunter at growth stage 3, matching the exact outfit, armour, lantern, hair, goggles, red scarf and magical equipment of this reference; ignore the reference background and any surrounding spirits. Face RIGHT, 3/4 side view. Exactly 4 equal columns and 7 equal rows (28 frames); no titles, labels, borders or background. Every character fully inside its cell, consistent scale and feet baseline, generous cell padding. Row 1 idle breathing; row 2 lantern light attack with arm extending; row 3 throwing three light crystals; row 4 powerful lantern magic sweeping gesture; row 5 gentle recoil; row 6 friendly victory raising lantern; row 7 retreat fading into sparkles. Four visibly different sequential animation frames per row. Small crisp pixels, limited palette, charming fantasy RPG, no blood, no weapons added, no duplicated full sheets. Real transparent alpha background, not a checkerboard.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-2d9d3c89-fa9b-4441-9b98-37f083a8ab51.png",
+    "name": "ハンター Lv.3",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/hero-3.png"
+  },
+  {
+    "key": "hero-4",
+    "ref": "img/genju_hunter_lv4.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art game animation sprite sheet for a Japanese subtraction learning game. Reference image gives ONLY the character identity, outfit and colours. Create a new full-body chibi pixel-art sheet of the advanced hunter at growth stage 4, matching the exact outfit, armour, lantern, hair, goggles, red scarf and magical equipment of this reference; ignore the reference background and any surrounding spirits. Face RIGHT, 3/4 side view. Exactly 4 equal columns and 7 equal rows (28 frames); no titles, labels, borders or background. Every character fully inside its cell, consistent scale and feet baseline, generous cell padding. Row 1 idle breathing; row 2 lantern light attack with arm extending; row 3 throwing three light crystals; row 4 powerful lantern magic sweeping gesture; row 5 gentle recoil; row 6 friendly victory raising lantern; row 7 retreat fading into sparkles. Four visibly different sequential animation frames per row. Small crisp pixels, limited palette, charming fantasy RPG, no blood, no weapons added, no duplicated full sheets. Real transparent alpha background, not a checkerboard.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-c3b6e9f7-2d8c-4f1f-8ee4-10823db9cbee.png",
+    "name": "ハンター Lv.4",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/hero-4.png"
+  },
+  {
+    "key": "mix_20",
+    "ref": "img/medal_mix20.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: Prism Stag. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-5e424621-6163-4b00-bca0-5fb2be0f3dc6.png",
+    "name": "プリズム・スタッグ",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/mix_20.png"
+  },
+  {
+    "key": "mix_all",
+    "ref": "img/medal_mix_all.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: Astral Dragon. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-f79fa6c3-6864-4923-ad70-9284b04d50fc.png",
+    "name": "アストラル・ドラゴン",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/mix_all.png"
+  },
+  {
+    "key": "mix_shinsoku",
+    "name": "瞬虹の空鯨",
+    "ref": "img/badge_mix_shinsoku.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 瞬虹の空鯨. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-4cbe2e8d-19ea-4cc8-9ede-c825341f55f4.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/mix_shinsoku.png"
+  },
+  {
+    "key": "mix_super",
+    "name": "天球の星海蛇",
+    "ref": "img/badge_mix_super.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 天球の星海蛇. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-71e39034-9a24-4954-9854-ade836ebeda7.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/mix_super.png"
+  },
+  {
+    "key": "no_bottom_01",
+    "ref": "img/medal_kotsu_no_bottom_01.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: フェニックス. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-fb9fb4b9-4eab-4038-a22a-3758955220e4.png",
+    "name": "フェニックス",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_bottom_01.png"
+  },
+  {
+    "key": "no_bottom_02",
+    "ref": "img/medal_kotsu_no_bottom_02.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: グリフォン. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-03da9f39-4fa4-4961-9a16-384c7a084385.png",
+    "name": "グリフォン",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_bottom_02.png"
+  },
+  {
+    "key": "no_bottom_03",
+    "ref": "img/medal_kotsu_no_bottom_03.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: ケルベロス. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-f6938fa5-665c-49cc-81b8-96cd913263fd.png",
+    "name": "ケルベロス",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_bottom_03.png"
+  },
+  {
+    "key": "no_bottom_04",
+    "ref": "img/medal_kotsu_no_bottom_04.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: ペガサス. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-5000be92-6d56-426e-beda-359a3fb79b67.png",
+    "name": "ペガサス",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_bottom_04.png"
+  },
+  {
+    "key": "no_bottom_05",
+    "ref": "img/medal_kotsu_no_bottom_05.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: キマイラ. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-1f31797e-9063-4529-8251-97ab7f1ab948.png",
+    "name": "キマイラ",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_bottom_05.png"
+  },
+  {
+    "key": "no_bottom_06",
+    "ref": "img/medal_kotsu_no_bottom_06.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: スフィンクス. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-a0c48f57-59d3-4d46-81e0-fb95c72c673a.png",
+    "name": "スフィンクス",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_bottom_06.png"
+  },
+  {
+    "key": "no_bottom_07",
+    "ref": "img/medal_kotsu_no_bottom_07.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: クラーケン. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-f815d8b7-aee5-4e3a-be8b-d8a49d394dd9.png",
+    "name": "クラーケン",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_bottom_07.png"
+  },
+  {
+    "key": "no_bottom_08",
+    "ref": "img/medal_kotsu_no_bottom_08.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: リヴァイアサン. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-60cd25a9-e15f-453d-b245-c4b218dc884f.png",
+    "name": "リヴァイアサン",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_bottom_08.png"
+  },
+  {
+    "key": "no_bottom_09",
+    "ref": "img/medal_kotsu_no_bottom_09.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: バジリスク. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-b444d6c9-ac50-4a2a-8bc5-4d9401e63e94.png",
+    "name": "バジリスク",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_bottom_09.png"
+  },
+  {
+    "key": "no_shinsoku",
+    "ref": "img/badge_no_shinsoku.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 風渡りの銀狼. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-946cf8be-71a3-43cc-9fea-6ff27c457f06.png",
+    "name": "風渡りの銀狼",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_shinsoku.png"
+  },
+  {
+    "key": "no_super",
+    "ref": "img/badge_no_super.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 蒼星の角鹿. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-baf47640-446a-4072-9905-97d60727683f.png",
+    "name": "蒼星の角鹿",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_super.png"
+  },
+  {
+    "key": "no_top_01",
+    "ref": "img/medal_kotsu_no_top_01.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 青龍. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-3c949975-eece-4c34-a248-7c9c50beff32.png",
+    "name": "青龍（せいりゅう）",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_top_01.png"
+  },
+  {
+    "key": "no_top_02",
+    "ref": "img/medal_kotsu_no_top_02.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 白虎. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-e74f20c6-a74f-4a0f-bb70-2f9a359da377.png",
+    "name": "白虎（びゃっこ）",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_top_02.png"
+  },
+  {
+    "key": "no_top_03",
+    "ref": "img/medal_kotsu_no_top_03.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 朱雀. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-ec2a80f3-2fff-4cca-a52d-b4f962ba5f06.png",
+    "name": "朱雀（すざく）",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_top_03.png"
+  },
+  {
+    "key": "no_top_04",
+    "ref": "img/medal_kotsu_no_top_04.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 玄武. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-d17fe639-4582-4add-8618-08fb4025e0e3.png",
+    "name": "玄武（げんぶ）",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_top_04.png"
+  },
+  {
+    "key": "no_top_05",
+    "ref": "img/medal_kotsu_no_top_05.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 麒麟. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-fce435d5-3301-4d78-9d9d-18045cc95e21.png",
+    "name": "麒麟（きりん）",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_top_05.png"
+  },
+  {
+    "key": "no_top_06",
+    "ref": "img/medal_kotsu_no_top_06.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 黄龍. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-b4e21cbc-2113-40ea-bd6e-bcdceba1656c.png",
+    "name": "黄龍（こうりゅう）",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_top_06.png"
+  },
+  {
+    "key": "no_top_07",
+    "ref": "img/medal_kotsu_no_top_07.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 九尾の狐. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-45122f73-ecee-4545-ad8f-bd66b16abe5e.png",
+    "name": "九尾の狐（きゅうびのきつね）",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_top_07.png"
+  },
+  {
+    "key": "no_top_08",
+    "ref": "img/medal_kotsu_no_top_08.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 龍. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-a8e321e8-b3ac-4b23-a24e-a7ef1b7db036.png",
+    "name": "龍",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_top_08.png"
+  },
+  {
+    "key": "no_top_09",
+    "ref": "img/medal_kotsu_no_top_09.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 鬼. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-6a212187-d4be-40d5-9717-ee5d607aebb3.png",
+    "name": "鬼",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/no_top_09.png"
+  },
+  {
+    "key": "ten_all",
+    "ref": "img/medal_ten_all.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: Manticore. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-3362ea63-6642-41b4-8b3c-9d632aadc6f1.png",
+    "name": "マンティコア",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/ten_all.png"
+  },
+  {
+    "key": "ten_shinsoku",
+    "name": "十灯の星蛾",
+    "ref": "img/badge_ten_shinsoku.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 十灯の星蛾. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-463ede36-9a77-4c7e-9026-78ce8b8fa769.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/ten_shinsoku.png"
+  },
+  {
+    "key": "ten_super",
+    "name": "金環の砂漠狐",
+    "ref": "img/badge_ten_super.png",
+    "prompt": "Use case: stylized-concept. Asset type: transparent pixel-art RPG animation sprite sheet. Reference image ONLY provides creature identity and colour palette. Subject: 金環の砂漠狐. Extract its living creature design, do NOT draw medal rim, gold border, coins or reference background. Match anatomy and silhouette and colours from reference. Exactly 4 equal columns x 5 equal rows, 20 frames total, every creature fully inside its own cell, same scale and feet baseline, generous padding around wings, horns and tail. Creature faces RIGHT in all cells; runtime flips it. Row 1 idle breathing, row 2 friendly magical challenge attack leaning forward, row 3 gentle recoil, row 4 transforming into soft golden light to become a companion, row 5 friendly recognition nod/bow. Four distinct sequential frames in each row. Crisp detailed chibi pixel art, limited colour palette, no blood, no death, no text or labels or cell borders. Transparent alpha background, not a checkerboard. Only ONE creature type across all 20 cells.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a1011e-7645-7633-907c-bd3ef490b5b2\\exec-8456adb4-e59b-4dd3-8390-4bfc989ca40b.png",
+    "generator": "built-in image_gen",
+    "sprite": "img/battle/ten_super.png"
+  }
+]

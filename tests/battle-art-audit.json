@@ -1,0 +1,380 @@
+[
+  {
+    "key": "borrow_bottom_01",
+    "transparent": 48011,
+    "opaque": 33909,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_bottom_02",
+    "transparent": 55796,
+    "opaque": 26124,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_bottom_03",
+    "transparent": 58533,
+    "opaque": 23387,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_bottom_04",
+    "transparent": 51685,
+    "opaque": 30235,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_bottom_05",
+    "transparent": 55517,
+    "opaque": 26403,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_bottom_06",
+    "transparent": 35026,
+    "opaque": 46894,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_bottom_07",
+    "transparent": 51608,
+    "opaque": 30312,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_bottom_08",
+    "transparent": 51923,
+    "opaque": 29997,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_bottom_09",
+    "transparent": 48846,
+    "opaque": 33074,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_shinsoku",
+    "transparent": 38136,
+    "opaque": 43784,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_super",
+    "transparent": 36186,
+    "opaque": 45734,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_top_11",
+    "transparent": 57673,
+    "opaque": 24247,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_top_12",
+    "transparent": 53475,
+    "opaque": 28445,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_top_13",
+    "transparent": 50385,
+    "opaque": 31535,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_top_14",
+    "transparent": 49042,
+    "opaque": 32878,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_top_15",
+    "transparent": 47913,
+    "opaque": 34007,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_top_16",
+    "transparent": 53726,
+    "opaque": 28194,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_top_17",
+    "transparent": 48448,
+    "opaque": 33472,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "borrow_top_18",
+    "transparent": 45918,
+    "opaque": 36002,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "easy_20",
+    "transparent": 54638,
+    "opaque": 27282,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "easy_all",
+    "transparent": 31703,
+    "opaque": 50217,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "hard_20",
+    "transparent": 48443,
+    "opaque": 33477,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "hard_all",
+    "transparent": 44140,
+    "opaque": 37780,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "hero-1",
+    "transparent": 67422,
+    "opaque": 47266,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "hero-2",
+    "transparent": 61385,
+    "opaque": 53303,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "hero-3",
+    "transparent": 77903,
+    "opaque": 36785,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "hero-4",
+    "transparent": 78672,
+    "opaque": 36016,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "mix_20",
+    "transparent": 39028,
+    "opaque": 42892,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "mix_all",
+    "transparent": 29268,
+    "opaque": 52652,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "mix_shinsoku",
+    "transparent": 46866,
+    "opaque": 35054,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "mix_super",
+    "transparent": 29686,
+    "opaque": 52234,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_bottom_01",
+    "transparent": 33084,
+    "opaque": 48836,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_bottom_02",
+    "transparent": 50922,
+    "opaque": 30998,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_bottom_03",
+    "transparent": 48254,
+    "opaque": 33666,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_bottom_04",
+    "transparent": 34557,
+    "opaque": 47363,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_bottom_05",
+    "transparent": 36190,
+    "opaque": 45730,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_bottom_06",
+    "transparent": 46954,
+    "opaque": 34966,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_bottom_07",
+    "transparent": 53546,
+    "opaque": 28374,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_bottom_08",
+    "transparent": 40666,
+    "opaque": 41254,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_bottom_09",
+    "transparent": 49431,
+    "opaque": 32489,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_shinsoku",
+    "transparent": 49815,
+    "opaque": 32105,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_super",
+    "transparent": 45870,
+    "opaque": 36050,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_top_01",
+    "transparent": 46738,
+    "opaque": 35182,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_top_02",
+    "transparent": 54043,
+    "opaque": 27877,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_top_03",
+    "transparent": 37542,
+    "opaque": 44378,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_top_04",
+    "transparent": 54531,
+    "opaque": 27389,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_top_05",
+    "transparent": 30917,
+    "opaque": 51003,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_top_06",
+    "transparent": 52544,
+    "opaque": 29376,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_top_07",
+    "transparent": 48205,
+    "opaque": 33715,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_top_08",
+    "transparent": 35759,
+    "opaque": 46161,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "no_top_09",
+    "transparent": 42048,
+    "opaque": 39872,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "ten_all",
+    "transparent": 51177,
+    "opaque": 30743,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "ten_shinsoku",
+    "transparent": 50700,
+    "opaque": 31220,
+    "empty": [],
+    "clipped": []
+  },
+  {
+    "key": "ten_super",
+    "transparent": 38292,
+    "opaque": 43628,
+    "empty": [],
+    "clipped": []
+  }
+]

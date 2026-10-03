@@ -20,7 +20,7 @@
     var remaining=Math.max(0,limit()-(Date.now()-sess.startTime));
     document.getElementById('ptimer').textContent='あと '+(remaining/1000).toFixed(1)+' 秒';
     document.getElementById('hunter-time-fill').style.width=(remaining/limit()*100)+'%';
-    if(!remaining){sess.challengeReason='時間ぎれ！';sess._sessionEnding=true;finish();}
+    if(!remaining){sess.challengeReason='時間ぎれ！';sess._sessionEnding=true;stopClock();if(window.HunterBattle)HunterBattle.miss();if(!window.HunterAnswerReview||!HunterAnswerReview.start(sess.queue[sess.idx],finish))finish();}
   }
   window.startHunterChallenge=function(mode){
     if(!modes[mode] || !hunterChallengeAccess(mode).open)return;
@@ -57,7 +57,8 @@
       sess._answerSubmitted=true;sess._answeredIndex=sess.idx;
       sess.results.push({p:p,el:Date.now()-sess.startTime,ok:false});
       sess.challengeReason='こたえは '+p.ans+'！ また ちょうせんしよう';
-      sndWrong();finish();return;
+      if(window.HunterBattle)HunterBattle.answer(false);
+      sndWrong();if(!window.HunterAnswerReview||!HunterAnswerReview.start(p,finish))finish();return;
     }
     baseCheck(v,btn,p);
   };
@@ -66,7 +67,14 @@
     if(!active()){document.getElementById('rv-m').previousElementSibling.textContent='マスター';return baseFinish();}
     stopClock();clearNextQuestionTimer();if(tIv){clearInterval(tIv);tIv=null;}
     if(sess._finishRendered)return;
-    sess._sessionEnding=true;sess._finishRendered=true;
+    if(window.HunterBattle && HunterBattle.snapshot() && HunterBattle.snapshot().finishing)return;
+    sess._sessionEnding=true;
+    if(!sess._battleFinished && window.HunterBattle){
+      var battleSession=sess;sess._battleFinished=true;
+      var completed=!sess._battleQuit && active()!=='mugen' && sess.results.length===sess.queue.length && sess.results.every(function(r){return r.ok;});
+      if(HunterBattle.finish(completed,function(){if(sess===battleSession)finish();}))return;
+    }
+    sess._finishRendered=true;
     var count=sess.results.filter(function(r){return r.ok;}).length;
     var cleared=active()!=='mugen' && count===sess.queue.length;
     var best=Math.max(count,Number(storageLoadText(bestKey(),'0'))||0);storageSaveText(bestKey(),best);

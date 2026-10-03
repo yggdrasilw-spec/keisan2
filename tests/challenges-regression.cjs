@@ -4,7 +4,7 @@ const assert=require('node:assert/strict');
  const page=await browser.newPage({viewport:{width:1280,height:720},reducedMotion:'reduce'}),errors=[];
  page.on('pageerror',e=>errors.push(e.message));await page.route('https://**/*',r=>r.abort());
  await page.goto('http://127.0.0.1:8874/hikizan_hunter.html');
- await page.evaluate(()=>{document.getElementById('start-screen').remove();sfxOn=false;voiceOn=false;getFx=()=>false;ACH_BADGE_DEFS.forEach(d=>badgeData[d.key]={});['no','ten','borrow','mix'].forEach(c=>storageSaveText('hikizan_challenge_'+c+'_shinsoku_clear','1'));selMode('no');});
+ await page.evaluate(()=>{document.getElementById('start-screen').remove();sfxOn=false;voiceOn=false;getFx=()=>false;learningPrefs.missExplanation=false;learningPrefs.battle='off';ACH_BADGE_DEFS.forEach(d=>badgeData[d.key]={});['no','ten','borrow','mix'].forEach(c=>storageSaveText('hikizan_challenge_'+c+'_shinsoku_clear','1'));selMode('no');});
  await page.locator('#hunter-challenge-launch').click();
  await page.screenshot({path:'tests/challenge-drawer.png'});
  assert.equal(await page.locator('.hunter-challenge-card').count(),3);

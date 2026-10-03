@@ -9,7 +9,7 @@ const server = http.createServer((req,res)=>{
   if(!file.startsWith(root+path.sep)){res.writeHead(403).end();return;}
   fs.readFile(file,(err,data)=>{if(err){res.writeHead(404).end();return;}res.setHeader('Content-Type',mime[path.extname(file)]||'application/octet-stream');res.end(data);});
 });
-server.listen(8874,'127.0.0.1',async()=>{
+server.listen(Number(process.env.QA_PORT||8874),'127.0.0.1',async()=>{
   let failed=false;
   for(const name of (process.argv.slice(2).length ? process.argv.slice(2) : ['model','learning','progression','hints','raid','migration','refresh','creatures','home-fit'])){
     console.log('\nTEST '+name);

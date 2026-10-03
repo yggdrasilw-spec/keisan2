@@ -21,6 +21,7 @@ function clearNextQuestionTimer() { clearTimeout(nextQuestionTimer); nextQuestio
 function setQuitBarVisible(visible) { document.getElementById('quit-bar').classList.toggle('show', visible); }
 function queueNextQuestion(delay) {
   clearNextQuestionTimer();
+  if(window.HunterBattle)delay=Math.max(delay,HunterBattle.answerDelay());
   var session = sess, index = sess.idx;
   nextQuestionTimer = setTimeout(function() {
     nextQuestionTimer = null;
