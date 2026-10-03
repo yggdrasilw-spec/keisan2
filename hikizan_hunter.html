@@ -5017,5 +5017,22 @@ function textToHira(txt) {
 <script src="./js/hunter-flow.js"></script>
 <script src="./js/hunter-hint-options.js"></script>
 <script src="./js/hunter-sakura-lesson.js"></script>
+
+<!-- Distribution settings -->
+<script src="js/student-profile.js"></script>
+<script src="js/teacher-bridge.js"></script>
+<script src="js/lesson-connections.js"></script>
+<script src="js/lesson-share.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){setTimeout(function(){
+var F=function(key,label,options,get,set,multiple){return {key:key,label:label,options:options,get:get,set:set,multiple:!!multiple};}; var S=LessonShare.select,C=LessonShare.checkbox;
+
+var fields=[F('mode','計算の種類',[['no','くり下がりなし'],['ten','10から引く'],['borrow','くり下がりあり'],['mix','ばらばら']],function(){return gSt.mode;},selMode),F('filter','問題の範囲',[['all','すべて'],['weak','苦手']],function(){return gSt.filt;},selFilt),S('count','問題数','hunter-preset-count'),S('time','制限時間','hunter-preset-time'),F('answer','回答方法',[['random','ボタン'],['calc','電卓'],['hw','手書き']],function(){return document.getElementById('hunter-preset-answer').value;},function(v){setAnswerMode(v);document.getElementById('hunter-preset-answer').value=v;})];
+document.querySelectorAll('[data-hunter-hint]').forEach(function(el){fields.push(C('hint-'+el.dataset.hunterHint,'ヒント：'+el.parentElement.textContent.trim(),'[data-hunter-hint="'+el.dataset.hunterHint+'"]'));});
+LessonShare.init({id:'hikizan-hunter',name:'引き算ハンター',mount:'#settings',raid:true,fields:fields,afterRestore:function(){var count=document.getElementById('hunter-preset-count').value;hunterQuestionLimit=count==='all'?null:Number(count);hunterPresetTimeLimit=Number(document.getElementById('hunter-preset-time').value);}});
+createHunterPresetUrl=function(){LessonShare.open();};
+
+},0);});
+</script>
 </body>
 </html>
